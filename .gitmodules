@@ -1,3 +1,6 @@
 [submodule "submodule-directory"]
 	path = submodule-directory
 	url = https://github.com/muhammadaus/portfolio.git
+[submodule "Portfolio"]
+	path = Portfolio
+	url = git://github.com/username/portfolio.git
