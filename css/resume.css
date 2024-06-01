@@ -36,6 +36,7 @@ h1 {
 }
 
 h2 {
+    color: black;
     font-weight: 400;
     font-size: var(--font-32);
     line-height: 150%;
@@ -216,7 +217,8 @@ p {
 /* === ABOUT === */
 
 .about {
-    background-image: url('../img/Vector.png');
+    color: black;
+    background: linear-gradient(to bottom right, #F4492F, #F367A5 54.6875%, #553DEB);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -233,7 +235,6 @@ p {
 
 .about .achievements {
     list-style: none;
-
 }
 
 .about .achievements li {
@@ -241,6 +242,14 @@ p {
 }
 
 /* === PROJECTS === */
+
+.projects {
+    color: black;
+    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
 
 .projects .projects-link {
     color: var(--white);
@@ -276,6 +285,7 @@ p {
 }
 
 .projects .card .card-title {
+    color: black;
     font-weight: 400;
     font-size: 24px;
     line-height: 150%;
@@ -283,6 +293,7 @@ p {
 }
 
 .projects .card .card-description {
+    color: black;
     margin-bottom: 60px;
 }
 
@@ -293,6 +304,7 @@ p {
 
 .projects .card .card-buttons .card-button--site,
 .projects .card .card-buttons .card-button--code {
+    color: black;
     width: 150px;
     height: 60px;
 
@@ -322,7 +334,20 @@ p {
 
 /* === EXPERIENCE === */
 
+.experience {
+    color: black;
+    background-image: url('../img/Background.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+}
+
 .experience-description {
+    color: black;
     max-width: 900px;
     margin-bottom: 125px;
 
@@ -344,6 +369,7 @@ p {
 }
 
 .experience h2 {
+    color: black;
     border-left: 2px solid var(--white);
     padding-left: 24px;
 }
@@ -360,16 +386,19 @@ p {
 }
 
 .experience .experience-card .card-title {
+    color: black;
     font-size: 18px;
     line-height: 150%;
 }
 
 .experience .experience-card .card-title .highlight {
+    color: black;
     opacity: 0.7;
     font-weight: 400;
 }
 
 .experience .experience-card .card-years {
+    color: black;
     color: var(--blue);
     font-weight: 500;
     font-size: 18px;
@@ -379,6 +408,7 @@ p {
 }
 
 .experience .experience-card .card-list .card-list-item {
+    color: black;
     margin: 0 0 16px 16px;
     opacity: 0.7;
 }
@@ -386,7 +416,7 @@ p {
 /* === SKILLS === */
 
 .skills {
-    background-image: url('../img/Vector.png');
+    background: linear-gradient(to bottom right, #F4492F, #F367A5 54.6875%, #553DEB);
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -396,10 +426,9 @@ p {
 }
 
 .skills .skill-card {
-    background-image: url('../img/Background.png');
+    background: linear-gradient(to bottom right, #F4492F, #F367A5 54.6875%, #553DEB);
     background-repeat: no-repeat;
     background-size: cover;
-    background-color: #060003;
     background-blend-mode: darken;
     width: 170px;
     height: 170px;
@@ -425,12 +454,23 @@ p {
     opacity: 1;
 }
 
+.skill-card svg path {
+    fill: #dbdbdb;
+    transition: fill 0.5s;
+}
+
+.skill-card:hover svg path {
+    fill: #ffffff;
+    transition: fill 0.5;
+}
+
 .skills .skill-list {
     list-style: none;
     flex-wrap: wrap;
 }
 
 .skills .skill-list li {
+    color: black;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -439,6 +479,8 @@ p {
 .skills .skill-list li img {
     margin: 10px;
 }
+
+
 
 /* === CONTACT === */
 
@@ -468,6 +510,7 @@ p {
 }
 
 /* === MEDIA STYLES === */
+
 
 @media all and (max-width: 1200px) {
     .contact-details {
@@ -501,4 +544,66 @@ p {
     .section {
         padding: 40px;
     }
+
+
+}
+
+
+body > *:not(.intro-screen) {
+    display: none;
+}
+
+.lock-scroll {
+    overflow: hidden;
+}
+
+#close-intro {
+    background-color: #4c6faf; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    transition-duration: 0.4s;
+    cursor: pointer;
+}
+
+#close-intro:hover {
+    background-color: white; 
+    color: black; 
+    border: 2px solid #4c7caf;
+}
+
+#navbar {
+    background: linear-gradient(to right, #3DEB55, #A567F3, #2F49F4);
+    padding: 10px;
+    position: fixed;
+    top: 0;
+    right: 0;
+    border-radius: 0 0 0 20px;
+}
+
+#navbar ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+#navbar ul li {
+    float: left;
+}
+
+#navbar ul li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+#navbar ul li a:hover {
 }

@@ -22,9 +22,56 @@
 
     <!-- Custom styles for this template -->
     <link href="css/resume.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+        .intro-screen {
+            animation: fadeIn 2s ease-in-out forwards;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+        }
+
+    </style>
 </head>
 
 <body>
+    <div class="intro-screen">
+        <h1>Welcome to My Website!</h1>
+        <p>I'd love to hear from you if you find my work interesting</p>
+        <button id="close-intro">Show Page</button>
+    </div>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
     <header class="header">
         <div class="header-links flex-start">
             <div class="profile-container">
@@ -39,7 +86,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="https://www.github.com/krozer808">
+                    <a href="https://www.github.com/muhammadaus">
                         <i class="fab fa-github"></i>
                     </a>
                 </li>
@@ -57,14 +104,14 @@
             <hr />
             <li>(+8190) 9464-0637</li>
             <hr />
-            <li><a href="mailto: aushijri@yahoo.com" style="border: none;">aushijri@yahoo.com</a></li>
+            <li><a href="mailto: aushijri@icloud.com" style="border: none;">aushijri@icloud.com</a></li>
         </ul>
     </header>
     <main>
 
         <!-- ABOUT -->
 
-        <section class="section about">
+        <section id="about" class="section about">
             <h2>
                 I am experienced in creating data analysis scripts that can be used for visualizations
                 and decision making. I am also working as a mechatronics engineer developing embedded
@@ -72,19 +119,20 @@
             </h2>
 
             <ul class="achievements">
-                <li>🏆 Google Advanced Analytics certified developer</li>
-                <li>🏆 Embedded systems software engineer</li>
-                <li>🏆 Smart contract developer</li>
+                <li>Check out my diverse range of projects and improvements over the years:</li>
+                <li>>Certified in Google Advanced Data Analytics</li>
+                <li>>Experienced Embedded Systems Software Engineer</li>
+                <li>>Proficient Smart Contract Developer</li>
             </ul>
         </section>
 
         <!-- PROJECTS -->
 
-        <section class="section projects">
+        <section id="projects" class="section projects">
             <div class="flex-between">
                 <h2>Take a look at my projects</h2>
 
-                <a href="https://www.github.com/" class="pro›››››››››››››››Œ››››››››››jects-link flex-between">
+                <a href="https://www.github.com/muhammadaus" class="pro›››››››››››››››Œ››››››››››jects-link flex-between">
                     See all works <img src="./img/ArrowUpRight.svg" alt="Arrow" style="margin-left: 8px; opacity: 0.7;">
                 </a>
             </div>
@@ -93,7 +141,7 @@
                 <div class="card">
                     <img src="./img/projects/project_1.png" alt="">
                     <h3 class="card-title">Portfolio site</h3>
-                    <p class="card-description">My custom portfolio site, built from scratch with React.js</p>
+                    <p class="card-description">My custom portfolio site, handcrafted with HTML, CSS, and JavaScript.</p>
 
                     <div class="card-buttons">
                         <a href="#" class="card-button--site">Site</a>
@@ -119,7 +167,6 @@
                     
                     <div class="card-buttons">
                         <a href="https://dune.com/kr/gmx-open-interest-analysis" class="card-button--site">Site</a>
-                    </a>
                     </div>
                 
                 </div>
@@ -128,7 +175,7 @@
 
         <!-- EXPIERENCE -->
 
-        <section class="section experience">
+        <section id="experience" class="section experience">
             <p class="experience-description">
                 I graduated from Tokyo University of Marine Science and Technology specialized
                 in Control Engineering for Mechatronics. In 2020, I started a career as a Software
@@ -143,11 +190,22 @@
                     <h3 class="card-title">
                         Hitachi Construction Machinery <span class="highlight">Software Engineer/Data Analyst</span>
                     </h3>
-                    <p class="card-years">2020-present</p>
+                    <p class="card-years">2022-present</p>
 
                     <ul class="card-list">
                         <li class="card-list-item">Software Development in embedded systems</li>
                         <li class="card-list-item">Data Analysis for hydraulics</li>
+                    </ul>
+                </div>
+                <div class="experience-card">
+                    <h3 class="card-title">
+                        Freelance Engineer <span class="highlight"></span>
+                    </h3>
+                    <p class="card-years">2020-2022</p>
+
+                    <ul class="card-list">
+                        <li class="card-list-item">Control system in piping</li>
+                        <li class="card-list-item">Electrical circuit design</li>
                     </ul>
                 </div>
                 <div class="experience-card">
@@ -165,8 +223,8 @@
 
         <!-- SKILLS -->
 
-        <section class="section skills">
-            <h2>Skills that I have</h2>
+        <section id="skills" class="section skills">
+            <h2>My tech stack</h2>
 
             <div class="skill-cards flex-center">
                 <div class="skill-card flex-center">
@@ -194,20 +252,28 @@
                     <i class="fab fa-python"></i>
                 </div>
                 <div class="skill-card flex-center">
-                    <i class="fa-solid fa-database"></i>
+                    <svg width="80x" height="80px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                        <title>file_type_solidity</title>
+                        <path d="M20.477,2l-4.5,8h-9l4.5-8h9" opacity="0.45" isolation="isolate"/>
+                        <path d="M11.52,30l4.5-8h9l-4.5,8h-9" opacity="0.45" isolation="isolate"/>
+                        <path d="M15.975,10h9l-4.5-8h-9Z" opacity="0.6" isolation="isolate"/>
+                        <path d="M16.022,22h-9l4.5,8h9Z" opacity="0.6" isolation="isolate"/>
+                        <path d="M11.477,18l4.5-8-4.5-8-4.5,8Z" opacity="0.8" isolation="isolate"/>
+                        <path d="M20.52,14l-4.5,8,4.5,8,4.5-8Z" opacity="0.8" isolation="isolate"/>
+                    </svg>
                 </div>
             </div>
 
             <ul class="skill-list flex-between">
+                <li><img src="./img/Check.svg" alt="Checkmark">Exceptional communication throughout all project stages</li>
                 <li><img src="./img/Check.svg" alt="Checkmark">Embedded systems testing & Debugging</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">Stricted version control</li>
-                <li><img src="./img/Check.svg" alt="Checkmark">Realistic project management</li>
+                <li><img src="./img/Check.svg" alt="Checkmark">Rigorous version control with Git</li>
             </ul>
         </section>
 
         <!-- CONTACT -->
 
-        <section class="section contact">
+        <section id="contact" class="section contact">
             <div class="contact-links flex-start">
                 <div class="profile-container">
                     <img class="profile" src="./img/profile.jpg" alt="Joe Blow">
@@ -221,7 +287,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="https://www.github.com/krozer808">
+                        <a href="https://www.github.com/muhammadaus">
                             <i class="fab fa-github"></i>
                         </a>
                     </li>
@@ -240,11 +306,9 @@
             </p>
 
             <ul class="contact-details flex-list">
-                <!-- <li>Address/li> -->
-                <hr />
                 <li>(090) 9464-0637</li>
-                <hr />
-                <li><a href="mailto: aushijri@yahoo.com">aushijri@yahoo.com</a></li>
+                <li><hr /></li>
+                <li><a href="mailto: aushijri@icloud.com">aushijri@icloud.com</a></li>
             </ul>
         </section>
     </main>
