@@ -3,4 +3,4 @@
 	url = https://github.com/muhammadaus/portfolio.git
 [submodule "Portfolio"]
 	path = Portfolio
-	url = git://github.com/username/portfolio.git
+	url = git://github.com/muhammadaus/portfolio.git
