@@ -27,3 +27,24 @@ $(document).ready(function(){
         }
     });
 });
+
+var projects = [
+    {
+        img: './img/projects/project_1.png',
+        title: 'Decentralized Front-End for Smart Contract Interactions',
+        description: 'My capstone project and potentially to be a very useful tool to all EVM users and developers',
+        link: 'https://public.tableau.com/app/profile/muhammad.aus/vizzes'
+    },
+    {
+        img: './img/projects/project_2.png',
+        title: 'Tableau Visualization',
+        description: 'Data representation that I can show based on practicality',
+        link: 'https://public.tableau.com/app/profile/muhammad.aus/vizzes'
+    },
+    {
+        img: './img/projects/project_3.png',
+        title: 'SQL with Dune Analytics',
+        description: 'The most optimal way to test SQL queries with real world use cases',
+        link: 'https://dune.com/kr/gmx-open-interest-analysis'
+    }
+];

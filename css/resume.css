@@ -180,7 +180,7 @@ p {
 /* HEADER */
 
 .header {
-    background-image: url('../img/Background.png');
+    background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url('../img/Background.png');
     background-repeat: no-repeat;
     background-size: cover;
 
@@ -249,6 +249,9 @@ p {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .projects .projects-link {
@@ -268,18 +271,46 @@ p {
     flex-wrap: wrap;
 }
 
-.projects .card {
+.projects .main-card {
+    display: flex;
+    align-items: flex-start; /* if you want to align the image and the text vertically */
     border: 1px solid var(--gray);
-
-    height: 510px;
-    max-width: 390px;
     padding: 30px;
     margin: 20px auto;
+    width: 100%; /* adjust as needed */
+}
+
+.projects .main-card img {
+    width: 50%; /* adjust as needed */
+}
+
+.projects .main-card .main-card-title,
+.projects .main-card .main-card-description {
+    width: 25%; /* adjust as needed */
+    height: 50%;
+}
+
+.projects .cards {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    width: 50%; /* adjust as needed */
+}
+
+.highlighted-card {
+    width: 100%;
 }
 
 .projects .card img {
-    width: 100%;
-    max-width: 325px;
+    width: 50%;
+    max-width: 10px;
+    height: 10px;
+    margin: 0 auto 16px;
+}
+
+.projects .highlighted-card img {
+    width: 50%;
+    max-width: 600px;
     height: auto;
     margin: 0 auto 16px;
 }
@@ -302,6 +333,8 @@ p {
     justify-content: space-between;
 }
 
+
+
 .projects .card .card-buttons .card-button--site,
 .projects .card .card-buttons .card-button--code {
     color: black;
@@ -309,7 +342,7 @@ p {
     height: 60px;
 
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
 
     opacity: 1;
@@ -323,7 +356,7 @@ p {
 }
 
 .projects .card .card-buttons .card-button--code {
-    border: 1px solid var(--gray);
+    background-color: var(--gray);
 }
 
 .projects .card .card-buttons .card-button--site:hover,
@@ -607,3 +640,4 @@ body > *:not(.intro-screen) {
 
 #navbar ul li a:hover {
 }
+
