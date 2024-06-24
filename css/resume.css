@@ -55,6 +55,28 @@ p {
     opacity: 0.7;
 }
 
+.title {
+    font-size: var(--font-48);
+    color: #000000;  /* Black */
+    font-weight: 700;  /* Extra Bold */
+}
+
+.background {
+    font-size: var(--font-24);
+    color: #333333;  /* Dark Gray */
+}
+
+.current {
+    font-size: var(--font-36);
+    color: #000000;  /* Black */
+    font-weight: 500;  /* Medium Bold */
+}
+
+.current strong {
+    color: #000000;  /* Black */
+    font-style: italic;  /* Italic text */
+}
+
 /* LAYOUTS */
 
 .flex-center {
@@ -191,8 +213,17 @@ p {
 }
 
 .header .header-links,
-.contact .contact-links,
 .header h1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: var(--black);
+    margin-bottom: 45px;
+}
+
+
+.contact .contact-links {
     color: var(--black);
     margin-bottom: 45px;
 }
@@ -235,6 +266,7 @@ p {
 
 .about .achievements {
     list-style: none;
+    font-size: 24px;
 }
 
 .about .achievements li {
@@ -316,6 +348,7 @@ p {
 }
 
 .projects .card .card-title {
+    margin-top: 50px;
     color: black;
     font-weight: 400;
     font-size: 24px;
@@ -325,7 +358,7 @@ p {
 
 .projects .card .card-description {
     color: black;
-    margin-bottom: 60px;
+    margin-bottom: 10px;
 }
 
 .projects .card .card-buttons {
