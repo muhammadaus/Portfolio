@@ -3,6 +3,7 @@
 //     document.querySelector('.intro-screen').style.display = 'none';
 // });
 
+
 document.body.classList.add('lock-scroll');
 
 document.getElementById('close-intro').addEventListener('click', function() {
@@ -27,6 +28,16 @@ $(document).ready(function(){
         }
     });
 });
+
+window.onscroll = function() {showNavbar()};
+
+function showNavbar() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+        document.getElementById("navbar").style.top = "0";
+    } else {
+        document.getElementById("navbar").style.top = "-100px"; // Adjust this value to match the navbar's height
+    }
+}
 
 var projects = [
     {
