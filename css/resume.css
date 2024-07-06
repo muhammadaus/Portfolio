@@ -283,10 +283,10 @@ p {
 .about .achievements {
     list-style: none;
     font-size: 30px;
-    margin-left: auto; /* Updated */
-    margin-right: auto; /* Updated */
+    margin-left: auto;
+    margin-right: auto; 
     margin-bottom: 100px;
-    justify-content: center; /* Updated */
+    justify-content: center; 
     display: flex; /* Ensures justify-content is effective */
     flex-direction: column; 
 }
@@ -451,8 +451,8 @@ p {
 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end;
-    align-items: flex-start;
+    justify-content: center;
+    align-items: center;
 }
 
 .experience-description {
@@ -536,8 +536,7 @@ p {
 }
 
 .skills .skill-cards {
-    flex-wrap: wrap;
-    
+    flex-wrap: wrap;  
     margin-top: 200px;
 }
 
