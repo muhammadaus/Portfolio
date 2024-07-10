@@ -26,7 +26,7 @@ function showNavbar() {
     if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
         document.getElementById("navbar").style.top = "0";
     } else {
-        document.getElementById("navbar").style.top = "-100px"; // Adjust this value to match the navbar's height
+        document.getElementById("navbar").style.top = "-200px"; // Adjust this value to match the navbar's height
     }
 }
 
