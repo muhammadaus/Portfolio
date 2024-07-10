@@ -181,9 +181,17 @@ p {
     transition: var(--transition-speed) var(--transition-easing);
   }
   
+  .list-items-circle {
+    display: flex;
+    justify-content: center; /* Center the items horizontally */
+    align-items: center; /* Align the items vertically in the center */
+    flex-wrap: wrap; /* Allow items to wrap to the next line on smaller screens */
+  }
+  
   .list-items-circle a {
     border: var(--border-width) solid var(--black);
     border-radius: 50%;
+    margin: 5px; /* Add some space between the items */
   }
   
   .list-items-circle a:hover,
@@ -201,10 +209,6 @@ p {
     align-items: center;
     border-radius: 50%;
     transition: var(--transition-speed) var(--transition-easing);
-  }
-  
-  .list-items-circle a:hover .fab {
-    color: var(--black);
   }
   
   .contact .list-items-circle a {
