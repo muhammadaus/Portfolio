@@ -715,9 +715,11 @@ p {
     }
 
     .projects {
-        flex-wrap: wrap;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
-
+    
     .projects .cards, .project-cards, .other-cards,
     .projects .main-card, .projects .card,
     .projects .main-card img, .projects .card img,
@@ -727,24 +729,35 @@ p {
     .projects .card .card-description,
     .projects .card .card-buttons .card-button--site,
     .projects .card .card-buttons .card-button--code {
-        width: var(--full-width);
+        width: var(--full-width); /* Ensure this variable or value sets the width to 100% */
+        font-size: 14px; /* Reduce font size */
+        word-wrap: break-word; /* Allows long words to be broken and wrapped to the next line */
+        overflow-wrap: break-word;
+        margin: var(--card-margin); 
     }
-
+    
     .projects .main-card, .projects .card {
         margin: var(--card-margin);
+        width: 100%; /* This ensures each card takes full width */
     }
-
+    
     .projects .main-card img, .projects .card img {
-        max-width: none;
+        max-width: 100%; /* Adjusts image max-width to be responsive within the card */
+        height: auto;
     }
-
+    
     .projects .card .card-buttons {
         flex-direction: column;
     }
-
+    
     .projects .card .card-buttons .card-button--site,
     .projects .card .card-buttons .card-button--code {
         margin: var(--card-margin);
+    }
+
+    .projects .cards, .project-cards, .other-cards {
+        flex-direction: column;
+        width: 100%; /* Ensure cards take full width */
     }
 
     .skills .skill-cards {
