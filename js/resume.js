@@ -1,4 +1,24 @@
+// document.getElementById('close-intro').addEventListener('click', function() {
+//     document.querySelector('.blur-background').style.display = 'none';
+//     document.querySelector('.intro-screen').style.display = 'none';
+// });
+
+
 document.body.classList.add('lock-scroll');
+
+$(document).ready(function(){
+    $('a').on('click', function(event) {
+        if (this.hash !== "") {
+            event.preventDefault();
+            var hash = this.hash;
+            $('html, body').animate({
+                scrollTop: $(hash).offset().top
+            }, 800, function(){
+                window.location.hash = hash;
+            });
+        }
+    });
+});
 
 window.onscroll = function() {showNavbar()};
 
