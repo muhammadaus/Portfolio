@@ -685,7 +685,7 @@ p {
 
 /* === MEDIA STYLES === */
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 700px) {
     :root {
         --base-font-size: 14px;
         --heading-size: 3rem;
@@ -734,7 +734,6 @@ p {
     .projects .card .card-buttons .card-button--site,
     .projects .card .card-buttons .card-button--code {
         width: var(--full-width); /* Ensure this variable or value sets the width to 100% */
-        font-size: 14px; /* Reduce font size */
         word-wrap: break-word; /* Allows long words to be broken and wrapped to the next line */
         overflow-wrap: break-word;
         margin: var(--card-margin); 
@@ -762,6 +761,10 @@ p {
     .projects .cards, .project-cards, .other-cards {
         flex-direction: column;
         width: 100%; /* Ensure cards take full width */
+    }
+
+    .experience-description {
+        font-size: 1.8rem; /* Adjust the font size as needed */
     }
 
     .skills .skill-cards {
