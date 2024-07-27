@@ -296,7 +296,7 @@ p {
     align-items: center;
     flex-direction: column;
     color: var(--text-color);
-    margin-bottom: var(--margin-bottom-large);
+    margin-bottom: 50px;
     width: 100%; /* Ensures full width for proper centering */
 }
 
