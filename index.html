@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -8,7 +8,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>ポートフォリオ</title>
+    <title>My Portfolio</title>
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -39,25 +39,7 @@
         opacity: 0;
     }
 }
-        .intro-screen {
-            animation: fadeIn 2s ease-in-out forwards;
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100vh;
-            display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-        }
 
-    <style>
-        /* Existing styles remain unchanged */
-
-        /* Add styles for language toggle button */
         .lang-toggle {
             background: none;
             border: 1px solid #fff;
@@ -71,27 +53,27 @@
             background-color: #fff;
             color: #000;
         }
+
     </style>
 </head>
 
 <body>
     <nav id="navbar">
         <ul>
-            <li><a href="#about">概要</a></li>
-            <li><a href="#projects">プロジェクト</a></li>
-            <li><a href="#experience">経験</a></li>
-            <li><a href="#skills">スキル</a></li>
-            <li><a href="#contact">連絡先</a></li>
-            <li><button class="lang-toggle" onclick="toggleLanguage()">English</button></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="lang-toggle" onclick="toggleLanguage('ja')">日本語</button></li>
         </ul>
     </nav>
     <header class="header">
         <div class="header-links flex-start">
             <div class="profile-container">
-                <img class="profile" src="./img/profile.jpg" alt="ジョー・ブロー">
-                <img class="ring" src="./img/Ring.svg" alt="リング枠">
+                <img class="profile" src="./img/profile.jpg" alt="Joe Blow">
+                <img class="ring" src="./img/Ring.svg" alt="Ring Border">
             </div>
-
             <ul class="flex-list list-items-circle">
                 <li>
                     <a href="https://www.linkedin.com/in/muhammad-aus-hijri-bin-ramle-102a571b7/">
@@ -103,126 +85,143 @@
                         <i class="fab fa-github"></i>
                     </a>
                 </li>
-                
             </ul>
             <ul class="contact-details flex-list">
+                <!-- <li>Address</li> -->
                 <li><a href="mailto: aushijri@icloud.com" style="border: none;">aushijri@icloud.com</a></li>
             </ul>
         </div>
         <h1>
+            My Name is
             <br />
-            &lt;ムハマド・アウス&gt; <br />
-            と申します。
+            &lt;Muhammad Aus&gt; <br />
+            <br />
         </h1>
     </header>
     <main>
+
+        <!-- ABOUT -->
+
         <section id="about" class="section about">
-            <h2>長年の取り組んだプロジェクトと<br />
-                取得済み資格：</h2>
+
+            <h2>These are my diverse range of projects<br />
+                and improvements over the years:</h2>
 
             <ul class="achievements">
                <li></li>
-               <li>====>Google上級データアナリティクス認定</li>
-               <li>====>経験豊富な組込みシステムソフトウェアエンジニア</li>
-               <li>====>熟練したスマートコントラクト開発者</li>
+               <li>====>Certified in Google Advanced Data Analytics</li>
+               <li>====>Experienced Embedded Systems Software Engineer</li>
+               <li>====>Proficient Smart Contract Developer</li>
            </ul>
 
             <h2>
-                私は、可視化できるデータ分析スクリプトの作成に経験があります。
-                また、C言語で組込みシステムを開発するメカトロニクスエンジニアとしても働いています。
+                I am experienced in creating data analysis scripts that can be used for visualizations
+                and decision making. I am also working as a mechatronics engineer developing embedded
+                systems in C.
             </h2>
+
+
         </section>
 
-        <section id="projects" class="section projects">
-            <div class="flex-between">
-                <h2>私のプロジェクトをご覧ください</h2>
-                <a href="https://www.github.com/muhammadaus" class="projects-link flex-between">
-                    全ての作品を見る <img src="./img/ArrowUpRight.svg" alt="矢印" style="margin-left: 8px; opacity: 0.7;">
-                </a>
-            </div>
+        <!-- PROJECTS -->
 
-            <div class="project-cards">
-                <div class="card highlighted-card">
-                    <img src="./img/projects/project_0.png" alt="">
-                    <h3 class="card-title">スマートコントラクトを利用するための分散型フロントエンド</h3>
-                    <p class="card-description">開発したキャプストーンプロジェクトで、全てのEVMユーザーと開発者に向けて非常に有用なツール</p>
-                    <p class="card-description">このウェブサイトはReactJSと最新のJSON RPC APIライブラリを使用しています。</p>
-                    <div class="card-buttons">
-                        <a href="https://shortcut-sc-nextjs.vercel.app/" class="card-button--site">サイト</a>
-                    </div>
-                    <div class="card-buttons">
-                        <a href="https://github.com/muhammadaus/ShortcutSC" class="card-button--code">ソースコード</a>
-                    </div>
-                </div>
+       <section id="projects" class="section projects">
+    <div class="flex-between">
+        <h2>Take a look at my projects</h2>
+        <a href="https://www.github.com/muhammadaus" class="projects-link flex-between">
+            See all works <img src="./img/ArrowUpRight.svg" alt="Arrow" style="margin-left: 8px; opacity: 0.7;">
+        </a>
+    </div>
 
-                <div class="other-cards">
-                    <div class="card">
-                        <h3 class="card-title">Tableauを使用したデータ分析</h3>
-                        <p class="card-description">データ可視化のために、いくつかのオンラインおよびオフラインのプラットフォームを使用しています。グラフィカルな製品として完成する前に、SQL、Excel、Pythonを使用してデータ処理を行います。</p>
-                        <div class="card-buttons">
-                            <a href="https://public.tableau.com/app/profile/muhammad.aus/vizzes" class="card-button--site">Tableau</a>
-                        </div>
-                    </div>
+    <div class="project-cards">
+    <div class="card highlighted-card">
+        <img src="./img/projects/project_0.png" alt="">
+        <h3 class="card-title">Decentralized Front-End for Smart Contract Interactions</h3>
+        <p class="card-description">My capstone project and potentially to be a very useful tool to all EVM users and developers.</p>
+        <p class="card-description">This website is powered by ReactJS and latest libraries for JSON RPC API Interactions.</p>
+        <div class="card-buttons">
+            <a href="https://shortcut-sc-nextjs.vercel.app/" class="card-button--site">Site</a>
+        </div>
 
-                    <div class="card">
-                        <h3 class="card-title">Dune Analyticsを使用したデータ分析</h3>
-                        <p class="card-description">Dune Analyticsでグラフとコードも確認できます。</p>
-                        <div class="card-buttons">
-                            <a href="https://dune.com/kr/gmx-open-interest-analysis" class="card-button--site">Dune Analytics</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="card-buttons">
+        <a href="https://github.com/muhammadaus/ShortcutSC" class="card-button--code">Source Code</a>
+    </div>
+</div>
+
+        <div class="other-cards">
+
+        <div class="card">
+            <h3 class="card-title">Data Analysis using tableau</h3>
+            <p class="card-description">I use several online and offline platforms to make data visualizations. Before it is finished into a graphical product I will make data processing using SQL, Excel and Python.</p>
+       <div class="card-buttons">
+        <a href="https://public.tableau.com/app/profile/muhammad.aus/vizzes" class="card-button--site">Tableau</a>
+       </div>
+
+
+    <div class="card"></div>
+    <h3 class="card-title">Data Analysis using Dune Analytics</h3>
+    <p class="card-description">You can also see the graphics and code under Dune Analytics.</p>
+    <div class="card"></div>
+    <div class="card-buttons">
+        <a href="https://dune.com/kr/gmx-open-interest-analysis" class="card-button--site">Dune Analytics</a>
+    </div>
+</div>
+
+</section>
+
+        <!-- EXPIERENCE -->
 
         <section id="experience" class="section experience">
             <p class="experience-description">
-                東京海洋大学でメカトロニクスの制御工学を専攻して卒業しました。2020年にソフトウェアエンジニアとしてキャリアをスタートし、
-                現在はフルスタックWEB開発に転向しています。
-                <img src="./img/Dot.svg" alt="青い点">
+                I graduated from Tokyo University of Marine Science and Technology specialized
+                in Control Engineering for Mechatronics. In 2020, I started a career as a Software
+                Engineer and now, turning into a Data Analyst.
+                <img src="./img/Dot.svg" alt="Blue Dot">
             </p>
 
-            <h2>経験</h2>
+            <h2>Experience</h2>
 
             <div class="experience-cards flex-center">
                 <div class="experience-card">
                     <h3 class="card-title">
-                        日立建機株式会社 <span class="highlight">ソフトウェアエンジニア/データアナリスト</span>
+                        Hitachi Construction Machinery <span class="highlight">Software Engineer/Data Analyst</span>
                     </h3>
-                    <p class="card-years">2022年-現在</p>
+                    <p class="card-years">2022-present</p>
 
                     <ul class="card-list">
-                        <li class="card-list-item">組込みシステムのソフトウェア開発</li>
-                        <li class="card-list-item">油圧システムのデータ分析</li>
+                        <li class="card-list-item">Software Development in embedded systems</li>
+                        <li class="card-list-item">Data Analysis for hydraulics</li>
                     </ul>
                 </div>
                 <div class="experience-card">
                     <h3 class="card-title">
-                        フリーランスおよびサイドプロジェクト <span class="highlight"></span>
+                        Freelance and Side-Projects <span class="highlight"></span>
                     </h3>
-                    <p class="card-years">2020年-現在</p>
+                    <p class="card-years">2020-Present</p>
 
                     <ul class="card-list">
-                        <li class="card-list-item">配管の制御システム</li>
-                        <li class="card-list-item">電気回路設計</li>
-                        <li class="card-list-item">ERC-20トークンとERC-721 NFTの展開</li>
+                        <li class="card-list-item">Control system in piping</li>
+                        <li class="card-list-item">Electrical circuit design</li>
+                        <li class="card-list-item">ERC-20 Token and ERC-721 NFT Deployment</li>
                     </ul>
                 </div>
                 <div class="experience-card">
                     <h3 class="card-title">
-                        東京海洋大学
+                        Tokyo University of Marine Science and Technology
                     </h3>
-                    <p class="card-years">2018年-2020年</p>
+                    <p class="card-years">2018-2020</p>
 
                     <ul class="card-list">
-                        <li class="card-list-item">GPA 3.70で卒業</li>
+                        <li class="card-list-item">Graduated with 3.70 GPA</li>
                     </ul>
                 </div>
             </div>
         </section>
 
+        <!-- SKILLS -->
+
         <section id="skills" class="section skills">
-            <h2>技術スタック</h2>
+            <h2>My tech stack</h2>
 
             <div class="skill-cards flex-center">
                 <div class="skill-card flex-center">
@@ -257,17 +256,19 @@
             </div>
 
             <ul class="skill-list flex-between">
-                <li><img src="./img/Check.svg" alt="チェックマーク">全プロジェクト段階での優れたコミュニケーション</li>
-                <li><img src="./img/Check.svg" alt="チェックマーク">組込みシステムのテストとデバッグ</li>
-                <li><img src="./img/Check.svg" alt="チェックマーク">Gitを使用した厳格なバージョン管理</li>
+                <li><img src="./img/Check.svg" alt="Checkmark">Exceptional communication throughout all project stages</li>
+                <li><img src="./img/Check.svg" alt="Checkmark">Embedded systems testing & Debugging</li>
+                <li><img src="./img/Check.svg" alt="Checkmark">Rigorous version control with Git</li>
             </ul>
         </section>
+
+        <!-- CONTACT -->
 
         <section id="contact" class="section contact">
             <div class="contact-links flex-start">
                 <div class="profile-container">
-                    <img class="profile" src="./img/profile.jpg" alt="ジョー・ブロー">
-                    <img class="ring" src="./img/Ring.svg" alt="リング枠">
+                    <img class="profile" src="./img/profile.jpg" alt="Joe Blow">
+                    <img class="ring" src="./img/Ring.svg" alt="Ring Border">
                 </div>
 
                 <ul class="flex-list list-items-circle">
@@ -282,15 +283,17 @@
                         </a>
                     </li>
                 </ul>
+
             </div>
 
             <h1>
-                お問い合わせ
+                Get in touch
             </h1>
 
             <p>
-                私は、可視化できるデータ分析スクリプトの作成に経験があります。
-                また、C言語で組込みシステムを開発するメカトロニクスエンジニアとしても働いています。
+                I am experienced in creating data analysis scripts that can be used for visualizations
+                and decision making. I am also working as a mechatronics engineer developing embedded
+                systems in C.
             </p>
 
             <ul class="contact-details flex-list">
@@ -299,18 +302,15 @@
         </section>
     </main>
     <footer class="footer flex-center">
-        <p><small>© ムハマド・アウス 2024。</small></p>
+        <p><small>© Muhammad Aus 2024. All rights reserved.</small></p>
     </footer>
 
-    <!-- Existing JavaScript links remain unchanged -->
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
 
-    <script>
-        function toggleLanguage() {
-            // This function would handle the language toggle
-            // For demonstration, we'll just alert a message
-            alert('言語切り替え機能がここで実装されます。');
-        }
-    </script>
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.js"></script>
 </body>
 
 </html>
