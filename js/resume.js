@@ -45,7 +45,6 @@ function toggleLanguage() {
     }
 }
 
-
 // Function to set the initial language based on user's preference or browser settings
 function setInitialLanguage() {
     const preferredLanguage = localStorage.getItem('preferredLanguage');
