@@ -32,17 +32,26 @@ function showNavbar() {
 
 function toggleLanguage(lang) {
     if (lang === 'ja') {
+        localStorage.setItem('preferredLanguage', 'ja');
         window.location.href = 'index_ja.html';
     } else if (lang === 'en') {
+        localStorage.setItem('preferredLanguage', 'en');
         window.location.href = 'index.html';
     }
 }
 
 // Function to set the initial language based on user's preference or browser settings
 function setInitialLanguage() {
-    const userLang = navigator.language || navigator.userLanguage;
-    if (userLang.startsWith('ja') && !window.location.href.includes('index_ja.html')) {
+    const preferredLanguage = localStorage.getItem('preferredLanguage');
+    if (preferredLanguage === 'ja' && !window.location.href.includes('index_ja.html')) {
         window.location.href = 'index_ja.html';
+    } else if (preferredLanguage === 'en' && !window.location.href.includes('index.html')) {
+        window.location.href = 'index.html';
+    } else {
+        const userLang = navigator.language || navigator.userLanguage;
+        if (userLang.startsWith('ja') && !window.location.href.includes('index_ja.html')) {
+            window.location.href = 'index_ja.html';
+        }
     }
 }
 
