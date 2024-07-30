@@ -30,15 +30,21 @@ function showNavbar() {
     }
 }
 
-function toggleLanguage(lang) {
-    if (lang === 'ja') {
-        localStorage.setItem('preferredLanguage', 'ja');
-        window.location.href = 'index_ja.html';
-    } else if (lang === 'en') {
+function toggleLanguage() {
+    const currentLang = localStorage.getItem('preferredLanguage');
+    if (currentLang === 'ja') {
         localStorage.setItem('preferredLanguage', 'en');
-        window.location.href = 'index.html';
+        if (!window.location.href.includes('index.html')) {
+            window.location.href = 'index.html';
+        }
+    } else {
+        localStorage.setItem('preferredLanguage', 'ja');
+        if (!window.location.href.includes('index_ja.html')) {
+            window.location.href = 'index_ja.html';
+        }
     }
 }
+
 
 // Function to set the initial language based on user's preference or browser settings
 function setInitialLanguage() {
@@ -47,10 +53,12 @@ function setInitialLanguage() {
         window.location.href = 'index_ja.html';
     } else if (preferredLanguage === 'en' && !window.location.href.includes('index.html')) {
         window.location.href = 'index.html';
-    } else {
+    } else if (!preferredLanguage) {
         const userLang = navigator.language || navigator.userLanguage;
         if (userLang.startsWith('ja') && !window.location.href.includes('index_ja.html')) {
             window.location.href = 'index_ja.html';
+        } else if (!userLang.startsWith('ja') && !window.location.href.includes('index.html')) {
+            window.location.href = 'index.html';
         }
     }
 }
