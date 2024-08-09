@@ -30,33 +30,49 @@ function showNavbar() {
     }
 }
 
-function toggleLanguage() {
-    const currentLang = localStorage.getItem('preferredLanguage');
-    if (currentLang === 'ja') {
-        localStorage.setItem('preferredLanguage', 'en');
-        if (!window.location.href.includes('index.html')) {
-            window.location.href = 'index.html';
-        }
-    } else {
-        localStorage.setItem('preferredLanguage', 'ja');
-        if (!window.location.href.includes('index_ja.html')) {
-            window.location.href = 'index_ja.html';
-        }
+function handleLanguage(toggle = false) {
+    const currentPage = window.location.pathname.split('/').pop();
+    let lang = localStorage.getItem('preferredLanguage');
+
+    // If no language is set, use browser language
+    if (!lang) {
+        lang = navigator.language.startsWith('ja') ? 'ja' : 'en';
+        localStorage.setItem('preferredLanguage', lang);
     }
+
+    // Toggle language if requested
+    if (toggle) {
+        lang = lang === 'en' ? 'ja' : 'en';
+        localStorage.setItem('preferredLanguage', lang);
+    }
+
+    // Redirect if needed
+    const targetPage = lang === 'ja' ? 'index_ja.html' : 'index.html';
+    if (currentPage !== targetPage) {
+        window.location.href = targetPage;
+    }
+}
+
+window.onload = () => handleLanguage();
+
+function toggleLanguage() {
+    handleLanguage(true);
 }
 
 // Function to set the initial language based on user's preference or browser settings
 function setInitialLanguage() {
     const preferredLanguage = localStorage.getItem('preferredLanguage');
-    if (preferredLanguage === 'ja' && !window.location.href.includes('index_ja.html')) {
+    const currentPage = window.location.pathname.split('/').pop();
+
+    if (preferredLanguage === 'ja' && currentPage !== 'index_ja.html') {
         window.location.href = 'index_ja.html';
-    } else if (preferredLanguage === 'en' && !window.location.href.includes('index.html')) {
+    } else if (preferredLanguage === 'en' && currentPage !== 'index.html') {
         window.location.href = 'index.html';
     } else if (!preferredLanguage) {
         const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('ja') && !window.location.href.includes('index_ja.html')) {
+        if (userLang.startsWith('ja') && currentPage !== 'index_ja.html') {
             window.location.href = 'index_ja.html';
-        } else if (!userLang.startsWith('ja') && !window.location.href.includes('index.html')) {
+        } else if (!userLang.startsWith('ja') && currentPage !== 'index.html') {
             window.location.href = 'index.html';
         }
     }

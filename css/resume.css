@@ -22,7 +22,7 @@
     --list-item-margin: 12px;
     --border-width: 2px;
 
-    --profile-container-size: 88px;
+    --profile-container-size: 200px;
     --profile-size: 80px;
     --profile-margin: 12px;
     --section-min-height: 850px;
@@ -239,10 +239,10 @@ p {
   /* Profile Image */
   .profile-container {
     min-width: var(--profile-container-size);
-    width: var(--profile-container-size);
-    height: var(--profile-container-size);
     margin: var(--profile-margin);
     position: relative;
+    width: var(--profile-container-size);
+    height: var(--profile-container-size);
   }
   
   .profile-container .profile,
@@ -254,8 +254,8 @@ p {
   }
   
   .profile-container .profile {
-    width: var(--profile-size);
-    height: var(--profile-size);
+    width: var(--profile-container-size);
+    height: var(--profile-container-size);
     border-radius: 50%;
     object-fit: cover; /* Ensures the image fills the circular container without distortion */
   }
@@ -685,7 +685,7 @@ p {
 
 /* === MEDIA STYLES === */
 
-@media only screen and (max-width: 700px) {
+@media only screen and (max-width: 770px) {
     :root {
         --base-font-size: 14px;
         --heading-size: 3rem;
@@ -694,6 +694,7 @@ p {
         --list-margin-left: 20px;
         --card-margin: 10px 0;
         --full-width: 100%;
+        --profile-container-size: 100px;
     }
 
     html {
