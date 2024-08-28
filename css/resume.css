@@ -587,16 +587,44 @@ p {
     background: var(--gradient-background);
     background-repeat: no-repeat;
     background-size: cover;
+
+    --time: 30s; /* Total animation time */
+    --half-time: 15s; /* Half of the animation time for delay */
+
+    display: grid; /* Use grid layout */
+    grid-template-rows: auto 1fr auto;
+    grid-template-columns: 1fr;
+    grid-template-areas: 'scroll-area';
+    overflow: hidden; /* Hide overflow */
 }
 
 .skills .section-skills {
     font-weight: 600;
+    margin: 50px; /* Remove any default margin */
+    padding: 20px 0; /* Add padding if needed for spacing */
+    grid-row: 2; /* Place in the first row */
 }
 
 .skills .skill-cards {
-    display: flex;
-    flex-wrap: wrap;  
-    margin-top: 200px;
+
+    display: flex; /* Use flexbox for the skill cards */
+    flex-wrap: nowrap; /* Prevent wrapping */
+    overflow: hidden; /* Hide overflow */
+    animation: loop var(--time) linear infinite; /* Continuous loop animation */
+    grid-row: 1; /* Place in the second row */
+
+    grid-area: scroll-area;
+    animation: loop var(--time) linear infinite; /* Continuous loop animation */
+    transform: translateX(100%); /* Start off-screen to the right */
+
+    &[data-first] {
+        animation: first-loop var(--time) linear forwards; /* First loop animation */
+        transform: translateX(0); /* Start from the original position */
+    }
+
+    &[data-last] {
+        animation-delay: var(--half-time); /* Delay for the last set */
+    }
 }
 
 .skills .skill-card {
@@ -606,7 +634,7 @@ p {
     background-blend-mode: darken;
     width: 170px;
     height: 170px;
-    margin: 0 30px 30px 0;
+    margin: 120px 120px 0px 0px;
     border: 1px solid var(--gray);
     cursor: pointer;
     transition: var(--transition-fast);
@@ -808,3 +836,20 @@ p {
     background-color: rgba(0, 0, 0, 0);
 }
 
+@keyframes first-loop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-200%); /* Move left to show the first set */
+    }
+}
+
+@keyframes loop {
+    0% {
+        transform: translateX(100%); /* Start from the right */
+    }
+    100% {
+        transform: translateX(-100%); /* Move left to show the second set */
+    }
+}
