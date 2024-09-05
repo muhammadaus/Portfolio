@@ -609,10 +609,10 @@ p {
 
     display: flex; /* Use flexbox for the skill cards */
     flex-wrap: nowrap; /* Prevent wrapping */
-    overflow: hidden; /* Hide overflow */
+    overflow: auto; /* Hide overflow */
     animation: loop var(--time) linear infinite; /* Continuous loop animation */
     grid-row: 1; /* Place in the second row */
-
+    
     grid-area: scroll-area;
     animation: loop var(--time) linear infinite; /* Continuous loop animation */
     transform: translateX(100%); /* Start off-screen to the right */
@@ -632,9 +632,11 @@ p {
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: darken;
-    width: 170px;
-    height: 170px;
-    margin: 120px 120px 0px 0px;
+    flex: 1 1 auto; /* Allow cards to grow and shrink */
+    min-width: 100px; /* Set a minimum width */
+    min-height: 150px; /* Set a minimum height */
+    max-height: 170px; /* Optional: Set a maximum height */
+    margin: 20px; /* Consistent spacing */
     border: 1px solid var(--gray);
     cursor: pointer;
     transition: var(--transition-fast);
@@ -669,7 +671,9 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-top: 50px;
+    margin-bottom: -500px;
+    margin-top: -500px;
+    font-size: x-large;
 }
 
 .skills .skill-list li {
@@ -680,7 +684,7 @@ p {
 }
 
 .skills .skill-list li img {
-    margin: 10px;
+    margin: 50px;
 }
 
 
@@ -798,6 +802,27 @@ p {
 
     .skills .skill-cards {
         margin-top: auto;
+    }
+
+    .skills .skill-cards {
+        overflow-x: hidden; /* Hide the scrollbar and prevent scrolling */
+        margin: 0 auto; /* Center the container */
+        display: flex; /* Use flexbox for layout */
+        flex-wrap: nowrap; /* Prevent wrapping */
+        justify-content: center; /* Center the cards horizontally */
+    }
+    
+    .skills .skill-card {
+        background: var(--gradient-background);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-blend-mode: darken;
+        flex: 0 0 170px; /* Fixed width for each card */
+        height: 170px; /* Fixed height for consistency */
+        margin: 30px; /* Consistent spacing */
+        border: 1px solid var(--gray);
+        cursor: pointer;
+        transition: var(--transition-fast);
     }
 }
 
