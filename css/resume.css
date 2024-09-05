@@ -592,29 +592,32 @@ p {
     --half-time: 15s; /* Half of the animation time for delay */
 
     display: grid; /* Use grid layout */
-    grid-template-rows: auto 1fr auto;
+    grid-template-rows: auto 1fr; /* Adjusted to have only two rows */
     grid-template-columns: 1fr;
-    grid-template-areas: 'scroll-area';
+    grid-template-areas: 
+        'header'
+        'scroll-area'; /* Define areas for header and scroll area */
     overflow: hidden; /* Hide overflow */
+}
+
+.skills h2 {
+    grid-area: header; /* Assign the h2 to the header area */
+    padding: 20px 0; /* Optional: Add padding for spacing */
+    text-align: center; /* Center the text if desired */
 }
 
 .skills .section-skills {
     font-weight: 600;
-    margin: 50px; /* Remove any default margin */
+    margin: 0; /* Remove margin to avoid pushing down */
     padding: 20px 0; /* Add padding if needed for spacing */
-    grid-row: 2; /* Place in the first row */
 }
 
 .skills .skill-cards {
-
     display: flex; /* Use flexbox for the skill cards */
     flex-wrap: nowrap; /* Prevent wrapping */
-    overflow: auto; /* Hide overflow */
+    overflow: auto; /* Allow horizontal scrolling */
     animation: loop var(--time) linear infinite; /* Continuous loop animation */
-    grid-row: 1; /* Place in the second row */
-    
-    grid-area: scroll-area;
-    animation: loop var(--time) linear infinite; /* Continuous loop animation */
+    grid-area: scroll-area; /* Assign to the scroll area */
     transform: translateX(100%); /* Start off-screen to the right */
 
     &[data-first] {
@@ -636,7 +639,8 @@ p {
     min-width: 100px; /* Set a minimum width */
     min-height: 150px; /* Set a minimum height */
     max-height: 170px; /* Optional: Set a maximum height */
-    margin: 20px; /* Consistent spacing */
+    margin: 50px; /* Adjusted margin for consistent spacing */
+    margin-top: -450px; /* Reduced top margin */
     border: 1px solid var(--gray);
     cursor: pointer;
     transition: var(--transition-fast);
@@ -672,7 +676,7 @@ p {
     align-items: center;
     justify-content: center;
     margin-bottom: -500px;
-    margin-top: -500px;
+    margin-top: -1000px;
     font-size: x-large;
 }
 
