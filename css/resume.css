@@ -9,9 +9,7 @@
     --gray: #242123;
     --white: #FFFFFF;
     --blue: #8E6EEA;
-    --border-gradient: linear-gradient(227.58deg, #F4492F -44.04%, #F367A5 42.36%, #553DEB 113.95%);
-
-    --font-96: clamp(56px, 8vw, 96px);
+    --border-gradient: linear-gradient(227.58deg, #A6282A -44.04%, #B44A6A 42.36%, #3E1A5D 113.95%);
     --font-40: clamp(24px, 6vw, 40px);
     --font-32: clamp(24px, 4vw, 32px);
 
@@ -140,12 +138,34 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden; /* Hide overflow */
+}
+
+.flex-center a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color */
+    padding: 0; /* Remove any default padding */
+    margin: 0; /* Remove any default margin */
+    display: flex; /* Ensure it behaves like a flex item */
+    align-items: center; /* Center items */
+    justify-content: center;
+    flex-shrink: 0;
 }
 
 .flex-start {
     display: flex;
     justify-content: flex-start;
     align-items: center;
+}
+
+.flex-start a {
+    text-decoration: none; /* Remove underline */
+    color: inherit; /* Inherit color */
+    padding: 0; /* Remove any default padding */
+    margin: 0; /* Remove any default margin */
+    display: flex; /* Ensure it behaves like a flex item */
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
 }
 
 .flex-between {
@@ -298,6 +318,8 @@ p {
     color: var(--text-color);
     margin-bottom: 50px;
     width: 100%; /* Ensures full width for proper centering */
+    font-size: 48px; /* Adjust text size as needed */
+    font-weight: bold; /* Make text bold */
 }
 
 .contact .contact-links, .header .flex-list, .header .flex-list li a {
@@ -317,7 +339,7 @@ p {
 
 .about {
     color: black;
-    background: linear-gradient(to bottom right, #F4492F, #F367A5 54.6875%, #553DEB);
+    background: linear-gradient(to bottom right, #F44A2F, #F367A5 50%, #553DEB);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -328,6 +350,7 @@ p {
     font-weight: 400;
     font-size: var(--font-40);
     line-height: 150%;
+    margin-top: 50px;
     margin-bottom: 20px;
     margin-left: auto; 
     margin-right: auto; 
@@ -373,7 +396,7 @@ p {
 
 .projects {
     color: black;
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
+    background: linear-gradient(to bottom right, #4CAF50, #9C27B0 54.6875%, #1976D2);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -400,34 +423,24 @@ p {
 }
 
 .projects .main-card {
-    display: flex;
-    align-items: flex-start; /* if you want to align the image and the text vertically */
-    border: 1px solid var(--gray);
-    padding: 30px;
-    margin: 20px auto;
-    width: 100%; /* adjust as needed */
+    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
+    display: flex; /* Use flexbox for highlighted cards */
+    flex-direction: column; /* Stack elements vertically */
+    align-items: center; /* Center content horizontally */
+    border-radius: 15px; /* Added rounded edges */ 
+    padding: 20px;
 }
 
-.projects .main-card img {
-    width: 50%; /* adjust as needed */
-}
-
-.projects .main-card .main-card-title,
-.projects .main-card .main-card-description {
-    width: 25%; /* adjust as needed */
-    height: 50%;
-}
-
-.projects .cards {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    width: 50%; /* adjust as needed */
-}
-
-
-.highlighted-card {
-    width: 100%;
+.projects .highlighted-card {
+    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
+    max-width: 100%;
+    margin: 20px; /* Optional: Add margin for spacing */
+    display: flex; /* Use flexbox for highlighted cards */
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 100px;
+    border-radius: 15px; /* Added rounded edges */
+    padding: 20px; 
 }
 
 .projects .card img {
@@ -437,11 +450,15 @@ p {
     margin: 0 auto 16px;
 }
 
+.projects .main-card img {
+    max-width: 100%; /* Ensure highlighted images are responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
 .projects .highlighted-card img {
-    width: 50%;
-    max-width: 600px;
-    height: auto;
-    margin: 0 auto 16px;
+    max-width: 100%; /* Ensure highlighted images are responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 50px;
 }
 
 .projects .card .card-title {
@@ -463,15 +480,27 @@ p {
     justify-content: space-between;
 }
 
+.projects .highlighted-card .card-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
 .project-cards {
     display: flex;
     justify-content: space-between;
 }
 
 .other-cards {
+    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    width: 100%; /* Make it occupy the full width of the container */
+    max-width: 800px; /* Set a maximum width if desired */
+    padding: 50px; /* Optional: Add padding for spacing */
+    margin-top: 100px;
+    margin-bottom: -100px;
+    border-radius: 15px; /* Added rounded edges */ 
 }
 
 .projects .card .card-buttons .card-button--site,
@@ -498,6 +527,7 @@ p {
 .projects .card .card-buttons .card-button--code {
     background-color: var(--gray);
     margin-top: 10px;
+    margin-bottom: 50px;
 }
 
 .projects .card .card-buttons .card-button--site:hover,
@@ -525,7 +555,8 @@ p {
 
 .experience-description {
     max-width: 900px;
-    margin-bottom: 125px;
+    margin-top: 20px;
+    margin-bottom: 100px;
     font-weight: 400;
     font-size: var(--font-32);
     line-height: 150%;
@@ -542,7 +573,6 @@ p {
 }
 
 .experience h2 {
-    border-left: 2px solid var(--white);
     padding-left: 24px;
 }
 
@@ -631,14 +661,18 @@ p {
 }
 
 .skills .skill-card {
-    background: var(--gradient-background);
+    background: rgba(255, 255, 255, 0.3); /* Semi-transparent card background */
+    border-radius: 8px; /* Rounded corners */
+    padding: 20px;
     background-repeat: no-repeat;
     background-size: cover;
     background-blend-mode: darken;
+    background-size: 200% 100%;
+    animation: backgroundAnimation 30s linear infinite;
+
     flex: 1 1 auto; /* Allow cards to grow and shrink */
-    min-width: 100px; /* Set a minimum width */
-    min-height: 150px; /* Set a minimum height */
-    max-height: 170px; /* Optional: Set a maximum height */
+    min-width: 120px; /* Set a minimum width */
+    min-height: 120px; /* Set a minimum height */
     margin: 50px; /* Adjusted margin for consistent spacing */
     margin-top: -450px; /* Reduced top margin */
     border: 1px solid var(--gray);
@@ -773,7 +807,7 @@ p {
         width: var(--full-width); /* Ensure this variable or value sets the width to 100% */
         word-wrap: break-word; /* Allows long words to be broken and wrapped to the next line */
         overflow-wrap: break-word;
-        margin: var(--card-margin); 
+        margin: var(--card-margin);
     }
     
     .projects .main-card, .projects .card {
@@ -788,11 +822,13 @@ p {
     
     .projects .card .card-buttons {
         flex-direction: column;
+        width: 100%;
     }
     
     .projects .card .card-buttons .card-button--site,
     .projects .card .card-buttons .card-button--code {
-        margin: var(--card-margin);
+        flex-direction: column;
+        width: 100%;
     }
 
     .projects .cards, .project-cards, .other-cards {
@@ -805,29 +841,38 @@ p {
     }
 
     .skills .skill-cards {
-        margin-top: auto;
-    }
-
-    .skills .skill-cards {
         overflow-x: hidden; /* Hide the scrollbar and prevent scrolling */
         margin: 0 auto; /* Center the container */
         display: flex; /* Use flexbox for layout */
         flex-wrap: nowrap; /* Prevent wrapping */
         justify-content: center; /* Center the cards horizontally */
     }
+
+    .skills h2{
+        margin-bottom: -10px;
+    }
     
     .skills .skill-card {
-        background: var(--gradient-background);
         background-repeat: no-repeat;
         background-size: cover;
         background-blend-mode: darken;
         flex: 0 0 170px; /* Fixed width for each card */
         height: 170px; /* Fixed height for consistency */
         margin: 30px; /* Consistent spacing */
+        margin-top: -10px;
+        margin-bottom: 300px;
         border: 1px solid var(--gray);
         cursor: pointer;
         transition: var(--transition-fast);
+        padding: 45px;
     }
+
+    .skills .skill-list {
+        margin-top: -800px;
+        margin-bottom: -475px;
+    }
+
+
 }
 
 .lock-scroll {
@@ -880,5 +925,14 @@ p {
     }
     100% {
         transform: translateX(-100%); /* Move left to show the second set */
+    }
+
+@keyframes backgroundAnimation {
+        0% {
+            background-position: 0% 0%; /* Start position */
+        }
+        100% {
+            background-position: 100% 0%; /* End position */
+        }
     }
 }
