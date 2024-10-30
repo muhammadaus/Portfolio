@@ -1,0 +1,142 @@
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>My Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-cPRFN9FP6p3/ZHF5ePf+fuL8gWA9CZU6Sd49pY3sAZ8cb/hYh7gDMbkaOcY/Ju6dXL1oWFYg7f5uoqB/+rAN3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/resume.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+        .lang-toggle {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .flex-container {
+            display: flex;
+            flex-wrap: wrap; /* Allow wrapping for responsiveness */
+        }
+
+        .main-cards {
+            display: grid; /* Use grid layout for main cards */
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust grid template columns based on your requirements */
+        }
+
+        .main-card {
+            flex: 2; /* Takes up more space on the left */
+            margin-right: 20px; /* Space between main card and project cards */
+        }
+
+        .project-cards {
+            display: flex;
+            flex-wrap: wrap; /* Allows cards to wrap into rows */
+            flex: 1; /* Takes up remaining space on the right */
+        }
+
+        .card {
+
+    </style>
+</head>
+
+<main>
+<section id="projects" class="section projects">
+    <div class="flex-container">
+        <div class="main-cards">
+            <div class="main-card1">
+                <img src="./img/projects/default.png" alt="">
+                <h3 class="card-title">Landing website for CipherLogicXYZ</h3>
+                <p class="card-description">This was one of my first real world project that I have put credibility on</p>
+                <p class="card-description">This website is sleek and have the highest score obtained from light house. Check it yourself.</p>
+                <div class="card-buttons">
+                    <a href="https://shortcut-sc-nextjs.vercel.app/" class="card-button--site">Site</a>
+                    <a href="https://github.com/muhammadaus/ShortcutSC" class="card-button--code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card2">
+                <img src="./img/projects/project_0.png" alt="">
+                <h3 class="card-title">Decentralized Front-End for Smart Contract Interactions</h3>
+                <p class="card-description">My capstone project and potentially to be a very useful tool to all EVM users and developers.</p>
+                <p class="card-description">This website is powered by ReactJS and latest libraries for JSON RPC API Interactions.</p>
+                <div class="card-buttons">
+                    <a href="https://shortcut-sc-nextjs.vercel.app/" class="card-button--site">Site</a>
+                    <a href="https://github.com/muhammadaus/ShortcutSC" class="card-button--code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card3">
+                <img src="./img/projects/project_5.png" alt="">
+                <h3 class="card-title">Private Social App PRVT</h3>
+                <p class="card-description">An App dedicated for builders and programmers to build reputation and nurture community.</p>
+                <div class="card-buttons">
+                    <a href="https://github.com/depatch/prvt" class="card-button--code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card4">
+                <img src="./img/projects/project_4.png" alt="">
+                <h3 class="card-title">Decentralized AMM Liquidity Pool</h3>
+                <p class="card-description">The Hackathon project for ETH Tokyo 2024 and won some notable prizes.</p>
+                <div class="card-buttons">
+                    <a href="https://github.com/muhammadaus/ShadowSwap" class="card-button--code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card5">
+                <h3 class="card-title">Private Social App PRVT</h3>
+                <p class="card-description">An App dedicated for builders and programmers to build reputation and nurture community.</p>
+                <div class="card-buttons">
+                    <a href="https://github.com/depatch/prvt" class="card-button--code">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card6">
+                <h3 class="card-title">Decentralized AMM Liquidity Pool</h3>
+                <p class="card-description">The Hackathon project for ETH Tokyo 2024 and won some notable prizes.</p>
+                <div class="card-buttons">
+                    <a href="https://github.com/muhammadaus/ShadowSwap" class="card-button--code">Source Code</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</main>
