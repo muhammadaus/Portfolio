@@ -590,7 +590,7 @@ p {
     color: var(--black); /* Change text color on hover */
 }
 
-@media only screen and (max-width: 770px) {
+@media only screen and (max-width: 450px) {
     /* Add this CSS to your stylesheet */
     .main-cards {
         grid-template-columns: repeat(2, 1fr);
