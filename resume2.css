@@ -305,7 +305,7 @@ p {
     background-repeat: no-repeat;
     background-size: cover;
     display: flex;
-    flex-direction: space-between;
+    flex-direction: column;
     justify-content: center; /* Adjusted to center vertically */
     align-items: center; /* Adjusted to center horizontally */
 }
@@ -394,78 +394,35 @@ p {
 
 /* === PROJECTS === */
 
-.flex-container {
+.projects {
+    color: black;
     background: linear-gradient(to bottom right, #4CAF50, #9C27B0 54.6875%, #1976D2);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
     display: flex;
-    flex-wrap: wrap; /* Allow wrapping for responsiveness */
-    padding: 30px; /* Add padding to create space for the content */
-    margin: 0; /* Remove negative margin */
-    width: 100vw; /* Full viewport width */
-    position: relative; /* Ensure proper positioning */
-    left: 50%; /* Center the container */
-    right: 50%; /* Center the container */
-    transform: translateX(-50%); /* Center the container */
-    overflow: hidden; /* Hide any overflow */
-    margin-top: -20px;
-    padding-bottom: 100px;
-    margin-bottom: -20px;
-    flex-direction: column; /* Stack children vertically */
-    align-items: center; /* Center items horizontally */
+    flex-direction: column;
+    align-items: center;
 }
 
-.flex-container h2 {
-    font-size: 2.5rem; /* Adjust the font size as needed */
-    color: #ffffff; /* Change the text color to white for contrast */
-    text-align: center; /* Center the heading */
-    margin: 20px 0; /* Space above and below the heading */
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.7); /* Optional: add a shadow for better readability */
-    font-weight: bold; /* Make the text bold */
+.projects .projects-link {
+    color: var(--white);
+    margin-bottom: 30px;
+
+    opacity: 0.7;
+    transition: 250ms ease all;
 }
 
-.main-cards {
-    display: grid; /* Use grid layout for main cards */
-    grid-template-columns: repeat(2, 1fr); /* Three equal columns */
-    grid-template-rows: auto; /* Automatic height based on content */
-    gap: 20px; /* Space between cards */
-    flex: 2; /* Takes up more space on the left */
-    margin-top: 20px;
-    margin-right: 20px; /* Space between main cards and project cards */
-    padding: 20px;
+.projects .projects-link:hover {
+    opacity: 1;
 }
 
-.main-card1 {
-    grid-column: 1; /* First column */
-    grid-row: 1; /* First row */
-    margin-bottom: -120px;
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
-    padding-bottom: 50px;
+.projects .cards {
+    justify-content: space-evenly;
+    flex-wrap: wrap;
 }
 
-.main-card2 {
-    grid-column: 2; /* Second column */
-    grid-row: 1; /* First row */
-    margin-bottom: -120px;
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
-    padding-bottom: 50px;
-}
-
-.main-card3 {
-    grid-column: 1; /* Third column */
-    grid-row: 2; /* First row */
-    margin-bottom: 120px;
+.projects .main-card {
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex; /* Use flexbox for highlighted cards */
     flex-direction: column; /* Stack elements vertically */
@@ -474,165 +431,109 @@ p {
     padding: 20px;
 }
 
-.main-card4 {
-    grid-column: 2; /* Third column */
-    grid-row: 2; /* Second row */
-    margin-bottom: 120px;
+.projects .highlighted-card {
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
+    max-width: 100%;
+    margin: 20px; /* Optional: Add margin for spacing */
     display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 100px;
+    border-radius: 15px; /* Added rounded edges */
+    padding: 20px; 
 }
 
-/* If you have a fifth and sixth card, you can add them like this */
-.main-card5 {
-    grid-column: 1; /* First column */
-    grid-row: 3; /* Second row */
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
-    margin-top: -120px;
+.projects .card img {
+    width: 50%;
+    max-width: 10px;
+    height: 10px;
+    margin: 0 auto 16px;
 }
 
-.main-card6 {
-    grid-column: 2; /* Second column */
-    grid-row: 3; /* Second row */
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
-    margin-top: -120px;
+.projects .main-card img {
+    max-width: 100%; /* Ensure highlighted images are responsive */
+    height: auto; /* Maintain aspect ratio */
+}
+
+.projects .highlighted-card img {
+    max-width: 100%; /* Ensure highlighted images are responsive */
+    height: auto; /* Maintain aspect ratio */
+    margin-top: 50px;
+}
+
+.projects .card .card-title {
+    margin-top: 50px;
+    color: black;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 150%;
+    margin-bottom: 8px;
+}
+
+.projects .card .card-description {
+    color: black;
+    margin-bottom: 10px;
+}
+
+.projects .card .card-buttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.projects .highlighted-card .card-buttons {
+    display: flex;
+    justify-content: space-between;
 }
 
 .project-cards {
-    display: grid; /* Use grid layout */
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); /* Responsive columns */
-    gap: 20px; /* Space between cards */
-    flex: 1; /* Takes up remaining space on the right */
+    display: flex;
+    justify-content: space-between;
 }
 
-.project-section {
-    background-color: #f9f9f9; /* Light background for each section */
-    border: 1px solid #ddd; /* Border around each section */
-    border-radius: 5px; /* Rounded corners */
-    padding: 15px; /* Padding inside each section */
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+.other-cards {
+    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%; /* Make it occupy the full width of the container */
+    max-width: 800px; /* Set a maximum width if desired */
+    padding: 50px; /* Optional: Add padding for spacing */
+    margin-top: 100px;
+    margin-bottom: -100px;
+    border-radius: 15px; /* Added rounded edges */ 
 }
 
-.card {
-    width: 100%; /* Full width for cards */
+.projects .card .card-buttons .card-button--site,
+.projects .card .card-buttons .card-button--code {
+    color: black;
+    width: 150px;
+    height: 60px;
+
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+    opacity: 1;
+    color: var(--white);
+
+    transition: 250ms ease all;
 }
 
-.main-card1 img,
-.main-card2 img,
-.card img {
-    max-width: 100%; /* Ensure images do not exceed the width of their container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove bottom space under images */
-    margin-bottom: 70px; /* Space below the image */
-    transition: transform 0.1s ease; /* Smooth transition for the zoom effect */
+.projects .card .card-buttons .card-button--site {
+    background-color: var(--gray);
+    margin-top: 10px;
 }
 
-.main-card1 img:hover,
-.main-card2 img:hover,
-.card img:hover {
-    transform: scale(1.5); /* Scale the image to 110% on hover */
+.projects .card .card-buttons .card-button--code {
+    background-color: var(--gray);
+    margin-top: 10px;
+    margin-bottom: 50px;
 }
 
-.main-card3 img {
-    max-width: 100%; /* Ensure images do not exceed the width of their container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove bottom space under images */
-    margin-bottom: 20px;
-}
-
-
-.main-card4 img {
-    max-width: 50%; /* Ensure images do not exceed the width of their container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove bottom space under images */
-    margin-bottom: 20px;
-}
-
-.projects .card-buttons .card-button--site,
-.projects .card-buttons .card-button--code {
-    color: var(--white); /* Text color */
-    width: 150px; /* Fixed width for buttons */
-    height: 60px; /* Fixed height for buttons */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    opacity: 1; /* Fully opaque */
-    transition: 250ms ease all; /* Smooth transition for hover effects */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    text-decoration: none; /* Remove underline from links */
-    background-color: var(--gray); /* Background color for both buttons */
-    margin-top: 50px; /* Space above the buttons */
-    margin-right: 50px;
-}
-
-.projects .card-buttons .card-button--code {
-    margin-top: 20px; /* Space below the code button */
-}
-
-.projects .card-buttons .card-button--site:hover,
-.projects .card-buttons .card-button--code:hover {
-    background-color: var(--white); /* Change background color on hover */
-    color: var(--black); /* Change text color on hover */
-}
-
-@media only screen and (max-width: 770px) {
-    /* Add this CSS to your stylesheet */
-    .main-cards {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .main-card1 {
-        grid-column: 1; /* Second column */
-        grid-row: 1; /* Second row */
-        margin-bottom: 20px;
-    }
-
-    .main-card2 {
-        grid-column: 1; /* Second column */
-        grid-row: 2; /* Second row */
-        margin-bottom: 20px;
-    }
-
-    .main-card3 {
-        grid-column: 1; /* Second column */
-        grid-row: 3; /* Second row */
-        margin-bottom: 20px;
-    }
-
-    .main-card4 {
-        grid-column: 1; /* Second column */
-        grid-row: 4; /* Second row */
-        margin-bottom: 120px;
-    }
-
-    .main-card5 {
-        grid-column: 1; /* Second column */
-        grid-row: 5; /* Second row */
-        margin-bottom: 120px;
-    }
-
-    .main-card6 {
-        grid-column: 1; /* Second column */
-        grid-row: 6; /* Second row */
-        margin-bottom: 20px;
-    }
-
-    
+.projects .card .card-buttons .card-button--site:hover,
+.projects .card .card-buttons .card-button--code:hover {
+    background-color: var(--white);
+    color: var(--black);
 }
 
 /* === EXPERIENCE === */
@@ -886,6 +787,53 @@ p {
     .about .achievements li {
         font-size: var(--list-font-size);
         margin-left: var(--list-margin-left);
+    }
+
+    .projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .projects .cards, .project-cards, .other-cards,
+    .projects .main-card, .projects .card,
+    .projects .main-card img, .projects .card img,
+    .projects .main-card .main-card-title,
+    .projects .main-card .main-card-description,
+    .projects .card .card-title,
+    .projects .card .card-description,
+    .projects .card .card-buttons .card-button--site,
+    .projects .card .card-buttons .card-button--code {
+        width: var(--full-width); /* Ensure this variable or value sets the width to 100% */
+        word-wrap: break-word; /* Allows long words to be broken and wrapped to the next line */
+        overflow-wrap: break-word;
+        margin: var(--card-margin);
+    }
+    
+    .projects .main-card, .projects .card {
+        margin: var(--card-margin);
+        width: 100%; /* This ensures each card takes full width */
+    }
+    
+    .projects .main-card img, .projects .card img {
+        max-width: 100%; /* Adjusts image max-width to be responsive within the card */
+        height: auto;
+    }
+    
+    .projects .card .card-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+    
+    .projects .card .card-buttons .card-button--site,
+    .projects .card .card-buttons .card-button--code {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .projects .cards, .project-cards, .other-cards {
+        flex-direction: column;
+        width: 100%; /* Ensure cards take full width */
     }
 
     .experience-description {
