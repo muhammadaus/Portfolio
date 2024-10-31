@@ -439,7 +439,7 @@ p {
 .main-card1 {
     grid-column: 1; /* First column */
     grid-row: 1; /* First row */
-    margin-bottom: -120px;
+    margin-bottom: -60px;
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex; /* Use flexbox for highlighted cards */
     flex-direction: column; /* Stack elements vertically */
@@ -452,7 +452,7 @@ p {
 .main-card2 {
     grid-column: 2; /* Second column */
     grid-row: 1; /* First row */
-    margin-bottom: -120px;
+    margin-bottom: -60px;
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex; /* Use flexbox for highlighted cards */
     flex-direction: column; /* Stack elements vertically */
