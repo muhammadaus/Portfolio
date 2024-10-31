@@ -318,7 +318,7 @@ p {
     color: var(--text-color);
     margin-bottom: 50px;
     width: 100%; /* Ensures full width for proper centering */
-    font-size: 48px; /* Adjust text size as needed */
+    font-size: 36px; /* Adjust text size as needed */
     font-weight: bold; /* Make text bold */
 }
 
