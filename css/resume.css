@@ -866,18 +866,6 @@ p {
         --profile-container-size: 100px;
     }
 
-    html {
-        font-size: var(--base-font-size);
-    }
-
-    h1, h1 strong {
-        font-size: var(--heading-size);
-    }
-
-    h2, h3, h4, h5, h6 {
-        font-size: var(--subheading-size);
-    }
-
     img {
         max-width: var(--full-width);
         height: auto;
