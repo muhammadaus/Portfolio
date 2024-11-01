@@ -856,7 +856,7 @@ p {
 
 @media only screen and (max-width: 770px) {
     :root {
-        --base-font-size: 12px;
+        --base-font-size: 10px;
         --heading-size: 1.5rem;
         --subheading-size: 1.5rem;
         --list-font-size: 20px;
