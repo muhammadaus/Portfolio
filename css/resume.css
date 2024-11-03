@@ -255,6 +255,43 @@ p {
       border-top: 1px solid var(--white);
     }
   }
+
+  /* Navbar */
+#navbar {
+    background-color: #333; /* Example background color for the navbar */
+}
+
+#navbar ul {
+    list-style-type: none; /* Remove bullet points */
+    padding: 0; /* Remove padding */
+    margin: 0; /* Remove margin */
+}
+
+#navbar li {
+    display: inline; /* Display list items in a line */
+    margin-right: 20px; /* Space between items */
+}
+
+#navbar a {
+    color: white; /* Current text color */
+    text-decoration: none; /* Remove underline */
+    transition: color 0.3s; /* Smooth transition for color change */
+}
+
+#navbar a:hover {
+    color: #e6b3e6; /* Change this to your desired hover color */
+}
+
+.lang-toggle {
+    background: none; /* Remove default button background */
+    border: none; /* Remove default button border */
+    color: white; /* Button text color */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+.lang-toggle:hover {
+    color: #ffcc00; /* Change this to your desired hover color for the button */
+}
   
   /* Profile Image */
   .profile-container {
@@ -439,7 +476,6 @@ p {
 .main-card1 {
     grid-column: 1; /* First column */
     grid-row: 1; /* First row */
-    margin-bottom: -60px;
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex; /* Use flexbox for highlighted cards */
     flex-direction: column; /* Stack elements vertically */
@@ -452,7 +488,6 @@ p {
 .main-card2 {
     grid-column: 2; /* Second column */
     grid-row: 1; /* First row */
-    margin-bottom: -60px;
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex; /* Use flexbox for highlighted cards */
     flex-direction: column; /* Stack elements vertically */
@@ -465,7 +500,6 @@ p {
 .main-card3 {
     grid-column: 1; /* Third column */
     grid-row: 2; /* First row */
-    margin-bottom: 120px;
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex; /* Use flexbox for highlighted cards */
     flex-direction: column; /* Stack elements vertically */
@@ -477,7 +511,6 @@ p {
 .main-card4 {
     grid-column: 2; /* Third column */
     grid-row: 2; /* Second row */
-    margin-bottom: 120px;
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
     display: flex; /* Use flexbox for highlighted cards */
     flex-direction: column; /* Stack elements vertically */
@@ -496,7 +529,6 @@ p {
     align-items: center; /* Center content horizontally */
     border-radius: 15px; /* Added rounded edges */ 
     padding: 20px;
-    margin-top: -120px;
 }
 
 .main-card6 {
@@ -508,7 +540,6 @@ p {
     align-items: center; /* Center content horizontally */
     border-radius: 15px; /* Added rounded edges */ 
     padding: 20px;
-    margin-top: -120px;
 }
 
 .project-cards {
@@ -537,13 +568,6 @@ p {
     height: auto; /* Maintain aspect ratio */
     display: block; /* Remove bottom space under images */
     margin-bottom: 70px; /* Space below the image */
-    transition: transform 0.1s ease; /* Smooth transition for the zoom effect */
-}
-
-.main-card1 img:hover,
-.main-card2 img:hover,
-.card img:hover {
-    transform: scale(1.5); /* Scale the image to 110% on hover */
 }
 
 .main-card3 img {
@@ -596,6 +620,11 @@ p {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .main-card1, .main-card3, .main-card4, .main-card5, .main-card6 {
+        margin-left: 40px; /* Remove margins */
+        padding: 10px; /* Add padding if needed */
+    }
+
     .main-card1 {
         grid-column: 1; /* Second column */
         grid-row: 1; /* Second row */
@@ -606,6 +635,7 @@ p {
         grid-column: 1; /* Second column */
         grid-row: 2; /* Second row */
         margin-bottom: 20px;
+        margin-right: 40px;
     }
 
     .main-card3 {
