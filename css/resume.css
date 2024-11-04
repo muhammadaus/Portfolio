@@ -635,7 +635,6 @@ p {
         grid-column: 1; /* Second column */
         grid-row: 2; /* Second row */
         margin-bottom: 20px;
-        margin-right: 40px;
     }
 
     .main-card3 {
