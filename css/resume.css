@@ -563,6 +563,7 @@ p {
 
 .main-card1 img,
 .main-card2 img,
+.main-card5 img,
 .card img {
     max-width: 100%; /* Ensure images do not exceed the width of their container */
     height: auto; /* Maintain aspect ratio */
