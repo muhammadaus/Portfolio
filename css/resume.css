@@ -473,73 +473,30 @@ p {
     padding: 20px;
 }
 
-.main-card1 {
-    grid-column: 1; /* First column */
-    grid-row: 1; /* First row */
+.main-card1, .main-card2, .main-card3, .main-card4, .main-card5, .main-card6 {
     background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
-    padding-bottom: 50px;
-}
-
-.main-card2 {
-    grid-column: 2; /* Second column */
-    grid-row: 1; /* First row */
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
-    padding-bottom: 50px;
-}
-
-.main-card3 {
-    grid-column: 1; /* Third column */
-    grid-row: 2; /* First row */
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 15px;
     padding: 20px;
 }
 
-.main-card4 {
-    grid-column: 2; /* Third column */
-    grid-row: 2; /* Second row */
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
+.main-card1 img,
+.main-card2 img,
+.main-card3 img,
+.main-card4 img,
+.main-card5 img,
+.main-card6 img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 20px;
+    border-radius: 10px;
 }
 
-/* If you have a fifth and sixth card, you can add them like this */
-.main-card5 {
-    grid-column: 1; /* First column */
-    grid-row: 3; /* Second row */
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
-}
-
-.main-card6 {
-    grid-column: 2; /* Second column */
-    grid-row: 3; /* Second row */
-    background: linear-gradient(to bottom right, #3DEB55, #A567F3 54.6875%, #2F49F4);
-    display: flex; /* Use flexbox for highlighted cards */
-    flex-direction: column; /* Stack elements vertically */
-    align-items: center; /* Center content horizontally */
-    border-radius: 15px; /* Added rounded edges */ 
-    padding: 20px;
+.main-card4 img {
+    max-width: 50%;
 }
 
 .project-cards {
@@ -561,53 +518,19 @@ p {
     width: 100%; /* Full width for cards */
 }
 
-.main-card1 img,
-.main-card2 img,
-.main-card5 img,
-.main-card6 img,
-.card img {
-    max-width: 100%; /* Ensure images do not exceed the width of their container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove bottom space under images */
-    margin-bottom: 70px; /* Space below the image */
-}
-
-.main-card3 img {
-    max-width: 100%; /* Ensure images do not exceed the width of their container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove bottom space under images */
-    margin-bottom: 20px;
-}
-
-
-.main-card4 img {
-    max-width: 50%; /* Ensure images do not exceed the width of their container */
-    height: auto; /* Maintain aspect ratio */
-    display: block; /* Remove bottom space under images */
-    margin-bottom: 20px;
-}
-
 .projects .card-buttons .card-button--site,
 .projects .card-buttons .card-button--code {
-    color: var(--white); /* Text color */
-    width: 150px; /* Fixed width for buttons */
-    height: 60px; /* Fixed height for buttons */
-    display: flex; /* Use flexbox for alignment */
-    justify-content: center; /* Center content horizontally */
-    align-items: center; /* Center content vertically */
-    opacity: 1; /* Fully opaque */
-    transition: 250ms ease all; /* Smooth transition for hover effects */
-    border: none; /* Remove default border */
-    border-radius: 5px; /* Rounded corners */
-    cursor: pointer; /* Change cursor to pointer on hover */
-    text-decoration: none; /* Remove underline from links */
-    background-color: var(--gray); /* Background color for both buttons */
-    margin-top: 50px; /* Space above the buttons */
-    margin-right: 50px;
-}
-
-.projects .card-buttons .card-button--code {
-    margin-top: 20px; /* Space below the code button */
+    width: 150px;
+    height: 50px;
+    border-radius: 8px;
+    margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--gray);
+    color: var(--white);
+    text-decoration: none;
+    transition: 250ms ease all;
 }
 
 .projects .card-buttons .card-button--site:hover,
@@ -910,6 +833,11 @@ p {
         line-height: 2.5;
     }
 
+    .header .header-links .flex-list {
+        margin-top: 50px;
+        margin-bottom: 10px;
+    }
+
     img {
         max-width: var(--full-width);
         height: auto;
@@ -920,8 +848,21 @@ p {
         margin-left: var(--list-margin-left);
     }
 
+    .about {
+        padding-bottom: 50px;
+    }
+
     .experience-description {
+        padding-top: 50px;
         font-size: 1.8rem; /* Adjust the font size as needed */
+    }
+
+    .skills {
+        padding-bottom: 200px;
+    }
+
+    .skills h2 {
+        margin-bottom: -20px;
     }
 
     .skills .skill-cards {
@@ -931,10 +872,6 @@ p {
         flex-wrap: nowrap; /* Prevent wrapping */
         justify-content: center; /* Center the cards horizontally */
     }
-
-    .skills h2{
-        margin-bottom: -10px;
-    }
     
     .skills .skill-card {
         background-repeat: no-repeat;
@@ -943,7 +880,6 @@ p {
         flex: 0 0 170px; /* Fixed width for each card */
         height: 170px; /* Fixed height for consistency */
         margin: 30px; /* Consistent spacing */
-        margin-top: -10px;
         margin-bottom: 320px;
         border: 1px solid var(--gray);
         cursor: pointer;
@@ -952,8 +888,9 @@ p {
     }
 
     .skills .skill-list {
-        margin-top: -800px;
-        margin-bottom: -475px;
+        margin-top: -300px;
+        margin-bottom: -575px;
+        padding-bottom: 400px;
     }
 
 
