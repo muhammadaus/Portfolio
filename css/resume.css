@@ -5,56 +5,66 @@
 }
 
 :root {
+    /* Colors - Base */
     --black: #060003;
     --gray: #242123;
     --white: #FFFFFF;
     --blue: #8E6EEA;
-    --border-gradient: linear-gradient(227.58deg, #A6282A -44.04%, #B44A6A 42.36%, #3E1A5D 113.95%);
-    --font-40: clamp(24px, 6vw, 40px);
-    --font-32: clamp(24px, 4vw, 32px);
+    --color-gray: #CCCCCC;
 
-    --transition-speed: 250ms;
-    --transition-easing: ease;
-    --icon-size: 80px;
-    --icon-font-size: 30px;
+    /* Colors - Semantic */
+    --text-color: var(--black);
+    --hover-text-color: var(--white);
+    --border-color: var(--black);
+    --link-color: var(--white);
+    --fill-color-default: #dbdbdb;
+    --fill-color-hover: var(--white);
+
+    /* Gradients */
+    --border-gradient: linear-gradient(227.58deg, #A6282A -44.04%, #B44A6A 42.36%, #3E1A5D 113.95%);
+    --gradient-background: linear-gradient(to bottom right, #F4492F, #F367A5 54.6875%, #553DEB);
+    --navbar-gradient: linear-gradient(to right, #333, #000);
+
+    /* Typography */
+    --font-18: 18px;
+    --font-32: clamp(24px, 4vw, 32px);
+    --font-40: clamp(24px, 6vw, 40px);
+
+    /* Spacing & Layout */
+    --section-min-height: 850px;
+    --section-padding: 10px;
+    --margin-bottom-large: 45px;
+    --link-padding: 14px 16px;
     --list-item-margin: 12px;
     --border-width: 2px;
 
+    /* Profile */
     --profile-container-size: 200px;
     --profile-size: 80px;
     --profile-margin: 12px;
-    --section-min-height: 850px;
-    --section-padding: 10px;
 
-    --header-background-color: rgba(255, 255, 255, 0.5);
-    --text-color: var(--black);
-    --hover-text-color: var(--white);
-    --margin-bottom-large: 45px;
-    --border-color: var(--black);
-
-    --color-black: black;
-    --color-white: #FFFFFF;
-    --color-gray: #CCCCCC;
-
-    --font-18: 18px;
-    --font-32: 32px;
-
-    --gradient-background: linear-gradient(to bottom right, #F4492F, #F367A5 54.6875%, #553DEB);
-    --transition-fast: 500ms ease all;
+    /* Icons */
+    --icon-size: 80px;
+    --icon-font-size: 30px;
     --icon-opacity: 0.7;
     --icon-hover-opacity: 1;
-    --fill-color-default: #dbdbdb;
-    --fill-color-hover: #ffffff;
 
+    /* Transitions */
+    --transition-speed: 250ms;
+    --transition-easing: ease;
+    --transition-fast: 500ms ease all;
+
+    /* Background Colors */
+    --header-background-color: rgba(255, 255, 255, 0.5);
     --intro-bg-color: #4c6faf;
-    --intro-hover-bg-color: white;
-    --intro-hover-color: black;
+    --intro-hover-bg-color: var(--white);
+    --intro-hover-color: var(--black);
     --intro-border-hover-color: #4c7caf;
-    --navbar-gradient-start: #333;
-    --navbar-gradient-end: #000;
-    --link-color: white;
-    --link-padding: 14px 16px;
-    --transition-fast: 0.3s;
+
+    /* Navbar Specific */
+    --navbar-bg-color: #333;
+    --navbar-hover-color: #e6b3e6;
+    --navbar-lang-hover: #ffcc00;
 }
 
 html {
@@ -258,39 +268,47 @@ p {
 
   /* Navbar */
 #navbar {
-    background-color: #333; /* Example background color for the navbar */
+    background: var(--navbar-gradient);
+    padding: 10px;
+    position: fixed;
+    top: -200px;
+    right: 0;
+    border-radius: 0 0 0 20px;
+    z-index: 1000;
+    transition: top var(--transition-fast);
 }
 
 #navbar ul {
-    list-style-type: none; /* Remove bullet points */
-    padding: 0; /* Remove padding */
-    margin: 0; /* Remove margin */
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
 }
 
 #navbar li {
-    display: inline; /* Display list items in a line */
-    margin-right: 20px; /* Space between items */
+    display: inline;
+    margin-right: 20px;
 }
 
 #navbar a {
-    color: white; /* Current text color */
-    text-decoration: none; /* Remove underline */
-    transition: color 0.3s; /* Smooth transition for color change */
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 #navbar a:hover {
-    color: #e6b3e6; /* Change this to your desired hover color */
+    color: var(--navbar-hover-color);
 }
 
 .lang-toggle {
-    background: none; /* Remove default button background */
-    border: none; /* Remove default button border */
-    color: white; /* Button text color */
-    cursor: pointer; /* Change cursor to pointer */
+    background: none;
+    border: none;
+    color: var(--link-color);
+    cursor: pointer;
+    transition: color var(--transition-speed) var(--transition-easing);
 }
 
 .lang-toggle:hover {
-    color: #ffcc00; /* Change this to your desired hover color for the button */
+    color: var(--navbar-lang-hover);
 }
   
   /* Profile Image */
@@ -900,37 +918,6 @@ p {
     overflow: hidden;
 }
 
-#navbar {
-    background: linear-gradient(to right, var(--navbar-gradient-start), var(--navbar-gradient-end));
-    padding: 10px;
-    position: fixed;
-    top: -200px; /* Adjust based on the navbar's height */
-    right: 0;
-    border-radius: 0 0 0 20px;
-    z-index: 1000;
-    transition: top var(--transition-fast);
-}
-
-#navbar ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-}
-
-#navbar ul li {
-    float: left;
-}
-
-#navbar ul li a {
-    display: block;
-    color: var(--link-color);
-    text-align: center;
-    padding: var(--link-padding);
-    text-decoration: none;
-    background-color: rgba(0, 0, 0, 0);
-}
-
 @keyframes first-loop {
     0% {
         transform: translateX(0);
@@ -947,13 +934,13 @@ p {
     100% {
         transform: translateX(-100%); /* Move left to show the second set */
     }
+}
 
 @keyframes backgroundAnimation {
-        0% {
-            background-position: 0% 0%; /* Start position */
-        }
-        100% {
-            background-position: 100% 0%; /* End position */
-        }
+    0% {
+        background-position: 0% 0%; /* Start position */
+    }
+    100% {
+        background-position: 100% 0%; /* End position */
     }
 }

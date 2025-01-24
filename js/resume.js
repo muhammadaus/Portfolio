@@ -6,71 +6,22 @@
 
 document.body.classList.add('lock-scroll');
 
-// Single event listener for smooth scrolling
-document.addEventListener('DOMContentLoaded', () => {
-    // Handle smooth scrolling for all anchor links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href'))?.scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    });
-
-    // Initial language setup
-    handleLanguage();
-});
-
-// Optimized navbar show/hide with throttling
-let lastScrollPosition = 0;
-let ticking = false;
-
-function showNavbar() {
-    const currentScroll = window.scrollY;
-    const navbar = document.getElementById("navbar");
-    
-    if (currentScroll > 50) {
-        navbar.style.top = "0";
-    } else {
-        navbar.style.top = "-200px";
+// Configuration
+const CONFIG = {
+    SCROLL_THRESHOLD: 50,
+    NAVBAR_HIDDEN_POSITION: '-200px',
+    LANGUAGES: {
+        JA: 'ja',
+        EN: 'en'
+    },
+    PAGES: {
+        JA: 'index_ja.html',
+        EN: 'index.html'
     }
-    
-    lastScrollPosition = currentScroll;
-    ticking = false;
-}
+};
 
-window.addEventListener('scroll', () => {
-    if (!ticking) {
-        window.requestAnimationFrame(() => {
-            showNavbar();
-        });
-        ticking = true;
-    }
-});
-
-// Simplified language handling
-function handleLanguage(toggle = false) {
-    const currentPage = window.location.pathname.split('/').pop();
-    let lang = localStorage.getItem('preferredLanguage') || 
-               (navigator.language.startsWith('ja') ? 'ja' : 'en');
-    
-    if (toggle) {
-        lang = lang === 'en' ? 'ja' : 'en';
-        localStorage.setItem('preferredLanguage', lang);
-    }
-
-    const targetPage = lang === 'ja' ? 'index_ja.html' : 'index.html';
-    if (currentPage !== targetPage) {
-        window.location.href = targetPage;
-    }
-}
-
-// Language toggle function
-const toggleLanguage = () => handleLanguage(true);
-
-// Projects data - Consider moving to a separate JSON file if the list grows
-const projects = [
+// Project data - Could be moved to a separate data.js file
+const PROJECTS = [
     {
         img: './img/projects/project_1.png',
         title: 'Decentralized Front-End for Smart Contract Interactions',
@@ -90,3 +41,86 @@ const projects = [
         link: 'https://dune.com/kr/gmx-open-interest-analysis'
     }
 ];
+
+// Navbar handling
+class NavbarManager {
+    constructor() {
+        this.lastScrollPosition = 0;
+        this.ticking = false;
+        this.navbar = document.getElementById("navbar");
+        this.initScrollListener();
+    }
+
+    initScrollListener() {
+        window.addEventListener('scroll', () => this.handleScroll());
+    }
+
+    handleScroll() {
+        if (!this.ticking) {
+            window.requestAnimationFrame(() => this.updateNavbarPosition());
+            this.ticking = true;
+        }
+    }
+
+    updateNavbarPosition() {
+        const currentScroll = window.scrollY;
+        this.navbar.style.top = currentScroll > CONFIG.SCROLL_THRESHOLD ? "0" : CONFIG.NAVBAR_HIDDEN_POSITION;
+        this.lastScrollPosition = currentScroll;
+        this.ticking = false;
+    }
+}
+
+// Language handling
+class LanguageManager {
+    constructor() {
+        this.currentLang = this.getInitialLanguage();
+    }
+
+    getInitialLanguage() {
+        return localStorage.getItem('preferredLanguage') || 
+               (navigator.language.startsWith(CONFIG.LANGUAGES.JA) ? CONFIG.LANGUAGES.JA : CONFIG.LANGUAGES.EN);
+    }
+
+    toggleLanguage() {
+        const newLang = this.currentLang === CONFIG.LANGUAGES.EN ? CONFIG.LANGUAGES.JA : CONFIG.LANGUAGES.EN;
+        localStorage.setItem('preferredLanguage', newLang);
+        this.redirectToLocalizedPage(newLang);
+    }
+
+    redirectToLocalizedPage(lang) {
+        const currentPage = window.location.pathname.split('/').pop();
+        const targetPage = lang === CONFIG.LANGUAGES.JA ? CONFIG.PAGES.JA : CONFIG.PAGES.EN;
+        
+        if (currentPage !== targetPage) {
+            window.location.href = targetPage;
+        }
+    }
+}
+
+// Smooth scroll handling
+class SmoothScroll {
+    static init() {
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetElement = document.querySelector(anchor.getAttribute('href'));
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        });
+    }
+}
+
+// Initialize everything when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    document.body.classList.add('lock-scroll');
+    
+    // Initialize components
+    const navbarManager = new NavbarManager();
+    const languageManager = new LanguageManager();
+    SmoothScroll.init();
+
+    // Expose necessary functions globally
+    window.toggleLanguage = () => languageManager.toggleLanguage();
+});
