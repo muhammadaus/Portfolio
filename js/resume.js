@@ -6,82 +6,71 @@
 
 document.body.classList.add('lock-scroll');
 
-$(document).ready(function(){
-    $('a').on('click', function(event) {
-        if (this.hash !== "") {
-            event.preventDefault();
-            var hash = this.hash;
-            $('html, body').animate({
-                scrollTop: $(hash).offset().top
-            }, 800, function(){
-                window.location.hash = hash;
+// Single event listener for smooth scrolling
+document.addEventListener('DOMContentLoaded', () => {
+    // Handle smooth scrolling for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href'))?.scrollIntoView({
+                behavior: 'smooth'
             });
-        }
+        });
     });
+
+    // Initial language setup
+    handleLanguage();
 });
 
-window.onscroll = function() {showNavbar()};
+// Optimized navbar show/hide with throttling
+let lastScrollPosition = 0;
+let ticking = false;
 
 function showNavbar() {
-    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
-        document.getElementById("navbar").style.top = "0";
+    const currentScroll = window.scrollY;
+    const navbar = document.getElementById("navbar");
+    
+    if (currentScroll > 50) {
+        navbar.style.top = "0";
     } else {
-        document.getElementById("navbar").style.top = "-200px"; // Adjust this value to match the navbar's height
+        navbar.style.top = "-200px";
     }
+    
+    lastScrollPosition = currentScroll;
+    ticking = false;
 }
 
+window.addEventListener('scroll', () => {
+    if (!ticking) {
+        window.requestAnimationFrame(() => {
+            showNavbar();
+        });
+        ticking = true;
+    }
+});
+
+// Simplified language handling
 function handleLanguage(toggle = false) {
     const currentPage = window.location.pathname.split('/').pop();
-    let lang = localStorage.getItem('preferredLanguage');
-
-    // If no language is set, use browser language
-    if (!lang) {
-        lang = navigator.language.startsWith('ja') ? 'ja' : 'en';
-        localStorage.setItem('preferredLanguage', lang);
-    }
-
-    // Toggle language if requested
+    let lang = localStorage.getItem('preferredLanguage') || 
+               (navigator.language.startsWith('ja') ? 'ja' : 'en');
+    
     if (toggle) {
         lang = lang === 'en' ? 'ja' : 'en';
         localStorage.setItem('preferredLanguage', lang);
     }
 
-    // Redirect if needed
     const targetPage = lang === 'ja' ? 'index_ja.html' : 'index.html';
     if (currentPage !== targetPage) {
         window.location.href = targetPage;
     }
 }
 
-window.onload = () => handleLanguage();
+// Language toggle function
+const toggleLanguage = () => handleLanguage(true);
 
-function toggleLanguage() {
-    handleLanguage(true);
-}
-
-// Function to set the initial language based on user's preference or browser settings
-function setInitialLanguage() {
-    const preferredLanguage = localStorage.getItem('preferredLanguage');
-    const currentPage = window.location.pathname.split('/').pop();
-
-    if (preferredLanguage === 'ja' && currentPage !== 'index_ja.html') {
-        window.location.href = 'index_ja.html';
-    } else if (preferredLanguage === 'en' && currentPage !== 'index.html') {
-        window.location.href = 'index.html';
-    } else if (!preferredLanguage) {
-        const userLang = navigator.language || navigator.userLanguage;
-        if (userLang.startsWith('ja') && currentPage !== 'index_ja.html') {
-            window.location.href = 'index_ja.html';
-        } else if (!userLang.startsWith('ja') && currentPage !== 'index.html') {
-            window.location.href = 'index.html';
-        }
-    }
-}
-
-// Call setInitialLanguage when the page loads
-window.onload = setInitialLanguage;
-
-var projects = [
+// Projects data - Consider moving to a separate JSON file if the list grows
+const projects = [
     {
         img: './img/projects/project_1.png',
         title: 'Decentralized Front-End for Smart Contract Interactions',
