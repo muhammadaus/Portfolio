@@ -429,7 +429,7 @@ p {
 /* === ABOUT === */
 .about {
     color: var(--white);
-    background: var(--gradient-background);
+    background: var(--navbar-gradient);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
