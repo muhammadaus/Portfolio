@@ -250,8 +250,6 @@ p {
 
 .list-items-circle a:hover,
 .contact .list-items-circle a:hover {
-    background-color: var(--primary);
-    border-color: var(--primary);
     transform: translateY(-2px);
 }
 
@@ -927,7 +925,9 @@ p {
 
 .contact .flex-list li:hover,
 .contact .flex-list li a:hover {
-    color: var(--primary);
+    background-color: var(--dark);
+    border-color: var(--primary);
+    transform: translateY(-4px);
 }
 
 .contact-details {
@@ -944,7 +944,7 @@ p {
 }
 
 .contact-details a:hover {
-    background-color: var(--primary);
+    background-color: var(--dark);
     border-color: var(--primary);
     transform: translateY(-4px);
 }
