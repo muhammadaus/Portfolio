@@ -35,7 +35,7 @@
     
     /* Gradients */
     --border-gradient: linear-gradient(227.58deg, var(--secondary) -44.04%, var(--secondary-light) 42.36%, var(--primary-dark) 113.95%);
-    --gradient-background: linear-gradient(to bottom right, var(--secondary), var(--secondary-light) 54.6875%, var(--primary));
+    --gradient-background: linear-gradient(to bottom right, rgba(30, 30, 90, 1), rgba(30, 30, 90, 0.8) 54.6875%, rgba(150, 30, 60, 0.9));
     --navbar-gradient: linear-gradient(to right, var(--dark-gray), var(--dark));
     
     /* Typography */
@@ -489,6 +489,7 @@ p {
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+    background: rgba(0, 0, 255, 0.05); /* Bright red with the same transparency */
     display: flex;
     flex-wrap: wrap;
     padding: 30px;
@@ -764,7 +765,6 @@ p {
 }
 
 .experience .experience-card .card-list .card-list-item::before {
-    content: "•";
     position: absolute;
     left: 0;
     color: var(--primary);
