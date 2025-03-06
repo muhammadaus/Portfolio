@@ -535,11 +535,6 @@ p {
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
 }
 
-.main-card1:hover, .main-card2:hover, .main-card3:hover, .main-card4:hover, .main-card5:hover, .main-card6:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-}
-
 .main-card1 img,
 .main-card2 img,
 .main-card3 img,
@@ -732,11 +727,6 @@ p {
     padding: var(--section-padding);
     box-shadow: var(--shadow-md);
     transition: transform var(--transition-normal), box-shadow var(--transition-normal);
-}
-
-.experience .experience-card:hover {
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-lg);
 }
 
 .experience .experience-card .card-title {
