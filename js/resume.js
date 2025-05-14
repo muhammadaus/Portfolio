@@ -1,11 +1,3 @@
-// document.getElementById('close-intro').addEventListener('click', function() {
-//     document.querySelector('.blur-background').style.display = 'none';
-//     document.querySelector('.intro-screen').style.display = 'none';
-// });
-
-
-document.body.classList.add('lock-scroll');
-
 // Configuration
 const CONFIG = {
     SCROLL_THRESHOLD: 50,
@@ -20,7 +12,6 @@ const CONFIG = {
     }
 };
 
-// Project data - Could be moved to a separate data.js file
 const PROJECTS = [
     {
         img: './img/projects/project_1.png',
@@ -114,7 +105,6 @@ class SmoothScroll {
 
 // Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-    document.body.classList.add('lock-scroll');
     
     // Initialize components
     const navbarManager = new NavbarManager();
@@ -122,5 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
     SmoothScroll.init();
 
     // Expose necessary functions globally
-    window.toggleLanguage = () => languageManager.toggleLanguage();
+    window.toggleLanguage = (lang) => {
+        const newLang = lang || (languageManager.currentLang === CONFIG.LANGUAGES.EN ? CONFIG.LANGUAGES.JA : CONFIG.LANGUAGES.EN);
+        localStorage.setItem('preferredLanguage', newLang);
+        languageManager.redirectToLocalizedPage(newLang);
+    };
 });

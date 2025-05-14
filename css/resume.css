@@ -782,6 +782,7 @@ p {
         'header'
         'scroll-area';
     overflow: hidden;
+    position: relative;
 }
 
 .skills h2 {
@@ -802,19 +803,20 @@ p {
 .skills .skill-cards {
     display: flex;
     flex-wrap: nowrap;
-    overflow: auto;
+    overflow: visible;
     animation: loop var(--time) linear infinite;
     grid-area: scroll-area;
     transform: translateX(100%);
+    width: 100%;
+}
 
-    &[data-first] {
-        animation: first-loop var(--time) linear forwards;
-        transform: translateX(0);
-    }
+.skills .skill-cards[data-first] {
+    animation: first-loop var(--time) linear forwards;
+    transform: translateX(0);
+}
 
-    &[data-last] {
-        animation-delay: var(--half-time);
-    }
+.skills .skill-cards[data-last] {
+    animation-delay: var(--half-time);
 }
 
 .skills .skill-card {
@@ -831,7 +833,7 @@ p {
     min-width: 120px;
     min-height: 120px;
     margin: 50px;
-    margin-top: -450px;
+    margin-top: 50px;
     border: 1px solid rgba(255, 255, 255, 0.2);
     cursor: pointer;
     transition: var(--transition-fast);
@@ -871,9 +873,13 @@ p {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin-bottom: -500px;
-    margin-top: -1000px;
+    margin: 50px auto;
     font-size: x-large;
+    position: relative;
+    z-index: 2;
+    padding: 20px;
+    width: 100%;
+    max-width: 800px;
 }
 
 .skills .skill-list li {
@@ -884,6 +890,7 @@ p {
     border-radius: var(--border-radius-lg);
     padding: var(--section-padding);
     transition: all var(--transition-normal);
+    margin-bottom: 15px;
 }
 
 .skills .skill-list li:hover {
@@ -892,7 +899,7 @@ p {
 }
 
 .skills .skill-list li img {
-    margin: 50px;
+    margin-right: 20px;
 }
 
 /* === CONTACT === */
@@ -1000,15 +1007,15 @@ p {
     }
 
     .skills {
-        padding-bottom: 200px;
+        padding-bottom: 50px;
     }
 
     .skills h2 {
-        margin-bottom: -20px;
+        margin-bottom: 20px;
     }
 
     .skills .skill-cards {
-        overflow-x: hidden;
+        overflow: hidden;
         margin: 0 auto;
         display: flex;
         flex-wrap: nowrap;
@@ -1022,7 +1029,7 @@ p {
         flex: 0 0 170px;
         height: 170px;
         margin: 30px;
-        margin-bottom: 320px;
+        margin-bottom: 30px;
         border: 1px solid var(--gray);
         cursor: pointer;
         transition: var(--transition-fast);
@@ -1030,9 +1037,8 @@ p {
     }
 
     .skills .skill-list {
-        margin-top: -300px;
-        margin-bottom: -575px;
-        padding-bottom: 400px;
+        margin: 30px auto;
+        padding-bottom: 30px;
     }
 }
 
