@@ -35,3 +35,18 @@ build/
 # Temporary files
 *.tmp
 *.temp
+# Security
+*.key
+*.pem
+.env.local
+.env.production
+secrets/
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
