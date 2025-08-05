@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Muhammad Aus Hijri - Full Stack Blockchain Developer & Data Scientist">
+    <meta name="keywords" content="blockchain developer, full stack developer, smart contracts, data analytics, web3">
+    <meta name="author" content="Muhammad Aus Hijri">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="Muhammad Aus Hijri - Portfolio">
+    <meta property="og:description" content="Full Stack Blockchain Developer specializing in smart contracts, DeFi, and data analytics">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://muhammadaus.dev">
+    <meta property="og:image" content="./img/profile.png">
+    
+    <!-- Twitter Card Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Muhammad Aus Hijri - Portfolio">
+    <meta name="twitter:description" content="Full Stack Blockchain Developer specializing in smart contracts, DeFi, and data analytics">
+    <meta name="twitter:image" content="./img/profile.png">
+    
+    <title>Muhammad Aus Hijri - Full Stack Blockchain Developer</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./img/favicon.ico">
+    
+    <!-- Preload Critical Resources -->
+    <link rel="preload" href="./img/profile.png" as="image">
+    <link rel="preload" href="./css/modern-portfolio.css" as="style">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+          crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/modern-portfolio.css">
+    
+    <!-- Performance Optimization -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Muhammad Aus Hijri",
+        "jobTitle": "Full Stack Blockchain Developer",
+        "description": "Experienced blockchain developer specializing in smart contracts, DeFi protocols, and data analytics",
+        "url": "https://muhammadaus.dev",
+        "sameAs": [
+            "https://www.linkedin.com/in/muhammad-aus-hijri-bin-ramle-102a571b7/",
+            "https://github.com/muhammadaus",
+            "https://www.youtube.com/channel/UCTCESMpTiO0n0GWQ1B2jRBA"
+        ],
+        "knowsAbout": [
+            "Blockchain Development",
+            "Smart Contracts",
+            "DeFi Protocols",
+            "Data Analytics",
+            "Full Stack Development",
+            "Web3 Technologies"
+        ]
+    }
+    </script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading Portfolio...</p>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <a href="#home">
+                    <span class="logo-text">MA</span>
+                </a>
+            </div>
+            <ul class="nav-menu" id="nav-menu">
+                <li class="nav-item">
+                    <a href="#home" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#about" class="nav-link">About</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#projects" class="nav-link">Projects</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#experience" class="nav-link">Experience</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#contact" class="nav-link">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+                        <i class="fas fa-moon"></i>
+                    </button>
+                </li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-background">
+            <div class="particle" style="--x: 20%; --y: 30%; --duration: 10s;"></div>
+            <div class="particle" style="--x: 80%; --y: 20%; --duration: 15s;"></div>
+            <div class="particle" style="--x: 60%; --y: 70%; --duration: 12s;"></div>
+            <div class="particle" style="--x: 30%; --y: 80%; --duration: 18s;"></div>
+            <div class="particle" style="--x: 90%; --y: 60%; --duration: 14s;"></div>
+        </div>
+        <div class="container">
+            <div class="hero-content">
+                <div class="profile-section">
+                    <div class="profile-image-container">
+                        <img src="./img/profile.png" alt="Muhammad Aus Hijri" class="profile-image">
+                        <div class="profile-ring"></div>
+                    </div>
+                    <div class="social-links">
+                        <a href="https://www.linkedin.com/in/muhammad-aus-hijri-bin-ramle-102a571b7/" 
+                           target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="https://github.com/muhammadaus" 
+                           target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.youtube.com/channel/UCTCESMpTiO0n0GWQ1B2jRBA" 
+                           target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="mailto:aushijri@icloud.com" aria-label="Email">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="hero-text">
+                    <div class="typing-container">
+                        <span class="typing-text" id="typing-text"></span>
+                        <span class="cursor">|</span>
+                    </div>
+                    <h1 class="hero-title">
+                        Muhammad Aus Hijri
+                    </h1>
+                    <h2 class="hero-subtitle">
+                        Full Stack Blockchain Developer
+                    </h2>
+                    <p class="hero-description">
+                        Specializing in smart contracts, DeFi protocols, and data-driven solutions. 
+                        Building the future of decentralized finance with cutting-edge technology.
+                    </p>
+                    <div class="hero-cta">
+                        <a href="#projects" class="btn btn-primary">
+                            <i class="fas fa-rocket"></i>
+                            View My Work
+                        </a>
+                        <a href="#contact" class="btn btn-secondary">
+                            <i class="fas fa-envelope"></i>
+                            Get In Touch
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <div class="scroll-arrow">
+                <i class="fas fa-chevron-down"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">Passion meets expertise in blockchain innovation</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <div class="about-card">
+                        <h3>🎓 Education & Certifications</h3>
+                        <ul class="achievements-list">
+                            <li>
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <strong>Tokyo University of Marine Science and Technology</strong>
+                                    <span>Control Engineering for Mechatronics (GPA: 3.70)</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <strong>Google Advanced Data Analytics</strong>
+                                    <span>Certified Professional</span>
+                                </div>
+                            </li>
+                            <li>
+                                <i class="fas fa-code"></i>
+                                <div>
+                                    <strong>Smart Contract Development</strong>
+                                    <span>Ethereum, Solidity, DeFi Protocols</span>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="about-card">
+                        <h3>💼 Professional Journey</h3>
+                        <p>
+                            With a strong foundation in control engineering and embedded systems, 
+                            I've evolved into a full-stack blockchain developer. My journey spans 
+                            from developing hydraulic excavator control systems at Hitachi to 
+                            creating innovative DeFi protocols and data analytics solutions.
+                        </p>
+                        <p>
+                            I specialize in building secure, scalable blockchain applications 
+                            that solve real-world problems. My expertise combines technical 
+                            depth with practical application, ensuring every project delivers 
+                            measurable value.
+                        </p>
+                    </div>
+                </div>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="50">0</div>
+                        <div class="stat-label">Projects Completed</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="4">0</div>
+                        <div class="stat-label">Years Experience</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="10">0</div>
+                        <div class="stat-label">Technologies Mastered</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" data-target="95">0</div>
+                        <div class="stat-label">Client Satisfaction %</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Projects</h2>
+                <p class="section-subtitle">Innovation in blockchain and data analytics</p>
+            </div>
+            
+            <!-- Project Filter -->
+            <div class="project-filters">
+                <button class="filter-btn active" data-filter="all">All Projects</button>
+                <button class="filter-btn" data-filter="blockchain">Blockchain</button>
+                <button class="filter-btn" data-filter="defi">DeFi</button>
+                <button class="filter-btn" data-filter="analytics">Analytics</button>
+                <button class="filter-btn" data-filter="frontend">Frontend</button>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Project 1: CipherLogicXYZ -->
+                <div class="project-card" data-category="frontend blockchain">
+                    <div class="project-image">
+                        <img src="./img/projects/default.png" alt="CipherLogicXYZ Website">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://cipherlogic.xyz/" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Site">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">CipherLogicXYZ Landing</h3>
+                            <div class="project-tags">
+                                <span class="tag">Frontend</span>
+                                <span class="tag">Optimization</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            High-performance landing page with perfect Lighthouse scores. 
+                            Sleek design with advanced optimizations for speed and SEO.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">HTML5</span>
+                            <span class="tech-tag">CSS3</span>
+                            <span class="tech-tag">JavaScript</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2: Rent2Own -->
+                <div class="project-card" data-category="defi blockchain">
+                    <div class="project-image">
+                        <img src="./img/projects/project_6.png" alt="Rent2Own DeFi Platform">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://rent-2-own-nextjs.vercel.app/" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Site">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://github.com/muhammadaus/Rent2Own" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Rent2Own NFT Platform</h3>
+                            <div class="project-tags">
+                                <span class="tag">DeFi</span>
+                                <span class="tag">NFT</span>
+                                <span class="tag">Grant Winner</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Taiko Grant Factory winner - decentralized platform for renting NFTs 
+                            with ownership options. Revolutionary rent-to-own model for digital assets.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Solidity</span>
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">Web3</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 3: ShortcutSC -->
+                <div class="project-card" data-category="blockchain frontend">
+                    <div class="project-image">
+                        <img src="./img/projects/project_0.png" alt="ShortcutSC Interface">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://shortcut-sc-nextjs.vercel.app/" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Site">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://github.com/muhammadaus/ShortcutSC" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Smart Contract Interface</h3>
+                            <div class="project-tags">
+                                <span class="tag">Capstone</span>
+                                <span class="tag">Web3</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Decentralized frontend for smart contract interactions. 
+                            Universal tool for EVM users and developers with intuitive interface.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React</span>
+                            <span class="tech-tag">Web3.js</span>
+                            <span class="tech-tag">JSON-RPC</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 4: PRVT Social -->
+                <div class="project-card" data-category="blockchain frontend">
+                    <div class="project-image">
+                        <img src="./img/projects/project_5.png" alt="PRVT Social App">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://ethglobal.com/showcase/prvt-ao0ze" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Site">
+                                    <i class="fas fa-external-link-alt"></i>
+                                </a>
+                                <a href="https://github.com/depatch/prvt" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">PRVT Social Network</h3>
+                            <div class="project-tags">
+                                <span class="tag">Social</span>
+                                <span class="tag">Privacy</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Private social app for builders and programmers. 
+                            Community-focused platform for reputation building and networking.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">React Native</span>
+                            <span class="tech-tag">Blockchain</span>
+                            <span class="tech-tag">Privacy</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 5: ShadowSwap -->
+                <div class="project-card" data-category="defi blockchain">
+                    <div class="project-image">
+                        <img src="./img/projects/project_4.png" alt="ShadowSwap AMM">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://github.com/muhammadaus/ShadowSwap" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Code">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">ShadowSwap AMM</h3>
+                            <div class="project-tags">
+                                <span class="tag">ETH Tokyo Winner</span>
+                                <span class="tag">AMM</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Prize-winning decentralized AMM liquidity pool at ETH Tokyo 2024. 
+                            Advanced trading algorithms with optimized gas efficiency.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Solidity</span>
+                            <span class="tech-tag">DeFi</span>
+                            <span class="tech-tag">AMM</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 6: Data Analytics -->
+                <div class="project-card" data-category="analytics">
+                    <div class="project-image">
+                        <img src="./img/projects/project_7.png" alt="Data Analytics Dashboard">
+                        <div class="project-overlay">
+                            <div class="project-links">
+                                <a href="https://public.tableau.com/app/profile/muhammad.aus/vizzes" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Tableau">
+                                    <i class="fas fa-chart-bar"></i>
+                                </a>
+                                <a href="https://dune.com/kr/ethereum-price-action" target="_blank" rel="noopener noreferrer" 
+                                   class="project-link" aria-label="View Dune">
+                                    <i class="fas fa-database"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <div class="project-header">
+                            <h3 class="project-title">Data Analytics Suite</h3>
+                            <div class="project-tags">
+                                <span class="tag">Analytics</span>
+                                <span class="tag">Visualization</span>
+                            </div>
+                        </div>
+                        <p class="project-description">
+                            Comprehensive data analytics with Tableau dashboards and Dune SQL pipelines. 
+                            Advanced visualizations for blockchain and market data.
+                        </p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Tableau</span>
+                            <span class="tech-tag">SQL</span>
+                            <span class="tech-tag">Python</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Professional Experience</h2>
+                <p class="section-subtitle">Building expertise across blockchain and embedded systems</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Development Lead</h3>
+                            <div class="company-info">
+                                <span class="company">CipherLogic.xyz</span>
+                                <span class="period">04/2020 - Present</span>
+                            </div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Reduced smart contract gas costs by 50% through advanced optimization techniques</li>
+                            <li>Architected and deployed production-ready token and NFT contracts on Ethereum</li>
+                            <li>Implemented comprehensive security testing using Hardhat and Foundry frameworks</li>
+                            <li>Integrated Web3 wallet connectivity across multiple client applications</li>
+                            <li>Designed custom sequencing algorithms for decentralized exchange protocols</li>
+                            <li>Developed secure verification systems for social authentication platforms</li>
+                            <li>Contributed open-source code to Uniswap and Coinbase ecosystem projects</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech">Solidity</span>
+                            <span class="tech">Web3.js</span>
+                            <span class="tech">React</span>
+                            <span class="tech">Node.js</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Software Engineer</h3>
+                            <div class="company-info">
+                                <span class="company">Hitachi Construction Machinery</span>
+                                <span class="period">08/2022 - 08/2024</span>
+                            </div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Developed simulation frameworks for hydraulic excavator control systems using MATLAB/Simulink</li>
+                            <li>Created real-time motion control models for heavy construction machinery</li>
+                            <li>Optimized embedded C programs for sensor data processing and valve control systems</li>
+                            <li>Implemented robust debugging protocols for mission-critical embedded applications</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech">C/C++</span>
+                            <span class="tech">MATLAB</span>
+                            <span class="tech">Simulink</span>
+                            <span class="tech">Embedded Systems</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-header">
+                            <h3>Research & Development</h3>
+                            <div class="company-info">
+                                <span class="company">Tokyo University of Marine Science and Technology</span>
+                                <span class="period">2018 - 2020</span>
+                            </div>
+                        </div>
+                        <ul class="achievements">
+                            <li>Graduated with distinction (GPA: 3.70) in Control Engineering for Mechatronics</li>
+                            <li>Specialized in advanced control systems and automation technologies</li>
+                            <li>Conducted research in robotics and autonomous system design</li>
+                            <li>Published findings on optimization algorithms for mechanical systems</li>
+                        </ul>
+                        <div class="tech-stack">
+                            <span class="tech">Control Systems</span>
+                            <span class="tech">Robotics</span>
+                            <span class="tech">Automation</span>
+                            <span class="tech">Research</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">Comprehensive skill set across modern technologies</p>
+            </div>
+            
+            <div class="skills-container">
+                <!-- Blockchain & Web3 -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-coins"></i>
+                        <h3>Blockchain & Web3</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <svg viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M20.477,2l-4.5,8h-9l4.5-8h9" opacity="0.45"/>
+                                    <path d="M11.52,30l4.5-8h9l-4.5,8h-9" opacity="0.45"/>
+                                    <path d="M15.975,10h9l-4.5-8h-9Z" opacity="0.6"/>
+                                    <path d="M16.022,22h-9l4.5,8h9Z" opacity="0.6"/>
+                                    <path d="M11.477,18l4.5-8-4.5-8-4.5,8Z" opacity="0.8"/>
+                                    <path d="M20.52,14l-4.5,8,4.5,8,4.5-8Z" opacity="0.8"/>
+                                </svg>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Solidity</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="95"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-ethereum"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Web3.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">DeFi Protocols</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frontend Development -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-code"></i>
+                        <h3>Frontend Development</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-react"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">React/Next.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="92"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-js-square"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">JavaScript/TypeScript</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-css3-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Modern CSS</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Backend & Data -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-server"></i>
+                        <h3>Backend & Data</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-node-js"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Node.js</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="88"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-python"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-database"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">SQL & Analytics</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="82"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tools & Systems -->
+                <div class="skill-category">
+                    <div class="category-header">
+                        <i class="fas fa-tools"></i>
+                        <h3>Tools & Systems</h3>
+                    </div>
+                    <div class="skills-grid">
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fab fa-git-alt"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Git & Version Control</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="90"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-microchip"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Embedded Systems</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="80"></div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="skill-item">
+                            <div class="skill-icon">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                            <div class="skill-info">
+                                <span class="skill-name">Data Visualization</span>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" data-progress="85"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Key Strengths -->
+            <div class="strengths">
+                <h3>Key Strengths</h3>
+                <div class="strengths-grid">
+                    <div class="strength-item">
+                        <i class="fas fa-comments"></i>
+                        <span>Exceptional Communication</span>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-bug"></i>
+                        <span>Advanced Debugging</span>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-rocket"></i>
+                        <span>Performance Optimization</span>
+                    </div>
+                    <div class="strength-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security Best Practices</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Let's Build Something Amazing</h2>
+                <p class="section-subtitle">Ready to bring your blockchain vision to life</p>
+            </div>
+            
+            <div class="contact-content">
+                <div class="contact-info">
+                    <div class="contact-card">
+                        <div class="contact-avatar">
+                            <img src="./img/profile.jpg" alt="Muhammad Aus Hijri">
+                        </div>
+                        <div class="contact-details">
+                            <h3>Get in Touch</h3>
+                            <p>
+                                I'm passionate about creating innovative blockchain solutions and 
+                                data-driven applications. Whether you have a project in mind or 
+                                want to discuss opportunities, I'd love to hear from you.
+                            </p>
+                            
+                            <div class="contact-methods">
+                                <a href="mailto:aushijri@icloud.com" class="contact-method">
+                                    <i class="fas fa-envelope"></i>
+                                    <div>
+                                        <span class="method-label">Email</span>
+                                        <span class="method-value">aushijri@icloud.com</span>
+                                    </div>
+                                </a>
+                                
+                                <a href="https://www.linkedin.com/in/muhammad-aus-hijri-bin-ramle-102a571b7/" 
+                                   target="_blank" rel="noopener noreferrer" class="contact-method">
+                                    <i class="fab fa-linkedin"></i>
+                                    <div>
+                                        <span class="method-label">LinkedIn</span>
+                                        <span class="method-value">Connect with me</span>
+                                    </div>
+                                </a>
+                                
+                                <a href="https://github.com/muhammadaus" 
+                                   target="_blank" rel="noopener noreferrer" class="contact-method">
+                                    <i class="fab fa-github"></i>
+                                    <div>
+                                        <span class="method-label">GitHub</span>
+                                        <span class="method-value">View my code</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Contact Form -->
+                <div class="contact-form-container">
+                    <form class="contact-form" id="contact-form">
+                        <div class="form-group">
+                            <label for="name">Full Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="subject">Subject</label>
+                            <select id="subject" name="subject" required>
+                                <option value="">Select a subject</option>
+                                <option value="project">Project Collaboration</option>
+                                <option value="job">Job Opportunity</option>
+                                <option value="consultation">Consultation</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Message</label>
+                            <textarea id="message" name="message" rows="6" required 
+                                     placeholder="Tell me about your project or opportunity..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn btn-primary" id="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-text">
+                    <p>&copy; 2025 Muhammad Aus Hijri. All rights reserved.</p>
+                    <p>Built with passion for blockchain innovation</p>
+                </div>
+                <div class="footer-social">
+                    <a href="https://www.linkedin.com/in/muhammad-aus-hijri-bin-ramle-102a571b7/" 
+                       target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/muhammadaus" 
+                       target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCTCESMpTiO0n0GWQ1B2jRBA" 
+                       target="_blank" rel="noopener noreferrer" aria-label="YouTube">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <!-- Scripts -->
+    <script src="./js/modern-portfolio.js"></script>
+</body>
+</html>
