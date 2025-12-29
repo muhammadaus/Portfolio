@@ -1,0 +1,24 @@
+[
+    {
+        "slug": "vim-productivity-ai-era",
+        "title": "Why Vim Still Matters: Beyond Touch Typing in the AI Era",
+        "description": "Discover why Vim remains an essential productivity tool in 2025, even with AI code generation. Learn how modal editing and muscle memory complement touch typing skills.",
+        "date": "2025-12-29",
+        "readTime": "13 min",
+        "tags": ["Vim", "Productivity", "Developer Tools", "AI", "Text Editing"],
+        "image": "./img/blog/vim-productivity.png",
+        "featured": false,
+        "author": "Muhammad Aus Hijri"
+    },
+    {
+        "slug": "git-beyond-code-version-control-everything",
+        "title": "Git Beyond Code: Version Control for Everything",
+        "description": "Exploring Git's potential for non-code files like spreadsheets and Word documents, current limitations, and the future of universal version control.",
+        "date": "2025-12-28",
+        "readTime": "11 min",
+        "tags": ["Git", "Version Control", "Productivity", "Developer Tools"],
+        "image": "./img/blog/git-beyond-code.png",
+        "featured": false,
+        "author": "Muhammad Aus Hijri"
+    }
+]

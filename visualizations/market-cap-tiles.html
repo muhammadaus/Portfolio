@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Market Capitalization Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 30px;
+            font-size: 24px;
+        }
+
+        .tiles-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .tile {
+            position: relative;
+            min-height: 200px;
+            padding: 20px;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: transform 0.2s;
+            overflow: hidden;
+        }
+
+        .tile:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .tile-label {
+            position: absolute;
+            top: 15px;
+            left: 20px;
+            font-size: 16px;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .tile-info {
+            position: absolute;
+            top: 50%;
+            left: 20px;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 20px;
+            border-radius: 8px;
+            z-index: 2;
+        }
+
+        .tile-info-label {
+            font-size: 12px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .tile-info-value {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+
+        .error {
+            background: #f44336;
+            color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+
+        .last-updated {
+            text-align: right;
+            color: #666;
+            font-size: 12px;
+            margin-top: 20px;
+        }
+
+        /* Color palette for different asset classes */
+        .crypto { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .stocks { background: linear-gradient(135deg, #2c5f8d 0%, #1e3c5a 100%); }
+        .bonds { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
+        .commodities { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .real-estate { background: linear-gradient(135deg, #30cfd0 0%, #330867 100%); }
+        .forex { background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Market Capitalization on tiles</h1>
+        <div id="error-container"></div>
+        <div id="loading" class="loading">Loading market data...</div>
+        <div id="tiles-grid" class="tiles-grid" style="display: none;"></div>
+        <div id="last-updated" class="last-updated"></div>
+    </div>
+
+    <script>
+        const marketData = [
+            {
+                category: 'Cryptocurrencies',
+                class: 'crypto',
+                apis: [
+                    {
+                        url: 'https://api.coingecko.com/api/v3/global',
+                        parser: (data) => data.data.total_market_cap.usd
+                    }
+                ]
+            },
+            {
+                category: 'Stocks',
+                class: 'stocks',
+                // Using estimated global stock market cap
+                fixedValue: 95000000000000, // ~$95 trillion
+                note: 'Global equities market estimate'
+            },
+            {
+                category: 'Bonds',
+                class: 'bonds',
+                fixedValue: 130000000000000, // ~$130 trillion
+                note: 'Global bond market estimate'
+            },
+            {
+                category: 'Real estate',
+                class: 'real-estate',
+                fixedValue: 280000000000000, // ~$280 trillion
+                note: 'Global real estate estimate'
+            },
+            {
+                category: 'Gold',
+                class: 'commodities',
+                apis: [
+                    {
+                        url: 'https://api.coingecko.com/api/v3/simple/price?ids=tether-gold&vs_currencies=usd&include_market_cap=true',
+                        parser: (data) => {
+                            // Approximate total gold market cap
+                            return 13000000000000; // ~$13 trillion
+                        }
+                    }
+                ]
+            },
+            {
+                category: 'Commodities',
+                class: 'commodities',
+                fixedValue: 20000000000000, // ~$20 trillion
+                note: 'Global commodities market estimate'
+            }
+        ];
+
+        function formatMarketCap(value) {
+            if (value >= 1e12) {
+                return (value / 1e12).toFixed(1) + 'T';
+            } else if (value >= 1e9) {
+                return (value / 1e9).toFixed(1) + 'B';
+            } else if (value >= 1e6) {
+                return (value / 1e6).toFixed(1) + 'M';
+            }
+            return value.toLocaleString();
+        }
+
+        async function fetchMarketData() {
+            const tilesGrid = document.getElementById('tiles-grid');
+            const loading = document.getElementById('loading');
+            const errorContainer = document.getElementById('error-container');
+            const lastUpdated = document.getElementById('last-updated');
+
+            try {
+                const tiles = await Promise.all(marketData.map(async (item) => {
+                    let marketCap;
+
+                    if (item.fixedValue) {
+                        marketCap = item.fixedValue;
+                    } else if (item.apis && item.apis.length > 0) {
+                        try {
+                            const response = await fetch(item.apis[0].url);
+                            const data = await response.json();
+                            marketCap = item.apis[0].parser(data);
+                        } catch (error) {
+                            console.error(`Error fetching ${item.category}:`, error);
+                            marketCap = 0;
+                        }
+                    }
+
+                    return {
+                        category: item.category,
+                        class: item.class,
+                        marketCap: marketCap,
+                        note: item.note
+                    };
+                }));
+
+                // Sort by market cap (descending)
+                tiles.sort((a, b) => b.marketCap - a.marketCap);
+
+                // Render tiles
+                tilesGrid.innerHTML = tiles.map(tile => `
+                    <div class="tile ${tile.class}">
+                        <div class="tile-label">${tile.category}</div>
+                        <div class="tile-info">
+                            <div class="tile-info-label">Market capitalization:</div>
+                            <div class="tile-info-value">$${formatMarketCap(tile.marketCap)}</div>
+                        </div>
+                    </div>
+                `).join('');
+
+                loading.style.display = 'none';
+                tilesGrid.style.display = 'grid';
+                lastUpdated.textContent = `Last updated: ${new Date().toLocaleString()}`;
+
+            } catch (error) {
+                console.error('Error loading market data:', error);
+                errorContainer.innerHTML = `<div class="error">Failed to load market data. Please try again later.</div>`;
+                loading.style.display = 'none';
+            }
+        }
+
+        // Load data on page load
+        fetchMarketData();
+
+        // Refresh every 5 minutes
+        setInterval(fetchMarketData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
