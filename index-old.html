@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Muhammad Aus Hijri's Portfolio - Full Stack Developer specializing in blockchain, smart contracts, and modern web development">
+    <meta name="author" content="Muhammad Aus Hijri"">
+
+    <title>My Portfolio</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link href="vendor/fontawesome-free-5.15.4-web/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-cPRFN9FP6p3/ZHF5ePf+fuL8gWA9CZU6Sd49pY3sAZ8cb/hYh7gDMbkaOcY/Ju6dXL1oWFYg7f5uoqB/+rAN3A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Custom styles for this template -->
+    <link href="css/resume.css" rel="stylesheet">
+    <style>
+        @keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    99% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+        .lang-toggle {
+            background: none;
+            border: 1px solid #fff;
+            color: #fff;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .lang-toggle:hover {
+            background-color: #fff;
+            color: #000;
+        }
+
+        .flex-container {
+            display: flex;
+        }
+
+        .main-card {
+            flex: 2; /* Takes up more space on the left */
+            margin-right: 20px; /* Space between main card and project cards */
+        }
+
+        .project-cards {
+            display: flex;
+            flex-wrap: wrap; /* Allows cards to wrap into rows */
+            flex: 1; /* Takes up remaining space on the right */
+        }
+
+        .card {
+
+    </style>
+</head>
+
+<body>
+    <nav id="navbar">
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><button class="lang-toggle" onclick="toggleLanguage('ja')">日本語</button></li>
+        </ul>
+    </nav>
+    <header class="header">
+        <div class="header-links flex-start">
+            <div class="profile-container">
+                <img class="profile" src="./img/profile.png" alt="Joe Blow">
+                <img class="ring" src="./img/Ring.svg" alt="Ring Border">
+            </div>
+            <ul class="flex-list list-items-circle">
+                <li>
+                    <a href="https://www.linkedin.com/in/muhammad-aus-hijri-bin-ramle-102a571b7/" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.github.com/muhammadaus" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.youtube.com/channel/UCTCESMpTiO0n0GWQ1B2jRBA" target="_blank" rel="noopener noreferrer">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                </li>
+            </ul>
+            <ul class="contact-details flex-list">
+                <!-- <li>Address</li> -->
+                <li><a href="mailto: aushijri@icloud.com" style="border: none;">aushijri@icloud.com</a></li>
+            </ul>
+        </div>
+        <h1>
+            My Name is
+            <br />
+            &lt;Muhammad Aus&gt; <br />
+            I am a Fullstack Blockchain Developer.
+        </h1>
+    </header>
+    
+    <main>
+
+        <!-- ABOUT -->
+
+        <section id="about" class="section about">
+            <h2>These are my diverse range of projects<br />
+                and improvements over the years:</h2>
+
+            <ul class="achievements">
+               <li></li>
+               <li>====>Certified in Google Advanced Data Analytics</li>
+               <li>====>Experienced Embedded Systems Software Engineer</li>
+               <li>====>Proficient Smart Contract Developer</li>
+           </ul>
+            <h2>
+                I am experienced in creating data analysis scripts that can be used for visualizations
+                and decision making. I am also working as a mechatronics engineer developing embedded
+                systems in C.
+            </h2>
+        </section>
+
+        <!-- PROJECTS -->
+
+       
+        <section id="projects" class="section projects">
+    <div class="flex-container">
+        <h2>Projects Showcase</h2>
+        <div class="main-cards">
+            <div class="main-card1">
+                <img src="./img/projects/default.png" alt="">
+                <h3 class="card-title">Landing website for CipherLogicXYZ</h3>
+                <p class="card-description">This was one of my first real world project that I have put credibility on</p>
+                <p class="card-description">This website is sleek and have the highest score obtained from light house.</p>
+                <div class="card-buttons">
+                    <a href="https://cipherlogic.xyz/" class="card-button--site" target="_blank" rel="noopener noreferrer">Site</a>
+                </div>
+            </div>
+
+            <div class="main-card2">
+                <img src="./img/projects/project_6.png" alt="">
+                <h3 class="card-title">Rent2Own</h3>
+                <p class="card-description">Taiko The Grant Factory Project: a decentralized platform that allows users to rent NFTs with the option to own them after fulfilling payment obligations.</p>
+                <div class="card-buttons">
+                    <a href="https://rent-2-own-nextjs.vercel.app/" class="card-button--site" target="_blank" rel="noopener noreferrer">Site</a>
+                    <a href="https://github.com/muhammadaus/Rent2Own" class="card-button--code" target="_blank" rel="noopener noreferrer">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card3">
+                <img src="./img/projects/project_0.png" alt="">
+                <h3 class="card-title">Decentralized Front-End for Smart Contract Interactions</h3>
+                <p class="card-description">My capstone project and potentially to be a very useful tool to all EVM users and developers.</p>
+                <p class="card-description">This website is powered by ReactJS and latest libraries for JSON RPC API Interactions.</p>
+                <div class="card-buttons">
+                    <a href="https://shortcut-sc-nextjs.vercel.app/" class="card-button--site" target="_blank" rel="noopener noreferrer">Site</a>
+                    <a href="https://github.com/muhammadaus/ShortcutSC" class="card-button--code" target="_blank" rel="noopener noreferrer">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card4">
+                <img src="./img/projects/project_5.png" alt="">
+                <img src="./img/projects/project_5_2.png" alt="">
+                <h3 class="card-title">Private Social App PRVT</h3>
+                <p class="card-description">An App dedicated for builders and programmers to build reputation and nurture community.</p>
+                <div class="card-buttons">
+                    <a href="https://ethglobal.com/showcase/prvt-ao0ze" class="card-button--site" target="_blank" rel="noopener noreferrer">Site</a>
+                    <a href="https://github.com/depatch/prvt" class="card-button--code" target="_blank" rel="noopener noreferrer">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card5">
+                <img src="./img/projects/project_4.png" alt="">
+                <h3 class="card-title">Decentralized AMM Liquidity Pool</h3>
+                <p class="card-description">The Hackathon project for ETH Tokyo 2024 and won some notable prizes.</p>
+                <div class="card-buttons">
+                    <a href="https://github.com/muhammadaus/ShadowSwap" class="card-button--code" target="_blank" rel="noopener noreferrer">Source Code</a>
+                </div>
+            </div>
+
+            <div class="main-card6">
+                <img src="./img/projects/project_7.png" alt="">
+                <h3 class="card-title">Data Analytics Projects</h3>
+                <p class="card-description">Visualizations based on collected data that can be turned into dashboards using Tableau.</p>
+                <p class="card-description">Data pipeline implementation using Dune SQL for database management and querying.</p>
+                <div class="card-buttons">
+                    <a href="https://public.tableau.com/app/profile/muhammad.aus/vizzes" class="card-button--site" target="_blank" rel="noopener noreferrer">Tableau</a>
+                    <a href="https://dune.com/kr/ethereum-price-action" class="card-button--site" target="_blank" rel="noopener noreferrer">Dune</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+        <!-- EXPIERENCE -->
+
+        <section id="experience" class="section experience">
+            <p class="experience-description">
+                I graduated from Tokyo University of Marine Science and Technology specialized
+                in Control Engineering for Mechatronics. In 2020, I started a career as a Software
+                Engineer and now, a Fullstack Developer.
+            </p>
+
+            <h2>Experience</h2>
+
+            <div class="experience-cards flex-center">
+                
+                <div class="experience-card">
+                    <h3 class="card-title">
+                        CipherLogic.xyz  <br> <span class="highlight">Software Development</span>
+                    </h3>
+                    <p class="card-years">04/2020-Present</p>
+
+                    <ul class="card-list">
+                        <li class="card-list-item">Reduced smart contract costs by 50% through gas optimization</li>
+                        <li class="card-list-item">Built token and NFT contracts on Ethereum</li>
+                        <li class="card-list-item">Tested smart contracts for security using Hardhat and Foundry</li>
+                        <li class="card-list-item">Added Web3 wallet support to websites</li>
+                        <li class="card-list-item">Created decentralized exchanges with custom sequencing</li>
+                        <li class="card-list-item">Built secure verification systems for social apps</li>
+                        <li class="card-list-item">Contributed code to Uniswap and Coinbase projects</li>
+                    </ul>
+                </div>
+
+                <div class="experience-card">
+                    <h3 class="card-title">
+                        Hitachi Construction Machinery <span class="highlight">Software Engineer</span>
+                    </h3>
+                    <p class="card-years">08/2022-08/2024</p>
+
+                    <ul class="card-list">
+                        <li class="card-list-item">Created simulation tests for hydraulic excavator control systems using Matlab and Simulink</li>
+                        <li class="card-list-item">Developed real-time motion control models for construction machinery in Simulink</li>
+                        <li class="card-list-item">Tested and debugged embedded C programs for sensor data processing and valve control</li>
+                    </ul>
+                </div>
+                
+                <div class="experience-card">
+                    <h3 class="card-title">
+                        Tokyo University of Marine Science and Technology
+                    </h3>
+                    <p class="card-years">2018-2020</p>
+
+                    <ul class="card-list">
+                        <li class="card-list-item">Graduated with 3.70 GPA</li>
+                        <li class="card-list-item">Focused on Control Engineering for Mechatronics</li>
+                    </ul>
+                </div>
+            </div>
+            
+            
+            
+        </section>
+
+        
+
+        <!-- SKILLS -->
+
+        <section id="skills" class="section skills">
+            
+            <h2>My tech stack</h2>
+
+            <div data-first class="skill-cards flex-center">
+                <div class="skill-card flex-center">
+                    <a href="https://www.javascript.com" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to JavaScript website -->
+                        <i class="fab fa-js-square"></i>
+                    </a>
+                </div>
+                <div class="skill-card flex-center">
+                    <a href="https://nextjs.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Next.js website -->
+                        <svg height="80px" viewBox=".5 -.2 1023 1024.1" width="80px" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m478.5.6c-2.2.2-9.2.9-15.5 1.4-145.3 13.1-281.4 91.5-367.6 212-48 67-78.7 143-90.3 223.5-4.1 28.1-4.6 36.4-4.6 74.5s.5 46.4 4.6 74.5c27.8 192.1 164.5 353.5 349.9 413.3 33.2 10.7 68.2 18 108 22.4 15.5 1.7 82.5 1.7 98 0 68.7-7.6 126.9-24.6 184.3-53.9 8.8-4.5 10.5-5.7 9.3-6.7-.8-.6-38.3-50.9-83.3-111.7l-81.8-110.5-102.5-151.7c-56.4-83.4-102.8-151.6-103.2-151.6-.4-.1-.8 67.3-1 149.6-.3 144.1-.4 149.9-2.2 153.3-2.6 4.9-4.6 6.9-8.8 9.1-3.2 1.6-6 1.9-21.1 1.9h-17.3l-4.6-2.9c-3-1.9-5.2-4.4-6.7-7.3l-2.1-4.5.2-200.5.3-200.6 3.1-3.9c1.6-2.1 5-4.8 7.4-6.1 4.1-2 5.7-2.2 23-2.2 20.4 0 23.8.8 29.1 6.6 1.5 1.6 57 85.2 123.4 185.9s157.2 238.2 201.8 305.7l81 122.7 4.1-2.7c36.3-23.6 74.7-57.2 105.1-92.2 64.7-74.3 106.4-164.9 120.4-261.5 4.1-28.1 4.6-36.4 4.6-74.5s-.5-46.4-4.6-74.5c-27.8-192.1-164.5-353.5-349.9-413.3-32.7-10.6-67.5-17.9-106.5-22.3-9.6-1-75.7-2.1-84-1.3zm209.4 309.4c4.8 2.4 8.7 7 10.1 11.8.8 2.6 1 58.2.8 183.5l-.3 179.8-31.7-48.6-31.8-48.6v-130.7c0-84.5.4-132 1-134.3 1.6-5.6 5.1-10 9.9-12.6 4.1-2.1 5.6-2.3 21.3-2.3 14.8 0 17.4.2 20.7 2z"/>
+                            <path d="m784.3 945.1c-3.5 2.2-4.6 3.7-1.5 2 2.2-1.3 5.8-4 5.2-4.1-.3 0-2 1-3.7 2.1zm-6.9 4.5c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-7.6 4c-3.8 2-3.6 2.8.2.9 1.7-.9 3-1.8 3-2 0-.7-.1-.6-3.2 1.1z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div data-first class="skill-card flex-center">
+                    <a href="https://nodejs.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Node.js website -->
+                        <i class="fab fa-node-js"></i>
+                    </a>
+                </div>
+                <div data-last class="skill-card flex-center">
+                    <a href="https://www.npmjs.com" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to npm website -->
+                        <i class="fab fa-npm"></i>
+                    </a>
+                </div>
+                <div data-first class="skill-card flex-center">
+                    <a href="https://www.python.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Python website -->
+                        <i class="fab fa-python"></i>
+                    </a>
+                </div>
+                <div data-last class="skill-card flex-center">
+                    <a href="https://soliditylang.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Solidity website -->
+                        <svg width="80px" height="80px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <title>file_type_solidity</title>
+                            <path d="M20.477,2l-4.5,8h-9l4.5-8h9" opacity="0.45" isolation="isolate"/>
+                            <path d="M11.52,30l4.5-8h9l-4.5,8h-9" opacity="0.45" isolation="isolate"/>
+                            <path d="M15.975,10h9l-4.5-8h-9Z" opacity="0.6" isolation="isolate"/>
+                            <path d="M16.022,22h-9l4.5,8h9Z" opacity="0.6" isolation="isolate"/>
+                            <path d="M11.477,18l4.5-8-4.5-8-4.5,8Z" opacity="0.8" isolation="isolate"/>
+                            <path d="M20.52,14l-4.5,8,4.5,8,4.5-8Z" opacity="0.8" isolation="isolate"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="skill-cards flex-center">
+                <div class="skill-card flex-center">
+                    <a href="https://www.javascript.com" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to JavaScript website -->
+                        <i class="fab fa-js-square"></i>
+                    </a>
+                </div>
+                <div class="skill-card flex-center">
+                    <a href="https://nextjs.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Next.js website -->
+                        <svg height="80px" viewBox=".5 -.2 1023 1024.1" width="80px" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m478.5.6c-2.2.2-9.2.9-15.5 1.4-145.3 13.1-281.4 91.5-367.6 212-48 67-78.7 143-90.3 223.5-4.1 28.1-4.6 36.4-4.6 74.5s.5 46.4 4.6 74.5c27.8 192.1 164.5 353.5 349.9 413.3 33.2 10.7 68.2 18 108 22.4 15.5 1.7 82.5 1.7 98 0 68.7-7.6 126.9-24.6 184.3-53.9 8.8-4.5 10.5-5.7 9.3-6.7-.8-.6-38.3-50.9-83.3-111.7l-81.8-110.5-102.5-151.7c-56.4-83.4-102.8-151.6-103.2-151.6-.4-.1-.8 67.3-1 149.6-.3 144.1-.4 149.9-2.2 153.3-2.6 4.9-4.6 6.9-8.8 9.1-3.2 1.6-6 1.9-21.1 1.9h-17.3l-4.6-2.9c-3-1.9-5.2-4.4-6.7-7.3l-2.1-4.5.2-200.5.3-200.6 3.1-3.9c1.6-2.1 5-4.8 7.4-6.1 4.1-2 5.7-2.2 23-2.2 20.4 0 23.8.8 29.1 6.6 1.5 1.6 57 85.2 123.4 185.9s157.2 238.2 201.8 305.7l81 122.7 4.1-2.7c36.3-23.6 74.7-57.2 105.1-92.2 64.7-74.3 106.4-164.9 120.4-261.5 4.1-28.1 4.6-36.4 4.6-74.5s-.5-46.4-4.6-74.5c-27.8-192.1-164.5-353.5-349.9-413.3-32.7-10.6-67.5-17.9-106.5-22.3-9.6-1-75.7-2.1-84-1.3zm209.4 309.4c4.8 2.4 8.7 7 10.1 11.8.8 2.6 1 58.2.8 183.5l-.3 179.8-31.7-48.6-31.8-48.6v-130.7c0-84.5.4-132 1-134.3 1.6-5.6 5.1-10 9.9-12.6 4.1-2.1 5.6-2.3 21.3-2.3 14.8 0 17.4.2 20.7 2z"/>
+                            <path d="m784.3 945.1c-3.5 2.2-4.6 3.7-1.5 2 2.2-1.3 5.8-4 5.2-4.1-.3 0-2 1-3.7 2.1zm-6.9 4.5c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-7.6 4c-3.8 2-3.6 2.8.2.9 1.7-.9 3-1.8 3-2 0-.7-.1-.6-3.2 1.1z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div data-first class="skill-card flex-center">
+                    <a href="https://nodejs.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Node.js website -->
+                        <i class="fab fa-node-js"></i>
+                    </a>
+                </div>
+                <div data-last class="skill-card flex-center">
+                    <a href="https://www.npmjs.com" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to npm website -->
+                        <i class="fab fa-npm"></i>
+                    </a>
+                </div>
+                <div data-first class="skill-card flex-center">
+                    <a href="https://www.python.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Python website -->
+                        <i class="fab fa-python"></i>
+                    </a>
+                </div>
+                <div data-last class="skill-card flex-center">
+                    <a href="https://soliditylang.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Solidity website -->
+                        <svg width="80px" height="80px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <title>file_type_solidity</title>
+                            <path d="M20.477,2l-4.5,8h-9l4.5-8h9" opacity="0.45" isolation="isolate"/>
+                            <path d="M11.52,30l4.5-8h9l-4.5,8h-9" opacity="0.45" isolation="isolate"/>
+                            <path d="M15.975,10h9l-4.5-8h-9Z" opacity="0.6" isolation="isolate"/>
+                            <path d="M16.022,22h-9l4.5,8h9Z" opacity="0.6" isolation="isolate"/>
+                            <path d="M11.477,18l4.5-8-4.5-8-4.5,8Z" opacity="0.8" isolation="isolate"/>
+                            <path d="M20.52,14l-4.5,8,4.5,8,4.5-8Z" opacity="0.8" isolation="isolate"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <div data-last class="skill-cards flex-center">
+                <div class="skill-card flex-center">
+                    <a href="https://www.javascript.com" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to JavaScript website -->
+                        <i class="fab fa-js-square"></i>
+                    </a>
+                </div>
+                <div class="skill-card flex-center">
+                    <a href="https://nextjs.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Next.js website -->
+                        <svg height="80px" viewBox=".5 -.2 1023 1024.1" width="80px" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m478.5.6c-2.2.2-9.2.9-15.5 1.4-145.3 13.1-281.4 91.5-367.6 212-48 67-78.7 143-90.3 223.5-4.1 28.1-4.6 36.4-4.6 74.5s.5 46.4 4.6 74.5c27.8 192.1 164.5 353.5 349.9 413.3 33.2 10.7 68.2 18 108 22.4 15.5 1.7 82.5 1.7 98 0 68.7-7.6 126.9-24.6 184.3-53.9 8.8-4.5 10.5-5.7 9.3-6.7-.8-.6-38.3-50.9-83.3-111.7l-81.8-110.5-102.5-151.7c-56.4-83.4-102.8-151.6-103.2-151.6-.4-.1-.8 67.3-1 149.6-.3 144.1-.4 149.9-2.2 153.3-2.6 4.9-4.6 6.9-8.8 9.1-3.2 1.6-6 1.9-21.1 1.9h-17.3l-4.6-2.9c-3-1.9-5.2-4.4-6.7-7.3l-2.1-4.5.2-200.5.3-200.6 3.1-3.9c1.6-2.1 5-4.8 7.4-6.1 4.1-2 5.7-2.2 23-2.2 20.4 0 23.8.8 29.1 6.6 1.5 1.6 57 85.2 123.4 185.9s157.2 238.2 201.8 305.7l81 122.7 4.1-2.7c36.3-23.6 74.7-57.2 105.1-92.2 64.7-74.3 106.4-164.9 120.4-261.5 4.1-28.1 4.6-36.4 4.6-74.5s-.5-46.4-4.6-74.5c-27.8-192.1-164.5-353.5-349.9-413.3-32.7-10.6-67.5-17.9-106.5-22.3-9.6-1-75.7-2.1-84-1.3zm209.4 309.4c4.8 2.4 8.7 7 10.1 11.8.8 2.6 1 58.2.8 183.5l-.3 179.8-31.7-48.6-31.8-48.6v-130.7c0-84.5.4-132 1-134.3 1.6-5.6 5.1-10 9.9-12.6 4.1-2.1 5.6-2.3 21.3-2.3 14.8 0 17.4.2 20.7 2z"/>
+                            <path d="m784.3 945.1c-3.5 2.2-4.6 3.7-1.5 2 2.2-1.3 5.8-4 5.2-4.1-.3 0-2 1-3.7 2.1zm-6.9 4.5c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-5 3c-1.8 1.4-1.8 1.5.4.4 1.2-.6 2.2-1.3 2.2-1.5 0-.8-.5-.6-2.6 1.1zm-7.6 4c-3.8 2-3.6 2.8.2.9 1.7-.9 3-1.8 3-2 0-.7-.1-.6-3.2 1.1z"/>
+                        </svg>
+                    </a>
+                </div>
+                <div data-first class="skill-card flex-center">
+                    <a href="https://nodejs.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Node.js website -->
+                        <i class="fab fa-node-js"></i>
+                    </a>
+                </div>
+                <div data-last class="skill-card flex-center">
+                    <a href="https://www.npmjs.com" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to npm website -->
+                        <i class="fab fa-npm"></i>
+                    </a>
+                </div>
+                <div data-first class="skill-card flex-center">
+                    <a href="https://www.python.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Python website -->
+                        <i class="fab fa-python"></i>
+                    </a>
+                </div>
+                <div data-last class="skill-card flex-center">
+                    <a href="https://soliditylang.org" target="_blank" style="display: flex; align-items: center; justify-content: center;"> <!-- Link to Solidity website -->
+                        <svg width="80px" height="80px" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
+                            <title>file_type_solidity</title>
+                            <path d="M20.477,2l-4.5,8h-9l4.5-8h9" opacity="0.45" isolation="isolate"/>
+                            <path d="M11.52,30l4.5-8h9l-4.5,8h-9" opacity="0.45" isolation="isolate"/>
+                            <path d="M15.975,10h9l-4.5-8h-9Z" opacity="0.6" isolation="isolate"/>
+                            <path d="M16.022,22h-9l4.5,8h9Z" opacity="0.6" isolation="isolate"/>
+                            <path d="M11.477,18l4.5-8-4.5-8-4.5,8Z" opacity="0.8" isolation="isolate"/>
+                            <path d="M20.52,14l-4.5,8,4.5,8,4.5-8Z" opacity="0.8" isolation="isolate"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <ul class="skill-list flex-between">
+                <li><img src="./img/Check.svg" alt="Checkmark">Exceptional communication throughout all project stages</li>
+                <li><img src="./img/Check.svg" alt="Checkmark">Embedded systems testing & Debugging</li>
+                <li><img src="./img/Check.svg" alt="Checkmark">Rigorous version control with Git</li>
+            </ul>
+        </section>
+
+        <!-- CONTACT -->
+
+        <section id="contact" class="section contact">
+            <div class="contact-links flex-start">
+                <div class="profile-container">
+                    <img class="profile" src="./img/profile.jpg" alt="Joe Blow">
+                    <img class="ring" src="./img/Ring.svg" alt="Ring Border">
+                </div>
+
+                <ul class="flex-list list-items-circle">
+                    <li>
+                        <a href="https://www.linkedin.com/in/muhammad-aus-hijri-bin-ramle-102a571b7/" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.github.com/muhammadaus" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-github"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.youtube.com/channel/UCTCESMpTiO0n0GWQ1B2jRBA" target="_blank" rel="noopener noreferrer">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <h1>
+                Get in touch
+            </h1>
+
+            <p>
+                I am experienced in creating data analysis scripts that can be used for visualizations
+                and decision making. I am also working as a mechatronics engineer developing embedded
+                systems in C.
+            </p>
+
+            <ul class="contact-details flex-list">
+                <li><a href="mailto: aushijri@icloud.com">aushijri@icloud.com</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer class="footer flex-center">
+        <p><small>© Muhammad Aus 2025. All rights reserved.</small></p>
+    </footer>
+
+    <!-- Plugin JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/resume.js"></script>
+</body>
+
+</html>
