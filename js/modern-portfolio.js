@@ -329,32 +329,38 @@ ${email}`;
 
     // Code Execution Visualization Animation - Vim-style typing
     setupTypingEffect() {
+        const vimKeys = document.getElementById('vim-keys');
         const codeLine = document.getElementById('executing-line');
-        const outputLine = document.getElementById('output-line');
 
-        if (!codeLine || !outputLine) return;
+        if (!vimKeys || !codeLine) return;
 
         const codeSteps = [
-            { code: 'const hero = {', output: '' },
-            { code: '  name: "Muhammad Aus Hijri",', output: '' },
-            { code: '  title: "Full Stack Blockchain Developer",', output: '' },
-            { code: '  specialty: "Smart Contracts & DeFi"', output: '' },
-            { code: '};', output: '' },
-            { code: 'function displayHero() {', output: '' },
-            { code: 'displayHero();', output: '' },
-            { code: '  render(hero.name);', output: '> Muhammad Aus Hijri' },
-            { code: '  render(hero.title);', output: '> Full Stack Blockchain Developer' },
-            { code: '  render(hero.specialty);', output: '> Smart Contracts & DeFi' }
+            { keys: 'i', code: 'const hero = {' },
+            { keys: 'i  name: "Muhammad Aus Hijri",', code: '  name: "Muhammad Aus Hijri",' },
+            { keys: 'o  title: "Full Stack Blockchain Developer",', code: '  title: "Full Stack Blockchain Developer",' },
+            { keys: 'o  specialty: "Smart Contracts & DeFi"', code: '  specialty: "Smart Contracts & DeFi"' },
+            { keys: 'o};', code: '};' },
+            { keys: 'ofunction displayHero() {', code: 'function displayHero() {' },
+            { keys: 'i  render(hero.name);', code: '  render(hero.name);' },
+            { keys: 'o  render(hero.title);', code: '  render(hero.title);' },
+            { keys: 'o  render(hero.specialty);', code: '  render(hero.specialty);' },
+            { keys: 'o}', code: '}' },
+            { keys: 'odisplayHero();', code: 'displayHero();' }
         ];
 
         let currentStepIndex = 0;
         let isRunning = true;
 
-        const typeText = async (element, text, speed = 50) => {
+        const typeText = async (element, text, keysElement, keys, speed = 80) => {
             element.textContent = '';
+            keysElement.textContent = '';
+
             for (let i = 0; i < text.length; i++) {
                 if (!isRunning) return;
                 element.textContent += text[i];
+                if (i < keys.length) {
+                    keysElement.textContent = keys.substring(0, i + 1);
+                }
                 await new Promise(resolve => setTimeout(resolve, speed));
             }
         };
@@ -363,21 +369,11 @@ ${email}`;
             while (isRunning) {
                 const step = codeSteps[currentStepIndex];
 
-                // Type code line character by character
-                await typeText(codeLine, step.code, 60);
-
-                // Show output if exists
-                if (step.output) {
-                    await new Promise(resolve => setTimeout(resolve, 200));
-                    outputLine.textContent = step.output;
-                    outputLine.style.opacity = '1';
-                } else {
-                    outputLine.textContent = '';
-                    outputLine.style.opacity = '0';
-                }
+                // Type code and show corresponding vim keys
+                await typeText(codeLine, step.code, vimKeys, step.keys, 80);
 
                 // Pause before next line
-                await new Promise(resolve => setTimeout(resolve, 1200));
+                await new Promise(resolve => setTimeout(resolve, 1500));
 
                 currentStepIndex = (currentStepIndex + 1) % codeSteps.length;
             }
