@@ -1330,6 +1330,36 @@ class BlogManager {
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     window.portfolioInstance = new ModernPortfolio();
+
+    // Force counter animations
+    setTimeout(() => {
+        document.querySelectorAll('.stat-number').forEach(counter => {
+            const target = parseInt(counter.getAttribute('data-target'));
+            if (!isNaN(target) && target > 0) {
+                let current = 0;
+                const increment = target / 50;
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= target) {
+                        counter.textContent = target;
+                        clearInterval(timer);
+                    } else {
+                        counter.textContent = Math.floor(current);
+                    }
+                }, 40);
+            }
+        });
+    }, 500);
+
+    // Force skill bar animations
+    setTimeout(() => {
+        document.querySelectorAll('.skill-progress').forEach(bar => {
+            const progress = bar.getAttribute('data-progress');
+            if (progress) {
+                bar.style.width = progress + '%';
+            }
+        });
+    }, 600);
 });
 
 // Additional utility functions for external use
