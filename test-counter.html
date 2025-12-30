@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.stat-number { font-size: 48px; font-weight: bold; }
+</style>
+</head>
+<body>
+<div class="stat-number" data-target="50">0</div>
+<div class="stat-number" data-target="95">0</div>
+
+<script>
+function animateCounter(element) {
+    const target = parseInt(element.getAttribute('data-target'));
+    console.log('Animating to:', target);
+    const duration = 2000;
+    const start = performance.now();
+    
+    const animate = (currentTime) => {
+        const elapsed = currentTime - start;
+        const progress = Math.min(elapsed / duration, 1);
+        const easeOutQuart = 1 - Math.pow(1 - progress, 4);
+        const current = Math.floor(easeOutQuart * target);
+        
+        element.textContent = current;
+        
+        if (progress < 1) {
+            requestAnimationFrame(animate);
+        } else {
+            element.textContent = target;
+        }
+    };
+    
+    requestAnimationFrame(animate);
+}
+
+// Test immediately
+const counters = document.querySelectorAll('.stat-number');
+console.log('Found counters:', counters.length);
+counters.forEach(counter => {
+    console.log('Counter target:', counter.getAttribute('data-target'));
+    animateCounter(counter);
+});
+</script>
+</body>
+</html>

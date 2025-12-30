@@ -327,52 +327,55 @@ ${email}`;
         });
     }
 
-    // Typing Effect
+    // Code Execution Visualization Animation
     setupTypingEffect() {
-        const typingElement = document.getElementById('typing-text');
-        if (!typingElement) return;
+        const codeLine = document.getElementById('executing-line');
+        const outputLine = document.getElementById('output-line');
 
-        const phrases = [
-            'console.log("Hello World!");',
-            'Smart Contract Developer',
-            'DeFi Protocol Builder',
-            'Data Analytics Expert',
-            'Full Stack Engineer'
+        if (!codeLine || !outputLine) return;
+
+        const codeSteps = [
+            { code: 'const hero = {', output: '' },
+            { code: '  name: "Muhammad Aus Hijri",', output: '' },
+            { code: '  title: "Full Stack Blockchain Developer",', output: '' },
+            { code: '  specialty: "Smart Contracts & DeFi"', output: '' },
+            { code: '};', output: '' },
+            { code: 'function displayHero() {', output: '' },
+            { code: 'displayHero();', output: '' },
+            { code: '  render(hero.name);', output: '> Muhammad Aus Hijri' },
+            { code: '  render(hero.title);', output: '> Full Stack Blockchain Developer' },
+            { code: '  render(hero.specialty);', output: '> Smart Contracts & DeFi' }
         ];
 
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
+        let currentIndex = 0;
+        let isRunning = true;
 
-        const typeSpeed = 100;
-        const deleteSpeed = 50;
-        const pauseTime = 2000;
+        const showLine = () => {
+            if (!isRunning) return;
 
-        const type = () => {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
+            const step = codeSteps[currentIndex];
+            codeLine.textContent = step.code;
+            outputLine.textContent = step.output;
+            outputLine.style.opacity = step.output ? '1' : '0';
 
-            let nextDelay = isDeleting ? deleteSpeed : typeSpeed;
+            currentIndex = (currentIndex + 1) % codeSteps.length;
 
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                nextDelay = pauseTime;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-            }
-
-            setTimeout(type, nextDelay);
+            setTimeout(showLine, 800);
         };
 
-        type();
+        // Start animation
+        showLine();
+
+        // Pause when not visible
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                isRunning = entry.isIntersecting;
+                if (isRunning) showLine();
+            });
+        });
+
+        const container = document.querySelector('.typing-container');
+        if (container) observer.observe(container);
     }
 
     // Counter Animations

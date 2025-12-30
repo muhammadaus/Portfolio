@@ -36,10 +36,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer">
-    
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.0/marked.min.js"></script>
+
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/modern-portfolio.css">
     
@@ -74,7 +81,12 @@
 </head>
 <body>
     <!-- Loading Screen -->
-    <!-- Loader removed for instant content display -->
+    <div id="loader" class="loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <p>Loading Portfolio...</p>
+        </div>
+    </div>
 
     <!-- Navigation -->
     <nav class="navbar" id="navbar">
@@ -89,9 +101,6 @@
                     <a href="#home" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#blog" class="nav-link">Blog</a>
-                </li>
-                <li class="nav-item">
                     <a href="#about" class="nav-link">About</a>
                 </li>
                 <li class="nav-item">
@@ -102,6 +111,9 @@
                 </li>
                 <li class="nav-item">
                     <a href="#skills" class="nav-link">Skills</a>
+                </li>
+                <li class="nav-item">
+                    <a href="#blog" class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item">
                     <a href="#contact" class="nav-link">Contact</a>
@@ -119,16 +131,6 @@
             </div>
         </div>
     </nav>
-
-    <!-- Blog Section -->
-    <section id="blog" class="blog-simple">
-        <div class="container">
-            <h2>Recent Articles</h2>
-            <div class="articles-simple" id="articles-grid">
-                <div class="loading-state">Loading...</div>
-            </div>
-        </div>
-    </section>
 
     <!-- Hero Section -->
     <section id="home" class="hero">
@@ -165,11 +167,9 @@
                     </div>
                 </div>
                 <div class="hero-text">
-                    <div class="typing-container" aria-label="Animated code execution showing developer profile generation">
-                        <div class="code-execution">
-                            <div class="code-line" id="executing-line"></div>
-                            <div class="output-line" id="output-line"></div>
-                        </div>
+                    <div class="typing-container">
+                        <span class="typing-text" id="typing-text"></span>
+                        <span class="cursor">|</span>
                     </div>
                     <h1 class="hero-title">
                         Muhammad Aus Hijri
@@ -284,11 +284,14 @@
             
             <!-- Project Filter -->
             <div class="project-filters">
-                <button class="filter-btn active" data-filter="all">All Projects</button>
-                <button class="filter-btn" data-filter="blockchain">Blockchain</button>
-                <button class="filter-btn" data-filter="defi">DeFi</button>
-                <button class="filter-btn" data-filter="analytics">Analytics</button>
-                <button class="filter-btn" data-filter="frontend">Frontend</button>
+                <button class="filter-btn active" data-filter="all">All Projects <span class="filter-count"></span></button>
+                <button class="filter-btn" data-filter="blockchain">Blockchain <span class="filter-count"></span></button>
+                <button class="filter-btn" data-filter="defi">DeFi <span class="filter-count"></span></button>
+                <button class="filter-btn" data-filter="fullstack">Full-Stack <span class="filter-count"></span></button>
+                <button class="filter-btn" data-filter="ai">AI/LLM <span class="filter-count"></span></button>
+                <button class="filter-btn" data-filter="devtools">Dev Tools <span class="filter-count"></span></button>
+                <button class="filter-btn" data-filter="analytics">Analytics <span class="filter-count"></span></button>
+                <button class="filter-btn" data-filter="frontend">Frontend <span class="filter-count"></span></button>
             </div>
 
             <div class="projects-grid">
@@ -352,8 +355,8 @@
                             </div>
                         </div>
                         <p class="project-description">
-                            Taiko Grant Factory winner - decentralized platform for renting NFTs 
-                            with ownership options. Revolutionary rent-to-own model for digital assets.
+                            Decentralized platform for renting NFTs with ownership options built on Taiko blockchain.
+                            Revolutionary rent-to-own model for digital assets.
                         </p>
                         <div class="project-tech">
                             <span class="tech-tag">Solidity</span>
@@ -507,8 +510,28 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Load More Button -->
+            <div class="load-more-container" id="load-more-container" style="display: none;">
+                <button class="btn btn-primary load-more-btn" id="load-more-btn">
+                    Load More Projects
+                </button>
+            </div>
         </div>
     </section>
+
+    <!-- Project Modal -->
+    <div class="project-modal" id="project-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-project-title">
+        <div class="modal-overlay" id="modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="modal-close" aria-label="Close modal">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content" id="modal-content">
+                <!-- Dynamic content will be inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Experience Section -->
     <section id="experience" class="experience section">
@@ -821,9 +844,45 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
+    <!-- Blog Section -->
+    <section id="blog" class="blog">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Blog & Articles</h2>
+                <p class="section-subtitle">Technical insights and project deep-dives</p>
+            </div>
 
+            <!-- Article Filters -->
+            <div class="article-filters" id="article-filters">
+                <button class="filter-btn active" data-filter="all">All Articles</button>
+                <!-- Tags will be dynamically added -->
+            </div>
+
+            <!-- Articles Grid -->
+            <div class="articles-grid" id="articles-grid">
+                <!-- Articles will be dynamically loaded -->
+                <div class="loading-state">
+                    <div class="loader-spinner"></div>
+                    <p>Loading articles...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Article Modal -->
+    <div class="article-modal" id="article-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-article-title">
+        <div class="modal-overlay" id="article-modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="article-modal-close" aria-label="Close article">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content article-content" id="article-modal-content">
+                <!-- Dynamic article content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
     <section id="contact" class="contact section">
         <div class="container">
             <div class="section-header">
@@ -948,11 +1007,12 @@
     </button>
 
     <!-- Scripts -->
-    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.0/marked.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <!-- Data Files -->
     <script src="./js/projects-data.js"></script>
     <script src="./js/skills-data.js"></script>
     <script src="./js/github-stats-service.js"></script>
+
+    <!-- Main Portfolio Script -->
     <script src="./js/modern-portfolio.js"></script>
 </body>
 </html>
