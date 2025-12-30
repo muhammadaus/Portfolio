@@ -327,7 +327,7 @@ ${email}`;
         });
     }
 
-    // Code Execution Visualization Animation
+    // Code Execution Visualization Animation - Vim-style typing
     setupTypingEffect() {
         const codeLine = document.getElementById('executing-line');
         const outputLine = document.getElementById('output-line');
@@ -347,30 +347,50 @@ ${email}`;
             { code: '  render(hero.specialty);', output: '> Smart Contracts & DeFi' }
         ];
 
-        let currentIndex = 0;
+        let currentStepIndex = 0;
         let isRunning = true;
 
-        const showLine = () => {
-            if (!isRunning) return;
+        const typeText = async (element, text, speed = 50) => {
+            element.textContent = '';
+            for (let i = 0; i < text.length; i++) {
+                if (!isRunning) return;
+                element.textContent += text[i];
+                await new Promise(resolve => setTimeout(resolve, speed));
+            }
+        };
 
-            const step = codeSteps[currentIndex];
-            codeLine.textContent = step.code;
-            outputLine.textContent = step.output;
-            outputLine.style.opacity = step.output ? '1' : '0';
+        const runAnimation = async () => {
+            while (isRunning) {
+                const step = codeSteps[currentStepIndex];
 
-            currentIndex = (currentIndex + 1) % codeSteps.length;
+                // Type code line character by character
+                await typeText(codeLine, step.code, 60);
 
-            setTimeout(showLine, 800);
+                // Show output if exists
+                if (step.output) {
+                    await new Promise(resolve => setTimeout(resolve, 200));
+                    outputLine.textContent = step.output;
+                    outputLine.style.opacity = '1';
+                } else {
+                    outputLine.textContent = '';
+                    outputLine.style.opacity = '0';
+                }
+
+                // Pause before next line
+                await new Promise(resolve => setTimeout(resolve, 1200));
+
+                currentStepIndex = (currentStepIndex + 1) % codeSteps.length;
+            }
         };
 
         // Start animation
-        showLine();
+        runAnimation();
 
         // Pause when not visible
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 isRunning = entry.isIntersecting;
-                if (isRunning) showLine();
+                if (isRunning && entry.isIntersecting) runAnimation();
             });
         });
 
