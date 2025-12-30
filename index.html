@@ -975,5 +975,44 @@
     <script src="./js/skills-data.js"></script>
     <script src="./js/github-stats-service.js"></script>
     <script src="./js/modern-portfolio.js"></script>
+
+    <!-- Force animations to work -->
+    <script>
+    (function() {
+        function runAnimations() {
+            // Counters
+            document.querySelectorAll('.stat-number').forEach(function(el) {
+                var target = parseInt(el.getAttribute('data-target'));
+                if (target > 0) {
+                    var count = 0;
+                    var inc = target / 50;
+                    var timer = setInterval(function() {
+                        count += inc;
+                        if (count >= target) {
+                            el.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            el.textContent = Math.floor(count);
+                        }
+                    }, 40);
+                }
+            });
+
+            // Skill bars
+            document.querySelectorAll('.skill-progress').forEach(function(el) {
+                var prog = el.getAttribute('data-progress');
+                if (prog) el.style.width = prog + '%';
+            });
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', function() {
+                setTimeout(runAnimations, 500);
+            });
+        } else {
+            setTimeout(runAnimations, 500);
+        }
+    })();
+    </script>
 </body>
 </html><!-- Cache bust Tue Dec 30 15:53:08 JST 2025 -->
