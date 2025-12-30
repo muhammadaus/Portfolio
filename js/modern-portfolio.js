@@ -1229,8 +1229,9 @@ class BlogManager {
 
     showLoadingError() {
         const articlesGrid = document.getElementById('articles-grid');
+        // Don't clear static content - just log the error
         if (articlesGrid) {
-            articlesGrid.innerHTML = '<div class="loading-state"><p>Failed to load articles. Please try again later.</p></div>';
+            console.log('Article loading failed, keeping static content');
         }
     }
 }
