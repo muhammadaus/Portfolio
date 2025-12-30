@@ -21,6 +21,7 @@ class ModernPortfolio {
         this.loadProjectsData();
         this.setupProjectFilters();
         this.setupProjectModal();
+        this.setupArticleModal();
         this.setupContactForm();
         this.setupScrollAnimations();
         this.setupTypingEffect();
@@ -1219,16 +1220,62 @@ class BlogManager {
         });
     }
 
-    openArticle(slug) {
-        // Open blog post in new tab
+    async openArticle(slug) {
         const blogUrls = {
             'vim-productivity-ai-era': './blog/posts/vim-productivity-ai-era.md',
             'git-beyond-code-version-control-everything': './blog/posts/git-beyond-code-version-control-everything.md'
         };
 
-        if (blogUrls[slug]) {
-            window.open(blogUrls[slug], '_blank');
+        if (!blogUrls[slug]) return;
+
+        const modal = document.getElementById('article-modal');
+        const content = document.getElementById('article-modal-content');
+
+        if (!modal || !content) return;
+
+        // Show modal with loading state
+        content.innerHTML = '<div class="loading-state"><div class="loader-spinner"></div><p>Loading article...</p></div>';
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden';
+
+        try {
+            const response = await fetch(blogUrls[slug]);
+            if (!response.ok) throw new Error('Failed to load article');
+
+            const markdown = await response.text();
+            const html = marked.parse(markdown);
+
+            content.innerHTML = html;
+
+            // Apply syntax highlighting to code blocks
+            content.querySelectorAll('pre code').forEach((block) => {
+                hljs.highlightElement(block);
+            });
+        } catch (error) {
+            console.error('Error loading article:', error);
+            content.innerHTML = '<div class="error-state"><p>Failed to load article. Please try again.</p></div>';
         }
+    }
+
+    setupArticleModal() {
+        const modal = document.getElementById('article-modal');
+        const closeBtn = document.getElementById('article-modal-close');
+        const overlay = document.getElementById('article-modal-overlay');
+
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => this.closeArticleModal());
+        }
+
+        if (overlay) {
+            overlay.addEventListener('click', () => this.closeArticleModal());
+        }
+
+        // Close on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && modal && modal.style.display === 'block') {
+                this.closeArticleModal();
+            }
+        });
     }
 
     closeArticleModal() {
@@ -1250,7 +1297,7 @@ class BlogManager {
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
-    new ModernPortfolio();
+    window.portfolioInstance = new ModernPortfolio();
 });
 
 // Additional utility functions for external use

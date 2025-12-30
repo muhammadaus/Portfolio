@@ -36,10 +36,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
-          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+          integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
           crossorigin="anonymous" referrerpolicy="no-referrer">
-    
+
+    <!-- Markdown Parser -->
+    <script src="https://cdn.jsdelivr.net/npm/marked@11.1.0/marked.min.js"></script>
+
+    <!-- Syntax Highlighting -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/modern-portfolio.css">
     
@@ -127,11 +134,11 @@
             <div class="blog-articles" id="articles-grid">
                 <div class="blog-article-item">
                     <img src="./img/blog/vim-productivity.png" alt="Vim Editor" class="blog-article-image">
-                    <a href="./blog/posts/vim-productivity-ai-era.md" target="_blank" class="blog-article-link">Why Vim Still Matters: Beyond Touch Typing in the AI Era</a>
+                    <a href="#" onclick="event.preventDefault(); window.portfolioInstance.openArticle('vim-productivity-ai-era')" class="blog-article-link">Why Vim Still Matters: Beyond Touch Typing in the AI Era</a>
                 </div>
                 <div class="blog-article-item">
                     <img src="./img/blog/git-beyond-code.png" alt="Git Version Control" class="blog-article-image">
-                    <a href="./blog/posts/git-beyond-code-version-control-everything.md" target="_blank" class="blog-article-link">Git Beyond Code: Version Control for Everything</a>
+                    <a href="#" onclick="event.preventDefault(); window.portfolioInstance.openArticle('git-beyond-code-version-control-everything')" class="blog-article-link">Git Beyond Code: Version Control for Everything</a>
                 </div>
             </div>
         </div>
@@ -821,6 +828,19 @@
             </div>
         </div>
     </section>
+
+    <!-- Article Modal -->
+    <div class="article-modal" id="article-modal" style="display: none;" role="dialog" aria-modal="true" aria-labelledby="modal-article-title">
+        <div class="modal-overlay" id="article-modal-overlay"></div>
+        <div class="modal-container">
+            <button class="modal-close" id="article-modal-close" aria-label="Close article">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-content article-content" id="article-modal-content">
+                <!-- Dynamic article content will be inserted here -->
+            </div>
+        </div>
+    </div>
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
