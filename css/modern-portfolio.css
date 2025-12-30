@@ -343,28 +343,40 @@ body {
     font-size: 0.9rem;
     color: var(--primary-color);
     margin-bottom: 1rem;
+    max-width: 600px;
 }
 
 .code-execution {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    width: 100%;
 }
 
 .code-line {
-    white-space: pre;
     padding: 0.4rem 0.8rem;
     background: rgba(102, 126, 234, 0.1);
     border-radius: 4px;
-    min-height: 1.5em;
+    height: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     transition: all 0.3s ease;
 }
 
+.code-line::before {
+    content: "~ ";
+    color: rgba(102, 126, 234, 0.5);
+    margin-right: 0.5rem;
+}
+
 .output-line {
-    white-space: pre;
     padding: 0.4rem 0.8rem;
     color: rgba(102, 126, 234, 0.8);
-    min-height: 1.5em;
+    height: 2em;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
     transition: opacity 0.3s ease;
 }
 
@@ -1690,20 +1702,54 @@ body {
 
 .blog-simple h2 {
     font-size: 1.5rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1rem;
     color: var(--text-primary);
 }
 
 .articles-simple {
-    display: flex;
-    gap: 1rem;
-    overflow-x: auto;
-    padding-bottom: 1rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 0.75rem;
+    max-height: 300px;
+    overflow-y: auto;
 }
 
 .articles-simple .article-card {
-    min-width: 280px;
-    flex-shrink: 0;
+    min-width: auto;
+    padding: 0.5rem;
+}
+
+.articles-simple .article-card-image {
+    height: 60px;
+}
+
+.articles-simple .article-card-content {
+    padding: 0.5rem;
+}
+
+.articles-simple .article-card-title {
+    font-size: 0.75rem;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+}
+
+.articles-simple .article-card-description {
+    display: none;
+}
+
+.articles-simple .article-card-meta {
+    font-size: 0.65rem;
+    padding-top: 0.25rem;
+    border-top: none;
+}
+
+.articles-simple .article-card-tags {
+    margin-bottom: 0.25rem;
+}
+
+.articles-simple .article-tag {
+    font-size: 0.6rem;
+    padding: 0.15rem 0.4rem;
 }
 
 .blog {
