@@ -1219,6 +1219,18 @@ class BlogManager {
         });
     }
 
+    openArticle(slug) {
+        // Open blog post in new tab
+        const blogUrls = {
+            'vim-productivity-ai-era': './blog/posts/vim-productivity-ai-era.md',
+            'git-beyond-code-version-control-everything': './blog/posts/git-beyond-code-version-control-everything.md'
+        };
+
+        if (blogUrls[slug]) {
+            window.open(blogUrls[slug], '_blank');
+        }
+    }
+
     closeArticleModal() {
         const modal = document.getElementById('article-modal');
         if (modal) {
