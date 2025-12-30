@@ -86,10 +86,10 @@
             </div>
             <ul class="nav-menu" id="nav-menu">
                 <li class="nav-item">
-                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#blog" class="nav-link">Blog</a>
                 </li>
                 <li class="nav-item">
-                    <a href="#blog" class="nav-link">Blog</a>
+                    <a href="#home" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="#about" class="nav-link">About</a>
@@ -123,10 +123,16 @@
     <!-- Blog Section -->
     <section id="blog" class="blog-simple">
         <div class="container">
-            <h2 style="color: #ffffff; font-size: 2rem; margin-bottom: 1rem; font-weight: 700;">Blog</h2>
-            <div class="blog-titles" id="articles-grid">
-                <a href="#" onclick="event.preventDefault()" style="color: #ffffff !important; font-size: 1.5rem !important; display: block !important; margin-bottom: 1rem !important;">Why Vim Still Matters: Beyond Touch Typing in the AI Era</a>
-                <a href="#" onclick="event.preventDefault()" style="color: #ffffff !important; font-size: 1.5rem !important; display: block !important;">Git Beyond Code: Version Control for Everything</a>
+            <h2 class="blog-heading">Blog</h2>
+            <div class="blog-articles" id="articles-grid">
+                <div class="blog-article-item">
+                    <img src="./img/blog/vim-productivity.png" alt="Vim Editor" class="blog-article-image">
+                    <a href="#" onclick="event.preventDefault()" class="blog-article-link">Why Vim Still Matters: Beyond Touch Typing in the AI Era</a>
+                </div>
+                <div class="blog-article-item">
+                    <img src="./img/blog/git-beyond-code.png" alt="Git Version Control" class="blog-article-image">
+                    <a href="#" onclick="event.preventDefault()" class="blog-article-link">Git Beyond Code: Version Control for Everything</a>
+                </div>
             </div>
         </div>
     </section>

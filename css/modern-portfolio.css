@@ -1701,40 +1701,58 @@ body {
    =================================== */
 
 .blog-simple {
-    padding: 3rem 0;
+    padding: 2rem 0;
     margin: 0;
     background: var(--bg-secondary);
     border-bottom: 1px solid rgba(102, 126, 234, 0.1);
     position: relative;
     z-index: 1;
-    min-height: 150px;
 }
 
 .blog-simple .container {
     padding: 0 2rem;
 }
 
-.blog-titles {
-    display: flex !important;
+.blog-heading {
+    color: var(--text-primary);
+    font-size: 1.75rem;
+    margin-bottom: 1.5rem;
+    font-weight: 700;
+}
+
+.blog-articles {
+    display: flex;
     gap: 2rem;
     flex-wrap: wrap;
-    font-size: 1rem;
-    font-weight: 600;
-    visibility: visible !important;
-    opacity: 1 !important;
 }
 
-.blog-titles a {
-    color: #ffffff !important;
+.blog-article-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    flex: 1;
+    min-width: 300px;
+}
+
+.blog-article-image {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 2px solid var(--primary-color);
+}
+
+.blog-article-link {
+    color: var(--text-primary);
     text-decoration: none;
-    opacity: 1 !important;
-    transition: opacity 0.2s;
-    display: inline-block !important;
-    visibility: visible !important;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: color 0.2s;
+    flex: 1;
 }
 
-.blog-titles a:hover {
-    opacity: 0.8 !important;
+.blog-article-link:hover {
+    color: var(--primary-color);
     text-decoration: underline;
 }
 
