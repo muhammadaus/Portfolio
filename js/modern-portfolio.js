@@ -1030,8 +1030,8 @@ class BlogManager {
             ? this.articles
             : this.articles.filter(a => a.tags.includes(this.currentFilter));
 
+        // Don't clear if no articles loaded - keep static content
         if (filteredArticles.length === 0) {
-            articlesGrid.innerHTML = '';
             return;
         }
 
