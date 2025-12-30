@@ -355,12 +355,13 @@ ${email}`;
             element.textContent = '';
             keysElement.textContent = '';
 
+            // Show vim keys first
+            keysElement.textContent = keys;
+
+            // Then type the code
             for (let i = 0; i < text.length; i++) {
                 if (!isRunning) return;
                 element.textContent += text[i];
-                if (i < keys.length) {
-                    keysElement.textContent = keys.substring(0, i + 1);
-                }
                 await new Promise(resolve => setTimeout(resolve, speed));
             }
         };
