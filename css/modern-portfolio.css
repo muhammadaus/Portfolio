@@ -1701,10 +1701,13 @@ body {
    =================================== */
 
 .blog-simple {
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     margin: 0;
-    background: var(--bg-secondary);
+    background: #ff0000;
     border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+    min-height: 80px;
+    position: relative;
+    z-index: 1;
 }
 
 .blog-simple .container {
@@ -1720,10 +1723,11 @@ body {
 }
 
 .blog-titles a {
-    color: var(--primary-color);
+    color: #ffffff;
     text-decoration: none;
     opacity: 1;
     transition: opacity 0.2s;
+    font-size: 1.2rem;
 }
 
 .blog-titles a:hover {
