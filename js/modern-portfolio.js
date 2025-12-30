@@ -1262,6 +1262,18 @@ class BlogManager {
         const closeBtn = document.getElementById('article-modal-close');
         const overlay = document.getElementById('article-modal-overlay');
 
+        // Setup article link click handlers
+        document.addEventListener('click', (e) => {
+            const link = e.target.closest('.blog-article-link');
+            if (link) {
+                e.preventDefault();
+                const slug = link.getAttribute('data-article-slug');
+                if (slug) {
+                    this.openArticle(slug);
+                }
+            }
+        });
+
         if (closeBtn) {
             closeBtn.addEventListener('click', () => this.closeArticleModal());
         }
