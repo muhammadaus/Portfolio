@@ -398,15 +398,23 @@ ${email}`;
 
     // Counter Animations
     setupCounterAnimations() {
+        console.log('setupCounterAnimations called');
         const counters = document.querySelectorAll('.stat-number');
-        console.log('Setting up counters, found:', counters.length);
+        console.log('Found counters:', counters.length, counters);
+
+        if (counters.length === 0) {
+            console.error('No .stat-number elements found!');
+            return;
+        }
 
         // Immediately start animations
-        counters.forEach(counter => {
+        counters.forEach((counter, index) => {
             const target = parseInt(counter.getAttribute('data-target'));
-            console.log('Counter target:', target);
-            if (!isNaN(target)) {
+            console.log(`Counter ${index}: target=${target}, element=`, counter);
+            if (!isNaN(target) && target > 0) {
                 this.animateCounter(counter);
+            } else {
+                console.error(`Invalid target for counter ${index}:`, target);
             }
         });
     }
@@ -440,14 +448,26 @@ ${email}`;
 
     // Skill Bar Animations
     setupSkillBars() {
+        console.log('setupSkillBars called');
         const skillBars = document.querySelectorAll('.skill-progress');
+        console.log('Found skill bars:', skillBars.length, skillBars);
+
+        if (skillBars.length === 0) {
+            console.error('No .skill-progress elements found!');
+            return;
+        }
 
         // Animate skill bars immediately
         setTimeout(() => {
-            skillBars.forEach(bar => {
+            console.log('Animating skill bars...');
+            skillBars.forEach((bar, index) => {
                 const progress = bar.getAttribute('data-progress');
+                console.log(`Skill bar ${index}: progress=${progress}%, element=`, bar);
                 if (progress) {
                     bar.style.width = progress + '%';
+                    console.log(`Set width to ${progress}%`);
+                } else {
+                    console.error(`No data-progress for skill bar ${index}`);
                 }
             });
         }, 200);
