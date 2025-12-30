@@ -28,451 +28,382 @@
         .blog-post h3 { color: var(--text-primary); font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; }
         .blog-post p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.2rem; }
         .blog-post strong { color: var(--text-primary); }
-        .blog-post code { background: var(--bg-primary); color: var(--primary-color); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: 'JetBrains Mono', monospace; }
+        .blog-post em { font-style: italic; }
+        .blog-post code { background: var(--bg-primary); color: var(--primary-color); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
         .blog-post pre { background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
-        .blog-post pre code { background: none; padding: 0; }
-        .blog-post ul { margin: 1rem 0 1.5rem 2rem; }
+        .blog-post pre code { background: none; padding: 0; color: var(--text-secondary); display: block; }
+        .blog-post ul, .blog-post ol { margin: 1rem 0 1.5rem 2rem; }
         .blog-post li { color: var(--text-secondary); margin: 0.75rem 0; line-height: 1.7; }
         .blog-post hr { border: none; border-top: 1px solid rgba(102, 126, 234, 0.2); margin: 3rem 0; }
+        .blog-post blockquote { border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-secondary); font-style: italic; }
     </style>
 </head>
 <body>
     <div class="blog-post">
         <a href="index.html#blog" class="back-link">← Back to Portfolio</a>
 <h1>Git Beyond Code: Version Control for Everything</h1>
-
 <h2>Introduction: The Unexplored Potential of Git</h2>
-
 <p>Git revolutionized software development, but what if we told you it could do the same for spreadsheets, documents, presentations, and more? While Git is synonymous with code, its core principles—tracking changes, branching, merging—are universally applicable to any file type.</p>
-
 <p>This article explores the possibilities, limitations, and future of using Git for non-code files.</p>
-
 <h2>Why Version Control Everything?</h2>
-
 <h3>The Problem with Traditional File Management</h3>
-
-<strong>Current workflow for most people:</strong>
-<p>``<code></p>
-<p>my-document.docx</p>
-<p>my-document-final.docx</p>
-<p>my-document-final-v2.docx</p>
-<p>my-document-final-v2-ACTUALLY-FINAL.docx</p>
-</code>`<code>
-
-<p>Sound familiar? We've all been there.</p>
-
-<strong>What version control solves:</strong>
-<ul><li><strong>Change tracking</strong>: Who changed what, when, and why</li>
+<p><strong>Current workflow for most people:</strong></p>
+<pre><code>my-document.docx
+my-document-final.docx
+my-document-final-v2.docx
+my-document-final-v2-ACTUALLY-FINAL.docx
+</code></pre>
+<p>Sound familiar? We&#39;ve all been there.</p>
+<p><strong>What version control solves:</strong></p>
+<ul>
+<li><strong>Change tracking</strong>: Who changed what, when, and why</li>
 <li><strong>Collaboration</strong>: Multiple people working simultaneously</li>
 <li><strong>History</strong>: Ability to revert to any previous version</li>
-<li><strong>Branching</strong>: Experiment without fear of losing the "good" version</li>
+<li><strong>Branching</strong>: Experiment without fear of losing the &quot;good&quot; version</li>
 </ul>
-
 <h3>Use Cases Beyond Code</h3>
-
-<strong>1. Documentation & Writing</strong>
-<ul><li>Technical documentation (Markdown is perfect for Git)</li>
+<p><strong>1. Documentation &amp; Writing</strong></p>
+<ul>
+<li>Technical documentation (Markdown is perfect for Git)</li>
 <li>Blog posts and articles</li>
 <li>Academic papers</li>
 <li>Books and manuscripts</li>
 </ul>
-
-<strong>2. Data & Analytics</strong>
-<ul><li>Spreadsheet version control</li>
+<p><strong>2. Data &amp; Analytics</strong></p>
+<ul>
+<li>Spreadsheet version control</li>
 <li>Dataset evolution tracking</li>
 <li>Analysis workflow documentation</li>
 </ul>
-
-<strong>3. Design & Creative Work</strong>
-<ul><li>Configuration files for design tools</li>
+<p><strong>3. Design &amp; Creative Work</strong></p>
+<ul>
+<li>Configuration files for design tools</li>
 <li>Version tracking for design iterations</li>
 <li>Asset management</li>
 </ul>
-
-<strong>4. Configuration Management</strong>
-<ul><li>System configuration files</li>
+<p><strong>4. Configuration Management</strong></p>
+<ul>
+<li>System configuration files</li>
 <li>Application settings</li>
 <li>Infrastructure as Code (IaC)</li>
 </ul>
-
 <h2>Git with Non-Code Files: What Works</h2>
-
 <h3>1. Plain Text Files (Perfect Fit)</h3>
-
-<strong>Markdown, LaTeX, Plain Text:</strong>
-<ul><li>Git was designed for text</li>
+<p><strong>Markdown, LaTeX, Plain Text:</strong></p>
+<ul>
+<li>Git was designed for text</li>
 <li>Line-by-line diffs work perfectly</li>
 <li>Merges are clean and predictable</li>
 </ul>
+<p><strong>Example workflow:</strong></p>
+<pre><code class="language-bash"># Writing this blog post
+git add git-beyond-code.md
+git commit -m &quot;Draft: Introduction and use cases section&quot;
+git push
 
-<strong>Example workflow:</strong>
-</code>`<code>bash
-<h1>Writing this blog post</h1>
-<p>git add git-beyond-code.md</p>
-<p>git commit -m "Draft: Introduction and use cases section"</p>
-<p>git push</p>
-
-<h1>Later, on another machine</h1>
-<p>git pull</p>
-<h1>Continue writing seamlessly</h1>
-</code>`<code>
-
-<strong>Why it works:</strong>
-<ul><li>Text diff algorithms are mature</li>
+# Later, on another machine
+git pull
+# Continue writing seamlessly
+</code></pre>
+<p><strong>Why it works:</strong></p>
+<ul>
+<li>Text diff algorithms are mature</li>
 <li>Merge conflicts are human-readable</li>
 <li>File sizes are small</li>
 <li>Every change is traceable</li>
 </ul>
-
 <h3>2. Structured Data (CSV, JSON, YAML)</h3>
+<p><strong>CSV/TSV files:</strong></p>
+<pre><code class="language-bash"># Track changes to data files
+git diff data/users.csv
 
-<strong>CSV/TSV files:</strong>
-</code>`<code>bash
-<h1>Track changes to data files</h1>
-<p>git diff data/users.csv</p>
+# Output shows exact rows changed
++ John Doe,johndoe@example.com,2025-12-28
+- John Doe,john@example.com,2025-12-27
+</code></pre>
+<p><strong>JSON configuration:</strong></p>
+<pre><code class="language-bash"># Perfect for config tracking
+git diff config/settings.json
 
-<h1>Output shows exact rows changed</h1>
-<p>+ John Doe,johndoe@example.com,2025-12-28</p>
-<ul><li>John Doe,john@example.com,2025-12-27</li>
-</ul>
-</code>`<code>
-
-<strong>JSON configuration:</strong>
-</code>`<code>bash
-<h1>Perfect for config tracking</h1>
-<p>git diff config/settings.json</p>
-
-<h1>Shows structural changes clearly</h1>
-<ul><li>"maxUsers": 100,</li>
-</ul>
-<p>+ "maxUsers": 150,</p>
-</code>`<code>
-
-<strong>Why it works:</strong>
-<ul><li>Structured formats diff reasonably well</li>
+# Shows structural changes clearly
+- &quot;maxUsers&quot;: 100,
++ &quot;maxUsers&quot;: 150,
+</code></pre>
+<p><strong>Why it works:</strong></p>
+<ul>
+<li>Structured formats diff reasonably well</li>
 <li>Changes are human-readable</li>
 <li>Integration with CI/CD pipelines</li>
 </ul>
-
 <h3>3. Binary Files (Limited Support)</h3>
-
-<strong>Git can track, but not diff:</strong>
-<ul><li>Images (PNG, JPG, etc.)</li>
+<p><strong>Git can track, but not diff:</strong></p>
+<ul>
+<li>Images (PNG, JPG, etc.)</li>
 <li>PDFs</li>
 <li>Office documents (DOCX, XLSX)</li>
 <li>Compressed archives</li>
 </ul>
-
-<strong>What you get:</strong>
-<ul><li>Full version history</li>
+<p><strong>What you get:</strong></p>
+<ul>
+<li>Full version history</li>
 <li>Ability to revert to previous versions</li>
 <li>File size tracking</li>
 </ul>
-
-<strong>What you don't get:</strong>
-<ul><li>Visual diffs of what changed</li>
+<p><strong>What you don&#39;t get:</strong></p>
+<ul>
+<li>Visual diffs of what changed</li>
 <li>Merge conflict resolution</li>
-<li>Efficient storage (binary files don't compress well)</li>
+<li>Efficient storage (binary files don&#39;t compress well)</li>
 </ul>
-
 <h2>Current Limitations</h2>
-
 <h3>1. Binary File Challenges</h3>
-
-<strong>Problem: No meaningful diffs</strong>
-</code>`<code>bash
-<p>git diff document.docx</p>
-<h1>Output: "Binary files differ"</h1>
-</code>`<code>
-
+<p><strong>Problem: No meaningful diffs</strong></p>
+<pre><code class="language-bash">git diff document.docx
+# Output: &quot;Binary files differ&quot;
+</code></pre>
 <p>Not helpful when you need to know <em>what</em> changed.</p>
-
-<strong>Problem: Storage bloat</strong>
-<ul><li>Each version stores the complete file</li>
+<p><strong>Problem: Storage bloat</strong></p>
+<ul>
+<li>Each version stores the complete file</li>
 <li>No delta compression for binaries</li>
 <li>Repository size grows rapidly</li>
 <li>Git LFS helps but adds complexity</li>
 </ul>
-
-<strong>Problem: Merge conflicts are disasters</strong>
-</code>`<code>bash
-<h1>Merging two branches with different Excel changes</h1>
-<p>git merge feature-branch</p>
-<p>CONFLICT (content): Merge conflict in budget.xlsx</p>
-<h1>Now what? You can't resolve it like text files</h1>
-</code>`<code>
-
+<p><strong>Problem: Merge conflicts are disasters</strong></p>
+<pre><code class="language-bash"># Merging two branches with different Excel changes
+git merge feature-branch
+CONFLICT (content): Merge conflict in budget.xlsx
+# Now what? You can&#39;t resolve it like text files
+</code></pre>
 <h3>2. Collaboration Friction</h3>
-
-<strong>Real-time editing:</strong>
-<ul><li>Google Docs allows simultaneous editing</li>
+<p><strong>Real-time editing:</strong></p>
+<ul>
+<li>Google Docs allows simultaneous editing</li>
 <li>Git requires commit → push → pull cycle</li>
 <li>Conflicts are manual, not automatic</li>
 </ul>
-
-<strong>Learning curve:</strong>
-<ul><li>Non-technical users struggle with Git concepts</li>
+<p><strong>Learning curve:</strong></p>
+<ul>
+<li>Non-technical users struggle with Git concepts</li>
 <li>Command-line interface is intimidating</li>
 <li>Branching/merging model is complex for simple tasks</li>
 </ul>
-
 <h3>3. File Format Lock-in</h3>
-
-<strong>Proprietary formats:</strong>
-<ul><li>.docx, .xlsx are actually zipped XML</li>
+<p><strong>Proprietary formats:</strong></p>
+<ul>
+<li>.docx, .xlsx are actually zipped XML</li>
 <li>Git sees them as binary blobs</li>
 <li>No way to extract meaningful text diffs</li>
 </ul>
-
-<strong>Vendor-specific features:</strong>
-<ul><li>Tracked changes in Word</li>
+<p><strong>Vendor-specific features:</strong></p>
+<ul>
+<li>Tracked changes in Word</li>
 <li>Comments in Excel</li>
 <li>Collaborative features in Office 365</li>
 <li>None of these work through Git</li>
 </ul>
-
 <h2>Workarounds and Solutions</h2>
-
 <h3>1. Convert to Text-Based Formats</h3>
-
-<strong>Markdown instead of Word:</strong>
-</code>`<code>markdown
-<h1>My Document</h1>
-<h2>Section 1</h2>
-<p>Content goes here...</p>
-</code>`<code>
-
-<strong>Advantages:</strong>
-<ul><li>Perfect diffs and merges</li>
+<p><strong>Markdown instead of Word:</strong></p>
+<pre><code class="language-markdown"># My Document
+## Section 1
+Content goes here...
+</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Perfect diffs and merges</li>
 <li>Works with any text editor</li>
 <li>Future-proof format</li>
 <li>Pandoc can convert to DOCX/PDF</li>
 </ul>
-
-<strong>CSV instead of Excel:</strong>
-</code>`<code>csv
-<p>Name,Email,Date</p>
-<p>John Doe,john@example.com,2025-12-28</p>
-</code>`<code>
-
-<strong>Advantages:</strong>
-<ul><li>Line-by-line diffs</li>
+<p><strong>CSV instead of Excel:</strong></p>
+<pre><code class="language-csv">Name,Email,Date
+John Doe,john@example.com,2025-12-28
+</code></pre>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li>Line-by-line diffs</li>
 <li>No proprietary lock-in</li>
 <li>Easy to process programmatically</li>
 </ul>
-
 <h3>2. Git LFS (Large File Storage)</h3>
-
-<strong>For large binary files:</strong>
-</code>`<code>bash
-<h1>Track large files separately</h1>
-<p>git lfs track "*.psd"</p>
-<p>git lfs track "*.mp4"</p>
-<p>git add .gitattributes</p>
-</code>`<code>
-
-<strong>What it does:</strong>
-<ul><li>Stores binaries on separate server</li>
+<p><strong>For large binary files:</strong></p>
+<pre><code class="language-bash"># Track large files separately
+git lfs track &quot;*.psd&quot;
+git lfs track &quot;*.mp4&quot;
+git add .gitattributes
+</code></pre>
+<p><strong>What it does:</strong></p>
+<ul>
+<li>Stores binaries on separate server</li>
 <li>Keeps repository lightweight</li>
 <li>Downloads files on-demand</li>
 </ul>
-
-<strong>Limitations:</strong>
-<ul><li>Still no diff capability</li>
+<p><strong>Limitations:</strong></p>
+<ul>
+<li>Still no diff capability</li>
 <li>Requires LFS server</li>
 <li>Additional complexity</li>
 </ul>
-
 <h3>3. Hybrid Approaches</h3>
-
-<strong>Use Git for structure, cloud storage for binaries:</strong>
-</code>`<code>
-<p>project/</p>
-<p>  ├── .git/</p>
-<p>  ├── README.md          (tracked in Git)</p>
-<p>  ├── config/            (tracked in Git)</p>
-<p>  └── assets/            (Dropbox/Google Drive)</p>
-<p>      └── design-files/</p>
-</code>`<code>
-
-<strong>Best of both worlds:</strong>
-<ul><li>Version control for text/config</li>
+<p><strong>Use Git for structure, cloud storage for binaries:</strong></p>
+<pre><code>project/
+  ├── .git/
+  ├── README.md          (tracked in Git)
+  ├── config/            (tracked in Git)
+  └── assets/            (Dropbox/Google Drive)
+      └── design-files/
+</code></pre>
+<p><strong>Best of both worlds:</strong></p>
+<ul>
+<li>Version control for text/config</li>
 <li>Cloud sync for binaries</li>
 <li>Clear separation of concerns</li>
 </ul>
-
-<h2>The Future: What's Possible?</h2>
-
+<h2>The Future: What&#39;s Possible?</h2>
 <h3>1. Smart Binary Diffs</h3>
-
-<strong>Imagine:</strong>
-</code>`<code>bash
-<p>git diff presentation.pptx</p>
-<h1>Shows:</h1>
-<ul><li>Slide 3: "Old Title"</li>
-</ul>
-<p>+ Slide 3: "New Title"</p>
-<p>+ Slide 8: Added image (logo.png)</p>
-</code>`<code>
-
-<strong>Technologies needed:</strong>
-<ul><li>File format parsers for Git</li>
+<p><strong>Imagine:</strong></p>
+<pre><code class="language-bash">git diff presentation.pptx
+# Shows:
+- Slide 3: &quot;Old Title&quot;
++ Slide 3: &quot;New Title&quot;
++ Slide 8: Added image (logo.png)
+</code></pre>
+<p><strong>Technologies needed:</strong></p>
+<ul>
+<li>File format parsers for Git</li>
 <li>Semantic diff algorithms</li>
 <li>Structured data extraction</li>
 </ul>
-
 <h3>2. Office Suite Integration</h3>
-
-<strong>Dream workflow:</strong>
-</code>`<code>
-<p>Excel → Edit spreadsheet → Save</p>
-<p>         ↓</p>
-<p>      Auto-commit to Git</p>
-<p>         ↓</p>
-<p>   Meaningful diff generated</p>
-<p>         ↓</p>
-<p>      Push to remote</p>
-</code>`<code>
-
-<strong>What's needed:</strong>
-<ul><li>Built-in Git support in Office</li>
+<p><strong>Dream workflow:</strong></p>
+<pre><code>Excel → Edit spreadsheet → Save
+         ↓
+      Auto-commit to Git
+         ↓
+   Meaningful diff generated
+         ↓
+      Push to remote
+</code></pre>
+<p><strong>What&#39;s needed:</strong></p>
+<ul>
+<li>Built-in Git support in Office</li>
 <li>Automatic commit on save</li>
 <li>Smart merge for spreadsheet cells</li>
 </ul>
-
 <h3>3. Real-Time Collaborative Git</h3>
-
-<strong>Combination of:</strong>
-<ul><li>Git's versioning power</li>
-<li>Google Docs' real-time collaboration</li>
+<p><strong>Combination of:</strong></p>
+<ul>
+<li>Git&#39;s versioning power</li>
+<li>Google Docs&#39; real-time collaboration</li>
 <li>Automatic conflict resolution</li>
 </ul>
-
-<strong>Concept:</strong>
-<ul><li>Multiple users edit simultaneously</li>
+<p><strong>Concept:</strong></p>
+<ul>
+<li>Multiple users edit simultaneously</li>
 <li>Changes sync in real-time</li>
 <li>Git tracks all changes in background</li>
 <li>Conflicts resolved intelligently</li>
 </ul>
-
 <h2>Practical Recommendations</h2>
-
 <h3>When to Use Git for Non-Code Files</h3>
-
-<strong>Great fit:</strong>
-<ul><li>✅ Markdown documentation</li>
+<p><strong>Great fit:</strong></p>
+<ul>
+<li>✅ Markdown documentation</li>
 <li>✅ LaTeX documents</li>
 <li>✅ Configuration files (YAML, JSON, INI)</li>
 <li>✅ CSV data files</li>
 <li>✅ Plain text notes</li>
 </ul>
-
-<strong>Possible but challenging:</strong>
-<ul><li>⚠️ Small Office documents (with LFS)</li>
+<p><strong>Possible but challenging:</strong></p>
+<ul>
+<li>⚠️ Small Office documents (with LFS)</li>
 <li>⚠️ Design files (version tracking only)</li>
 <li>⚠️ Small media files</li>
 </ul>
-
-<strong>Better alternatives exist:</strong>
-<ul><li>❌ Large media files → Use LFS or specialized tools</li>
+<p><strong>Better alternatives exist:</strong></p>
+<ul>
+<li>❌ Large media files → Use LFS or specialized tools</li>
 <li>❌ Real-time collaboration docs → Google Docs/Office 365</li>
 <li>❌ Complex spreadsheets → Excel Online with version history</li>
 </ul>
-
 <h3>Setting Up Git for Documents</h3>
+<p><strong>1. Initialize repository:</strong></p>
+<pre><code class="language-bash">mkdir my-documents
+cd my-documents
+git init
+</code></pre>
+<p><strong>2. Create .gitignore:</strong></p>
+<pre><code class="language-bash"># Ignore OS files
+.DS_Store
+Thumbs.db
 
-<strong>1. Initialize repository:</strong>
-</code>`<code>bash
-<p>mkdir my-documents</p>
-<p>cd my-documents</p>
-<p>git init</p>
-</code>`<code>
-
-<strong>2. Create .gitignore:</strong>
-</code>`<code>bash
-<h1>Ignore OS files</h1>
-<p>.DS_Store</p>
-<p>Thumbs.db</p>
-
-<h1>Ignore temporary files</h1>
-<p>~$*.docx</p>
-<p>*.tmp</p>
-</code>`<code>
-
-<strong>3. Set up Git LFS (if needed):</strong>
-</code>`<code>bash
-<p>git lfs install</p>
-<p>git lfs track "*.psd"</p>
-<p>git lfs track "*.docx"</p>
-</code>`<code>
-
-<strong>4. Commit regularly:</strong>
-</code>`<code>bash
-<p>git add .</p>
-<p>git commit -m "Draft: Introduction section"</p>
-<p>git push origin main</p>
-</code>`<code>
-
+# Ignore temporary files
+~$*.docx
+*.tmp
+</code></pre>
+<p><strong>3. Set up Git LFS (if needed):</strong></p>
+<pre><code class="language-bash">git lfs install
+git lfs track &quot;*.psd&quot;
+git lfs track &quot;*.docx&quot;
+</code></pre>
+<p><strong>4. Commit regularly:</strong></p>
+<pre><code class="language-bash">git add .
+git commit -m &quot;Draft: Introduction section&quot;
+git push origin main
+</code></pre>
 <h2>Case Study: This Blog</h2>
+<p><strong>How this article was written:</strong></p>
+<pre><code class="language-bash"># Day 1: Initial draft
+git checkout -b article/git-beyond-code
+git add blog/posts/git-beyond-code.md
+git commit -m &quot;Draft: Introduction and use cases&quot;
 
-<strong>How this article was written:</strong>
-</code>`<code>bash
-<h1>Day 1: Initial draft</h1>
-<p>git checkout -b article/git-beyond-code</p>
-<p>git add blog/posts/git-beyond-code.md</p>
-<p>git commit -m "Draft: Introduction and use cases"</p>
+# Day 2: Add limitations section
+git add blog/posts/git-beyond-code.md
+git commit -m &quot;Add section on current limitations&quot;
 
-<h1>Day 2: Add limitations section</h1>
-<p>git add blog/posts/git-beyond-code.md</p>
-<p>git commit -m "Add section on current limitations"</p>
+# Day 3: Final edits
+git add blog/posts/git-beyond-code.md
+git commit -m &quot;Final edits and examples&quot;
+git push origin article/git-beyond-code
 
-<h1>Day 3: Final edits</h1>
-<p>git add blog/posts/git-beyond-code.md</p>
-<p>git commit -m "Final edits and examples"</p>
-<p>git push origin article/git-beyond-code</p>
-
-<h1>Merge to main</h1>
-<p>git checkout main</p>
-<p>git merge article/git-beyond-code</p>
-</code>``
-
-<strong>Benefits realized:</strong>
-<ul><li>Full history of article evolution</li>
+# Merge to main
+git checkout main
+git merge article/git-beyond-code
+</code></pre>
+<p><strong>Benefits realized:</strong></p>
+<ul>
+<li>Full history of article evolution</li>
 <li>Ability to experiment with structure</li>
 <li>Easy collaboration with editors</li>
 <li>Automatic backup to GitHub</li>
 </ul>
-
 <h2>Conclusion: The Vision vs. Reality</h2>
-
-<p>Git is powerful for version controlling non-code files, but it's not a silver bullet. The future lies in:</p>
-
-<p>1. <strong>Better tooling</strong> - Smart diffs for binary formats</p>
-<p>2. <strong>Integration</strong> - Native Git support in productivity tools</p>
-<p>3. <strong>Education</strong> - Making Git accessible to non-developers</p>
-<p>4. <strong>Hybrid approaches</strong> - Combining Git's strengths with specialized tools</p>
-
-<strong>The bottom line:</strong>
-<ul><li>Use Git for text-based files → Excellent experience</li>
+<p>Git is powerful for version controlling non-code files, but it&#39;s not a silver bullet. The future lies in:</p>
+<ol>
+<li><strong>Better tooling</strong> - Smart diffs for binary formats</li>
+<li><strong>Integration</strong> - Native Git support in productivity tools</li>
+<li><strong>Education</strong> - Making Git accessible to non-developers</li>
+<li><strong>Hybrid approaches</strong> - Combining Git&#39;s strengths with specialized tools</li>
+</ol>
+<p><strong>The bottom line:</strong></p>
+<ul>
+<li>Use Git for text-based files → Excellent experience</li>
 <li>Use Git for binary files → Possible, but limited</li>
 <li>Wait for better tooling → Future looks promising</li>
 </ul>
-
-<p>Until then, choose the right tool for the job, and don't force Git where better alternatives exist.</p>
-
+<p>Until then, choose the right tool for the job, and don&#39;t force Git where better alternatives exist.</p>
 <hr>
-
 <h2>Further Reading</h2>
-
-<ul><li>[Git LFS Documentation](https://git-lfs.com/)</li>
-<li>[Pandoc - Convert Markdown to DOCX/PDF](https://pandoc.org/)</li>
-<li>[Using Git Version Control as a Writer](https://itsfoss.com/news/version-control-writers/)</li>
-<li>[Office File Formats Explained](https://learn.microsoft.com/en-us/office/open-xml/understanding-the-open-xml-file-formats)</li>
+<ul>
+<li><a href="https://git-lfs.com/">Git LFS Documentation</a></li>
+<li><a href="https://pandoc.org/">Pandoc - Convert Markdown to DOCX/PDF</a></li>
+<li><a href="https://itsfoss.com/news/version-control-writers/">Using Git Version Control as a Writer</a></li>
+<li><a href="https://learn.microsoft.com/en-us/office/open-xml/understanding-the-open-xml-file-formats">Office File Formats Explained</a></li>
 </ul>
-
 <hr>
-
-<em>This article was written in Markdown, version-controlled in Git, and demonstrates the workflow described above.</em>
+<p><em>This article was written in Markdown, version-controlled in Git, and demonstrates the workflow described above.</em></p>
 
     </div>
 </body>
