@@ -1023,32 +1023,29 @@ class BlogManager {
     }
 
     renderArticleGrid() {
-        console.log('renderArticleGrid called');
         const articlesGrid = document.getElementById('articles-grid');
-        console.log('articlesGrid element:', articlesGrid);
-        if (!articlesGrid) {
-            console.error('articlesGrid element not found!');
-            return;
-        }
+        if (!articlesGrid) return;
 
         const filteredArticles = this.currentFilter === 'all'
             ? this.articles
             : this.articles.filter(a => a.tags.includes(this.currentFilter));
 
-        console.log('Filtered articles count:', filteredArticles.length, filteredArticles);
-
         if (filteredArticles.length === 0) {
-            articlesGrid.innerHTML = '<div class="loading-state"><p>No articles found.</p></div>';
+            articlesGrid.innerHTML = '';
             return;
         }
 
         articlesGrid.innerHTML = '';
         filteredArticles.forEach(article => {
-            console.log('Rendering article card for:', article.slug);
-            const card = this.renderArticleCard(article);
-            articlesGrid.appendChild(card);
+            const link = document.createElement('a');
+            link.href = '#';
+            link.textContent = article.title;
+            link.onclick = (e) => {
+                e.preventDefault();
+                this.openArticle(article.slug);
+            };
+            articlesGrid.appendChild(link);
         });
-        console.log('Article grid rendering complete');
     }
 
     renderArticleCard(article) {
