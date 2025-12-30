@@ -1701,12 +1701,13 @@ body {
    =================================== */
 
 .blog-simple {
-    padding: 0.5rem 0;
+    padding: 1rem 0;
     margin: 0;
     background: var(--bg-secondary);
     border-bottom: 1px solid rgba(102, 126, 234, 0.1);
     position: relative;
     z-index: 1;
+    min-height: 60px;
 }
 
 .blog-simple .container {
@@ -1714,22 +1715,26 @@ body {
 }
 
 .blog-titles {
-    display: flex;
+    display: flex !important;
     gap: 2rem;
     flex-wrap: wrap;
-    font-size: 0.9rem;
-    font-weight: 500;
+    font-size: 1rem;
+    font-weight: 600;
+    visibility: visible !important;
+    opacity: 1 !important;
 }
 
 .blog-titles a {
-    color: var(--primary-color);
+    color: #ffffff !important;
     text-decoration: none;
-    opacity: 0.9;
+    opacity: 1 !important;
     transition: opacity 0.2s;
+    display: inline-block !important;
+    visibility: visible !important;
 }
 
 .blog-titles a:hover {
-    opacity: 1;
+    opacity: 0.8 !important;
     text-decoration: underline;
 }
 
