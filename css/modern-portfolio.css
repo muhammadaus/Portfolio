@@ -1367,6 +1367,30 @@ body {
     .container {
         padding: 0 1rem;
     }
+
+    /* Blog section mobile fixes */
+    .blog-simple {
+        padding-top: 80px;
+    }
+
+    .blog-articles {
+        flex-direction: column;
+        gap: 1.5rem;
+    }
+
+    .blog-article-item {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .blog-article-image {
+        width: 60px;
+        height: 60px;
+    }
+
+    .blog-heading {
+        font-size: 1.5rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1702,6 +1726,7 @@ body {
 
 .blog-simple {
     padding: 2rem 0;
+    padding-top: 90px; /* Account for fixed navbar (70px) + spacing */
     margin: 0;
     background: var(--bg-secondary);
     border-bottom: 1px solid rgba(102, 126, 234, 0.1);
