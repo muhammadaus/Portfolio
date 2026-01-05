@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Agents: From Claude Code to Self-Running Systems - Muhammad Aus Hijri</title>
+    <link rel="stylesheet" href="./css/modern-portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: var(--bg-primary); min-height: 100vh; }
+        .blog-post {
+            max-width: 900px;
+            margin: 80px auto 50px;
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .blog-post h1 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 2rem; }
+        .blog-post h2 { color: var(--text-primary); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; }
+        .blog-post h3 { color: var(--text-primary); font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+        .blog-post p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.2rem; }
+        .blog-post strong { color: var(--text-primary); }
+        .blog-post em { font-style: italic; }
+        .blog-post code { background: var(--bg-primary); color: var(--primary-color); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
+        .blog-post pre { background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
+        .blog-post pre code { background: none; padding: 0; color: var(--text-secondary); display: block; }
+        .blog-post ul, .blog-post ol { margin: 1rem 0 1.5rem 2rem; }
+        .blog-post li { color: var(--text-secondary); margin: 0.75rem 0; line-height: 1.7; }
+        .blog-post hr { border: none; border-top: 1px solid rgba(102, 126, 234, 0.2); margin: 3rem 0; }
+        .blog-post blockquote { border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-secondary); font-style: italic; }
+        .blog-post a { color: var(--primary-color); text-decoration: underline; }
+        .blog-post a:hover { color: var(--accent-color); }
+        @media (max-width: 768px) {
+            .blog-post { margin: 70px 1rem 30px; padding: 1.5rem; }
+            .blog-post h1 { font-size: 1.8rem; }
+            .blog-post h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <a href="index.html#blog" class="back-link">← Back to Portfolio</a>
+<h1>Autonomous Agents: From Claude Code to Self-Running Systems</h1>
+
+<h2>Introduction: The Age of Autonomous AI</h2>
+<p>We're entering an era where AI doesn't just respond to prompts—it takes autonomous action. Tools like <strong>Claude Code</strong> represent a fundamental shift from "AI as assistant" to "AI as agent." But how do you harness this power to build truly autonomous systems?</p>
+
+<p>In this article, I'll explore how to leverage AI agents for autonomous workflows, from simple automation to building systems like <strong>Ralph Wiggum</strong> (an autonomous LLM prompter) and self-improving development pipelines.</p>
+
+<h2>What Makes Claude Code Different</h2>
+
+<h3>Beyond Chat: Tool-Using AI</h3>
+<p>Traditional LLMs respond to prompts. Claude Code <em>acts</em> on them:</p>
+<ul>
+<li><strong>File system access</strong> - Read, write, and modify files directly</li>
+<li><strong>Shell execution</strong> - Run commands, build projects, execute tests</li>
+<li><strong>Web access</strong> - Fetch documentation, search for solutions</li>
+<li><strong>Git integration</strong> - Commit, push, create branches autonomously</li>
+</ul>
+
+<p><strong>Key insight:</strong> Claude Code doesn't just tell you what to do—it does it.</p>
+
+<pre><code class="language-bash"># Example: Claude Code can autonomously
+# 1. Read your codebase
+# 2. Identify issues
+# 3. Write fixes
+# 4. Run tests
+# 5. Commit changes
+# All from a single prompt like "fix the failing tests"
+</code></pre>
+
+<h3>The Agentic Loop</h3>
+<p>Claude Code operates in an <strong>agentic loop</strong>:</p>
+<ol>
+<li><strong>Observe</strong> - Read files, check status, gather context</li>
+<li><strong>Think</strong> - Plan the approach, break down tasks</li>
+<li><strong>Act</strong> - Execute tools (edit, run, commit)</li>
+<li><strong>Verify</strong> - Check results, run tests</li>
+<li><strong>Iterate</strong> - Repeat until goal is achieved</li>
+</ol>
+
+<p>This loop enables complex, multi-step tasks that would be tedious to do manually.</p>
+
+<h2>Building Autonomous Systems</h2>
+
+<h3>Ralph Wiggum: An LLM Prompter</h3>
+<p>One fascinating use case is building AI that prompts other AI—meta-automation. Imagine a system that:</p>
+
+<ol>
+<li><strong>Monitors a task queue</strong> - Watches for new work items</li>
+<li><strong>Generates optimal prompts</strong> - Crafts context-aware prompts for specific tasks</li>
+<li><strong>Dispatches to workers</strong> - Sends prompts to specialized LLM instances</li>
+<li><strong>Aggregates results</strong> - Combines outputs into coherent deliverables</li>
+<li><strong>Learns from feedback</strong> - Improves prompt templates over time</li>
+</ol>
+
+<pre><code class="language-python"># Conceptual architecture for an autonomous LLM prompter
+class AutonomousPrompter:
+    def __init__(self):
+        self.task_queue = TaskQueue()
+        self.prompt_templates = PromptLibrary()
+        self.workers = LLMWorkerPool()
+
+    async def run(self):
+        while True:
+            task = await self.task_queue.get()
+            prompt = self.generate_prompt(task)
+            result = await self.workers.execute(prompt)
+            await self.process_result(task, result)
+
+    def generate_prompt(self, task):
+        template = self.prompt_templates.get_best(task.type)
+        context = self.gather_context(task)
+        return template.render(task=task, context=context)
+</code></pre>
+
+<h3>Self-Improving Development Pipelines</h3>
+<p>Claude Code can be configured to autonomously improve codebases:</p>
+
+<p><strong>Continuous Refactoring Agent:</strong></p>
+<ul>
+<li>Scans for code smells and anti-patterns</li>
+<li>Proposes and implements refactoring</li>
+<li>Runs tests to verify changes</li>
+<li>Creates pull requests with explanations</li>
+</ul>
+
+<p><strong>Documentation Agent:</strong></p>
+<ul>
+<li>Monitors code changes</li>
+<li>Updates documentation automatically</li>
+<li>Generates API references</li>
+<li>Keeps README files current</li>
+</ul>
+
+<p><strong>Test Coverage Agent:</strong></p>
+<ul>
+<li>Identifies untested code paths</li>
+<li>Generates unit tests</li>
+<li>Maintains test suite health</li>
+</ul>
+
+<h2>Practical Patterns for Autonomous Workflows</h2>
+
+<h3>1. The Supervisor Pattern</h3>
+<p>A high-level agent orchestrates specialized sub-agents:</p>
+
+<pre><code class="language-yaml"># Supervisor configuration
+supervisor:
+  name: "Project Manager"
+  capabilities:
+    - task_decomposition
+    - agent_delegation
+    - result_aggregation
+
+agents:
+  - name: "Code Writer"
+    specialty: implementation
+  - name: "Reviewer"
+    specialty: code_review
+  - name: "Tester"
+    specialty: test_generation
+</code></pre>
+
+<h3>2. The Pipeline Pattern</h3>
+<p>Tasks flow through sequential processing stages:</p>
+
+<pre><code class="language-text">Input → Parse → Analyze → Generate → Verify → Output
+         ↓        ↓         ↓         ↓
+      Context  Insights   Code     Tests
+</code></pre>
+
+<h3>3. The Feedback Loop Pattern</h3>
+<p>Agents learn from their outputs:</p>
+
+<pre><code class="language-python"># Feedback loop for prompt improvement
+def improve_prompts(task, result, feedback):
+    if feedback.success:
+        # Reinforce successful patterns
+        prompt_library.strengthen(task.prompt_template)
+    else:
+        # Generate alternative approaches
+        new_template = generate_variant(task.prompt_template, feedback)
+        prompt_library.add(new_template)
+</code></pre>
+
+<h2>Claude Code Workflows</h2>
+
+<h3>Autonomous Bug Fixing</h3>
+<p>With a single command, Claude Code can:</p>
+
+<pre><code class="language-bash"># Start autonomous bug fixing session
+claude "Fix all failing tests in the project"
+
+# Claude Code will:
+# 1. Run the test suite
+# 2. Analyze failures
+# 3. Trace to root causes
+# 4. Implement fixes
+# 5. Re-run tests
+# 6. Commit working changes
+</code></pre>
+
+<h3>Feature Development</h3>
+<p>Describe what you want, let Claude Code build it:</p>
+
+<pre><code class="language-bash"># Autonomous feature development
+claude "Add user authentication with JWT tokens"
+
+# Claude Code will:
+# 1. Research your existing codebase structure
+# 2. Design the authentication flow
+# 3. Implement necessary components
+# 4. Write tests
+# 5. Update documentation
+# 6. Create a commit with clear message
+</code></pre>
+
+<h3>Code Review and Refactoring</h3>
+
+<pre><code class="language-bash"># Autonomous code review
+claude "Review the recent changes and suggest improvements"
+
+# Claude Code will:
+# 1. Check git diff
+# 2. Analyze code quality
+# 3. Identify potential issues
+# 4. Suggest or implement improvements
+</code></pre>
+
+<h2>Building Your Own Autonomous Agent</h2>
+
+<h3>Key Components</h3>
+
+<p>To build an autonomous agent, you need:</p>
+
+<ol>
+<li><strong>Task Definition</strong> - Clear goals and success criteria</li>
+<li><strong>Context Gathering</strong> - Ability to read and understand state</li>
+<li><strong>Action Space</strong> - Tools the agent can use</li>
+<li><strong>Verification</strong> - Ways to check if actions succeeded</li>
+<li><strong>Error Recovery</strong> - Handling failures gracefully</li>
+</ol>
+
+<h3>Example: Autonomous PR Agent</h3>
+
+<pre><code class="language-python"># Autonomous PR creation agent
+class PRAgent:
+    def __init__(self, repo, llm_client):
+        self.repo = repo
+        self.llm = llm_client
+
+    async def create_pr(self, issue):
+        # 1. Understand the issue
+        context = await self.gather_context(issue)
+
+        # 2. Plan the implementation
+        plan = await self.llm.plan(issue, context)
+
+        # 3. Implement changes
+        for task in plan.tasks:
+            await self.implement(task)
+
+        # 4. Verify changes
+        test_results = await self.run_tests()
+        if not test_results.passed:
+            await self.fix_tests(test_results)
+
+        # 5. Create PR
+        pr = await self.repo.create_pr(
+            title=plan.title,
+            body=self.generate_description(plan, context),
+            branch=self.branch_name
+        )
+
+        return pr
+</code></pre>
+
+<h2>Best Practices for Autonomous Agents</h2>
+
+<h3>Safety First</h3>
+<ul>
+<li><strong>Sandboxing</strong> - Limit agent actions to safe boundaries</li>
+<li><strong>Review gates</strong> - Require human approval for critical actions</li>
+<li><strong>Rollback capability</strong> - Always be able to undo agent actions</li>
+<li><strong>Logging</strong> - Track everything for debugging and auditing</li>
+</ul>
+
+<h3>Effective Prompting for Agents</h3>
+<ul>
+<li><strong>Be specific</strong> - Clear goals lead to better results</li>
+<li><strong>Provide context</strong> - Help agents understand the bigger picture</li>
+<li><strong>Define constraints</strong> - Set boundaries for acceptable solutions</li>
+<li><strong>Specify verification</strong> - Tell agents how to check their work</li>
+</ul>
+
+<pre><code class="language-text"># Good agent prompt
+"Implement a rate limiter for the API endpoints.
+Requirements:
+- Use Redis for distributed rate limiting
+- 100 requests per minute per user
+- Return 429 status when exceeded
+Verify by: Running the rate_limit_test.py suite"
+
+# Less effective prompt
+"Add rate limiting"
+</code></pre>
+
+<h3>Incremental Autonomy</h3>
+<p>Start with supervised automation and gradually increase autonomy:</p>
+<ol>
+<li><strong>Assisted</strong> - Agent suggests, human executes</li>
+<li><strong>Supervised</strong> - Agent executes, human approves</li>
+<li><strong>Autonomous</strong> - Agent executes within defined boundaries</li>
+<li><strong>Self-improving</strong> - Agent optimizes its own behavior</li>
+</ol>
+
+<h2>The Future: Self-Orchestrating Systems</h2>
+
+<p>The ultimate vision is systems where:</p>
+<ul>
+<li>Agents spawn other agents as needed</li>
+<li>Work is dynamically distributed based on complexity</li>
+<li>Systems self-heal and self-optimize</li>
+<li>Human oversight is strategic, not tactical</li>
+</ul>
+
+<p>We're not quite there yet, but tools like Claude Code are the building blocks.</p>
+
+<h2>Conclusion</h2>
+
+<p>Autonomous AI agents represent a paradigm shift in software development. With Claude Code, we can build systems that:</p>
+<ul>
+<li>Execute complex, multi-step tasks</li>
+<li>Maintain and improve codebases automatically</li>
+<li>Orchestrate other AI systems</li>
+<li>Learn and adapt from feedback</li>
+</ul>
+
+<p>The key is to start small, build safety rails, and gradually expand autonomy as trust develops. Whether you're building an "LLM prompter" like Ralph Wiggum or automating your development workflow, the principles remain the same: clear goals, good context, and robust verification.</p>
+
+<p><strong>The future isn't about AI replacing developers—it's about developers orchestrating AI agents to multiply their impact.</strong></p>
+
+<hr>
+
+<h2>Further Resources</h2>
+<ul>
+<li><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code Documentation</a></li>
+<li><a href="https://github.com/anthropics/anthropic-cookbook">Anthropic Cookbook - Agent Examples</a></li>
+<li><a href="https://arxiv.org/abs/2308.08155">ReAct: Reasoning and Acting in Language Models</a></li>
+<li><a href="https://langchain.com">LangChain - Building LLM Applications</a></li>
+</ul>
+
+<hr>
+<p><em>Written with Claude Code, naturally. The meta-level automation continues.</em></p>
+
+    </div>
+</body>
+</html>

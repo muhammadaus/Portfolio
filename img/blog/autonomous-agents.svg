@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#667eea"/>
+      <stop offset="100%" style="stop-color:#764ba2"/>
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#f093fb"/>
+      <stop offset="100%" style="stop-color:#667eea"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="400" height="400" fill="url(#bg)"/>
+
+  <!-- Grid pattern -->
+  <g stroke="#ffffff" stroke-opacity="0.1" stroke-width="1">
+    <line x1="0" y1="50" x2="400" y2="50"/>
+    <line x1="0" y1="100" x2="400" y2="100"/>
+    <line x1="0" y1="150" x2="400" y2="150"/>
+    <line x1="0" y1="200" x2="400" y2="200"/>
+    <line x1="0" y1="250" x2="400" y2="250"/>
+    <line x1="0" y1="300" x2="400" y2="300"/>
+    <line x1="0" y1="350" x2="400" y2="350"/>
+    <line x1="50" y1="0" x2="50" y2="400"/>
+    <line x1="100" y1="0" x2="100" y2="400"/>
+    <line x1="150" y1="0" x2="150" y2="400"/>
+    <line x1="200" y1="0" x2="200" y2="400"/>
+    <line x1="250" y1="0" x2="250" y2="400"/>
+    <line x1="300" y1="0" x2="300" y2="400"/>
+    <line x1="350" y1="0" x2="350" y2="400"/>
+  </g>
+
+  <!-- Central Agent Circle -->
+  <circle cx="200" cy="180" r="60" fill="#1a1a2e" stroke="url(#glow)" stroke-width="3"/>
+
+  <!-- AI Brain Icon -->
+  <g transform="translate(160, 140)">
+    <path d="M40 10 C20 10 10 25 10 40 C10 55 20 70 40 70 C60 70 70 55 70 40 C70 25 60 10 40 10"
+          fill="none" stroke="#f093fb" stroke-width="2"/>
+    <path d="M25 35 L35 45 L55 25" stroke="#10b981" stroke-width="3" fill="none" stroke-linecap="round"/>
+    <circle cx="30" cy="30" r="3" fill="#667eea"/>
+    <circle cx="50" cy="30" r="3" fill="#667eea"/>
+    <circle cx="40" cy="50" r="3" fill="#667eea"/>
+  </g>
+
+  <!-- Orbiting Nodes -->
+  <g>
+    <!-- Node 1 - Top -->
+    <circle cx="200" cy="80" r="25" fill="#1a1a2e" stroke="#10b981" stroke-width="2"/>
+    <text x="200" y="85" text-anchor="middle" fill="#10b981" font-size="14" font-family="monospace">&lt;/&gt;</text>
+
+    <!-- Node 2 - Right -->
+    <circle cx="300" cy="180" r="25" fill="#1a1a2e" stroke="#f59e0b" stroke-width="2"/>
+    <text x="300" y="185" text-anchor="middle" fill="#f59e0b" font-size="20" font-family="sans-serif">$</text>
+
+    <!-- Node 3 - Bottom -->
+    <circle cx="200" cy="280" r="25" fill="#1a1a2e" stroke="#ef4444" stroke-width="2"/>
+    <text x="200" y="285" text-anchor="middle" fill="#ef4444" font-size="14" font-family="monospace">AI</text>
+
+    <!-- Node 4 - Left -->
+    <circle cx="100" cy="180" r="25" fill="#1a1a2e" stroke="#667eea" stroke-width="2"/>
+    <text x="100" y="185" text-anchor="middle" fill="#667eea" font-size="18" font-family="monospace">#</text>
+  </g>
+
+  <!-- Connection Lines -->
+  <g stroke="#ffffff" stroke-opacity="0.3" stroke-width="1" stroke-dasharray="5,5">
+    <line x1="200" y1="120" x2="200" y2="105"/>
+    <line x1="260" y1="180" x2="275" y2="180"/>
+    <line x1="200" y1="240" x2="200" y2="255"/>
+    <line x1="140" y1="180" x2="125" y2="180"/>
+  </g>
+
+  <!-- Title -->
+  <text x="200" y="340" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="bold" font-family="Inter, sans-serif">AUTONOMOUS</text>
+  <text x="200" y="365" text-anchor="middle" fill="#f093fb" font-size="16" font-weight="500" font-family="Inter, sans-serif">AGENTS</text>
+
+  <!-- Decorative particles -->
+  <circle cx="50" cy="50" r="2" fill="#f093fb" opacity="0.6"/>
+  <circle cx="350" cy="80" r="3" fill="#667eea" opacity="0.5"/>
+  <circle cx="80" cy="320" r="2" fill="#10b981" opacity="0.7"/>
+  <circle cx="330" cy="300" r="2" fill="#f59e0b" opacity="0.6"/>
+</svg>
