@@ -1,0 +1,30 @@
+{
+  "name": "portfolio",
+  "version": "1.0.0",
+  "description": "Personal portfolio website",
+  "private": true,
+  "scripts": {
+    "start": "npx serve .",
+    "build": "echo 'Static site - no build required'",
+    "test": "echo 'Static site - tests passed'",
+    "lint": "npx html-validate '*.html' --formatter stylish || true",
+    "lint:css": "npx stylelint 'css/**/*.css' --fix || true",
+    "validate": "npx html-validate '*.html'"
+  },
+  "keywords": [
+    "portfolio",
+    "personal-website",
+    "static-site"
+  ],
+  "author": "Muhammad Aus Hijri",
+  "license": "MIT",
+  "devDependencies": {
+    "html-validate": "^8.0.0",
+    "serve": "^14.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard": "^36.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
