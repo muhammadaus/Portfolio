@@ -1,29 +1,63 @@
 # Portfolio
 
+A personal portfolio website showcasing projects, skills, and blog posts.
+
 ## Overview
-Improved repository with enhanced features and documentation.
 
-## Features
-- Enhanced security measures
-- Automated CI/CD pipeline
-- Comprehensive documentation
-- Code quality improvements
+This is a static HTML/CSS/JS portfolio site with:
+- Responsive design
+- Project showcases
+- Blog posts (Git, Vim, AI Agents)
+- Multi-language support (English/Japanese)
 
-## Installation
-```bash
-npm install
+## Structure
+
+```
+├── index.html          # Main portfolio page
+├── index_ja.html       # Japanese version
+├── blog/               # Blog posts directory
+├── css/                # Stylesheets
+├── js/                 # JavaScript files
+├── img/                # Images and assets
+├── vendor/             # Third-party libraries
+└── visualizations/     # Data visualizations
 ```
 
-## Usage
+## Local Development
+
+This is a static site - no build step required. To run locally:
+
 ```bash
-npm start
+# Using Python
+python -m http.server 8000
+
+# Using Node.js
+npx serve .
+
+# Using PHP
+php -S localhost:8000
 ```
+
+Then open `http://localhost:8000` in your browser.
+
+## Deployment
+
+The site is deployed automatically via GitHub Pages or Netlify on push to `master`.
+
+## Blog Posts
+
+- `agents-blog.html` - AI Agents and Automation
+- `git-blog.html` - Git Workflows and Best Practices  
+- `vim-blog.html` - Vim Tips and Configuration
 
 ## Contributing
-Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
+
+See [CONTRIBUTING.md](./CONTRIBUTING.md) for contribution guidelines.
 
 ## Security
-See SECURITY.md for information about reporting security vulnerabilities.
+
+See [SECURITY.md](./SECURITY.md) for security policy.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+This project is licensed under the MIT License - see [LICENSE](./LICENSE) for details.
