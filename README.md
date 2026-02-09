@@ -1,29 +1,55 @@
 # Portfolio
 
+Personal portfolio website - a static HTML/CSS/JS site.
+
 ## Overview
-Improved repository with enhanced features and documentation.
 
-## Features
-- Enhanced security measures
-- Automated CI/CD pipeline
-- Comprehensive documentation
-- Code quality improvements
+A responsive portfolio website showcasing projects, skills, and blog posts.
 
-## Installation
-```bash
-npm install
+## Structure
+
+```
+Portfolio/
+├── index.html          # Main portfolio page
+├── index_ja.html       # Japanese version
+├── css/                # Stylesheets
+├── js/                 # JavaScript files
+├── img/                # Images and assets
+├── blog/               # Blog posts
+├── visualizations/     # Data visualizations
+└── vendor/             # Third-party libraries
 ```
 
-## Usage
+## Local Development
+
+Simply open `index.html` in a browser, or use a local server:
+
 ```bash
-npm start
+# Python 3
+python -m http.server 8000
+
+# Node.js (if installed)
+npx serve .
 ```
+
+Then visit `http://localhost:8000`
+
+## Deployment
+
+This is a static site that can be deployed to:
+- GitHub Pages
+- Netlify
+- Vercel
+- Any static hosting
 
 ## Contributing
-Please read CONTRIBUTING.md for details on our code of conduct and the process for submitting pull requests.
+
+See [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
 
 ## Security
-See SECURITY.md for information about reporting security vulnerabilities.
+
+See [SECURITY.md](SECURITY.md) for reporting vulnerabilities.
 
 ## License
-This project is licensed under the MIT License - see the LICENSE file for details.
+
+MIT License - see [LICENSE](LICENSE) for details.
