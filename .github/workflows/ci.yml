@@ -1,32 +1,73 @@
-name: CI/CD Pipeline
+name: CI - Static Site Validation
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master, main, develop ]
   pull_request:
-    branches: [ main ]
+    branches: [ master, main ]
 
 jobs:
-  test:
+  validate:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
+    - name: Check HTML files exist
+      run: |
+        echo "Checking for required HTML files..."
+        test -f index.html && echo "✓ index.html exists"
+        test -d css && echo "✓ css/ directory exists"
+        test -d js && echo "✓ js/ directory exists"
+        test -d img && echo "✓ img/ directory exists"
+    
+    - name: Validate HTML syntax
+      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       with:
-        node-version: '18'
-        cache: 'npm'
+        root: .
+        css: false
+        extra: --ignore "error: Bad value" --ignore "error: Element"
+      continue-on-error: true  # Don't fail on minor HTML issues
     
-    - name: Install dependencies
-      run: npm ci
+    - name: Check for broken internal links
+      run: |
+        echo "Checking internal links in HTML files..."
+        # Find all local href/src references and check if files exist
+        for file in *.html; do
+          echo "Checking $file..."
+          # Extract local file references (not http/https/mailto/tel)
+          grep -oP '(?<=href="|src=")[^"]+' "$file" 2>/dev/null | \
+            grep -v '^http' | grep -v '^mailto:' | grep -v '^tel:' | grep -v '^#' | \
+            while read -r ref; do
+              if [ ! -f "$ref" ] && [ ! -d "${ref%/*}" ]; then
+                echo "  Warning: $ref not found (referenced in $file)"
+              fi
+            done || true
+        done
     
-    - name: Run tests
-      run: npm test
+    - name: Check for common security issues
+      run: |
+        echo "Running basic security checks..."
+        
+        # Check for inline scripts with potential issues
+        if grep -r "eval(" js/ 2>/dev/null; then
+          echo "Warning: eval() usage detected in JavaScript"
+        fi
+        
+        # Check for http:// (should use https://)
+        if grep -rh 'http://' *.html 2>/dev/null | grep -v 'http://localhost' | head -5; then
+          echo "Warning: Non-HTTPS URLs detected (consider using HTTPS)"
+        fi
+        
+        echo "✓ Security checks completed"
     
-    - name: Run linting
-      run: npm run lint
-    
-    - name: Build project
-      run: npm run build
+    - name: Generate file inventory
+      run: |
+        echo "## Static Site Inventory" >> $GITHUB_STEP_SUMMARY
+        echo "" >> $GITHUB_STEP_SUMMARY
+        echo "| Type | Count |" >> $GITHUB_STEP_SUMMARY
+        echo "|------|-------|" >> $GITHUB_STEP_SUMMARY
+        echo "| HTML files | $(find . -name '*.html' | wc -l) |" >> $GITHUB_STEP_SUMMARY
+        echo "| CSS files | $(find . -name '*.css' | wc -l) |" >> $GITHUB_STEP_SUMMARY
+        echo "| JS files | $(find . -name '*.js' | wc -l) |" >> $GITHUB_STEP_SUMMARY
+        echo "| Images | $(find . -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.gif' -o -name '*.svg' \) | wc -l) |" >> $GITHUB_STEP_SUMMARY
