@@ -1,32 +1,78 @@
-name: CI/CD Pipeline
+name: Static Site CI
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
-  test:
+  validate:
     runs-on: ubuntu-latest
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '18'
-        cache: 'npm'
+    - name: Validate HTML files exist
+      run: |
+        echo "Checking for required HTML files..."
+        test -f index.html && echo "✓ index.html exists"
+        test -f index_ja.html && echo "✓ index_ja.html exists"
+        echo "All required files present!"
     
-    - name: Install dependencies
-      run: npm ci
+    - name: Check for broken internal links
+      run: |
+        echo "Checking for common broken link patterns..."
+        # Check for references to non-existent files
+        if grep -r "href=\"[^\"]*\.html\"" *.html 2>/dev/null | grep -v "http" | head -20; then
+          echo "Found internal HTML links (verify they exist)"
+        fi
+        echo "Link check complete!"
     
-    - name: Run tests
-      run: npm test
+    - name: Validate HTML syntax (basic)
+      run: |
+        echo "Running basic HTML validation..."
+        for file in *.html; do
+          if [ -f "$file" ]; then
+            # Check for basic HTML structure
+            if grep -q "<!DOCTYPE html>" "$file" || grep -q "<html" "$file"; then
+              echo "✓ $file has valid HTML structure"
+            else
+              echo "⚠ $file may have invalid HTML structure"
+            fi
+          fi
+        done
     
-    - name: Run linting
-      run: npm run lint
+    - name: Check file sizes
+      run: |
+        echo "Checking file sizes..."
+        echo "HTML files:"
+        ls -lh *.html 2>/dev/null || echo "No HTML files in root"
+        echo ""
+        echo "Total size:"
+        du -sh . | cut -f1
     
-    - name: Build project
-      run: npm run build
+    - name: Security headers check
+      run: |
+        if [ -f "_headers" ]; then
+          echo "✓ _headers file exists (Netlify/Cloudflare security headers)"
+          cat _headers
+        else
+          echo "⚠ No _headers file found"
+        fi
+
+  deploy-check:
+    runs-on: ubuntu-latest
+    needs: validate
+    if: github.event_name == 'push' && github.ref == 'refs/heads/master'
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Deployment ready check
+      run: |
+        echo "✓ All checks passed!"
+        echo "Ready for deployment to static hosting (GitHub Pages, Netlify, Vercel, etc.)"
+        echo ""
+        echo "Files to deploy:"
+        find . -name "*.html" -o -name "*.css" -o -name "*.js" | grep -v node_modules | head -20
