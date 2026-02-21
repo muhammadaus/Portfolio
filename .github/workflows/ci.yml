@@ -2,31 +2,63 @@ name: CI/CD Pipeline
 
 on:
   push:
-    branches: [ main, develop ]
+    branches: [ master ]
   pull_request:
-    branches: [ main ]
+    branches: [ master ]
 
 jobs:
-  test:
+  validate:
     runs-on: ubuntu-latest
+    name: Validate HTML
     
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
     
-    - name: Setup Node.js
-      uses: actions/setup-node@v3
+    - name: Validate HTML files
+      uses: Cyb3r-Jak3/html5validator-action@v7.2.0
       with:
-        node-version: '18'
-        cache: 'npm'
+        root: .
+        css: true
+        
+  links:
+    runs-on: ubuntu-latest
+    name: Check Links
     
-    - name: Install dependencies
-      run: npm ci
+    steps:
+    - uses: actions/checkout@v4
     
-    - name: Run tests
-      run: npm test
+    - name: Link Checker
+      uses: lycheeverse/lychee-action@v1
+      with:
+        args: --no-progress './**/*.html'
+        fail: false  # Don't fail on broken links initially
+        
+  deploy:
+    runs-on: ubuntu-latest
+    name: Deploy to GitHub Pages
+    needs: [validate]
+    if: github.ref == 'refs/heads/master' && github.event_name == 'push'
     
-    - name: Run linting
-      run: npm run lint
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     
-    - name: Build project
-      run: npm run build
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Pages
+      uses: actions/configure-pages@v4
+      
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        path: '.'
+        
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
