@@ -8,11 +8,6 @@ ehthumbs.db
 Thumbs.db
 
 # IDE files
-# OS files
-.DS_Store
-Thumbs.db
-
-# IDE
 .vscode/
 .idea/
 *.swp
@@ -20,7 +15,7 @@ Thumbs.db
 *~
 
 # Logs
-logs
+logs/
 *.log
 npm-debug.log*
 yarn-debug.log*
@@ -29,9 +24,11 @@ yarn-error.log*
 # Environment variables
 .env
 .env.local
+.env.*.local
 .env.development.local
 .env.test.local
 .env.production.local
+.env.production
 
 # Build output
 dist/
@@ -40,33 +37,15 @@ build/
 # Temporary files
 *.tmp
 *.temp
+
+# Backup files
+*.backup
+*.bak
+
 # Security
 *.key
 *.pem
-.env.local
-.env.production
 secrets/
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Logs
-*.log
-
-# Build outputs
-dist/
-build/
-
-# Environment
-.env
-.env.local
-.env.*.local
 
 # Node (if used)
 node_modules/
