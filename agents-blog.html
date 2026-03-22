@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous Agents: From Claude Code to Self-Running Systems - Muhammad Aus Hijri</title>
+    <title>Autonomous Agents: Building with Hermes Agent and OpenClaw - Muhammad Aus Hijri</title>
     <link rel="stylesheet" href="./css/modern-portfolio.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -48,12 +48,12 @@
 <body>
     <div class="blog-post">
         <a href="index.html#blog" class="back-link">← Back to Portfolio</a>
-<h1>Autonomous Agents: From Claude Code to Self-Running Systems</h1>
+<h1>Autonomous Agents: Building with Hermes Agent and OpenClaw</h1>
 
 <h2>Introduction: The Age of Autonomous AI</h2>
 <p>We're entering an era where AI doesn't just respond to prompts—it takes autonomous action. Tools like <strong>Claude Code</strong> represent a fundamental shift from "AI as assistant" to "AI as agent." But how do you harness this power to build truly autonomous systems?</p>
 
-<p>In this article, I'll explore how to leverage AI agents for autonomous workflows, from simple automation to building systems like <strong>Ralph Wiggum</strong> (an autonomous LLM prompter) and self-improving development pipelines.</p>
+<p>In this article, I'll explore how to leverage AI agents for autonomous workflows, focusing on two powerful tools: <strong>Hermes Agent</strong> by Nous Research—a self-improving AI that builds skills from experience—and <strong>OpenClaw</strong>—the viral open-source framework that hit 214,000 GitHub stars by turning LLMs into autonomous agents across your existing apps.</p>
 
 <h2>What Makes Claude Code Different</h2>
 
@@ -91,36 +91,86 @@
 
 <h2>Building Autonomous Systems</h2>
 
-<h3>Ralph Wiggum: An LLM Prompter</h3>
-<p>One fascinating use case is building AI that prompts other AI—meta-automation. Imagine a system that:</p>
+<h3>Hermes Agent: The Self-Improving AI</h3>
+<p><strong>Hermes Agent</strong> by <a href="https://github.com/NousResearch/hermes-agent">Nous Research</a> is a fully open-source autonomous agent (MIT license) with a unique approach: it learns and grows with you.</p>
 
+<p><strong>Key Innovation: Skill Documents</strong></p>
+<p>Instead of dumping context into a vector database, Hermes builds <em>Skill Documents</em>—searchable markdown files that grow as the agent works. When it solves a problem, it writes a skill document so it never has to solve it again. The longer it runs, the more capable it gets.</p>
+
+<ul>
+<li><strong>Cross-session memory</strong> - Remembers your projects, preferences, and context forever</li>
+<li><strong>Multi-platform integration</strong> - Telegram, Discord, WhatsApp, Slack, Signal, Home Assistant</li>
+<li><strong>Multiple backends</strong> - Local, Docker, SSH, Singularity, Modal (serverless)</li>
+<li><strong>Model flexibility</strong> - Supports OpenRouter (200+ models), OpenAI, Claude, and custom endpoints</li>
+</ul>
+
+<pre><code class="language-bash"># Install Hermes Agent
+pip install hermes-agent
+
+# Initialize with your preferred model
+hermes init --model claude-3-opus
+
+# Start the agent
+hermes run
+
+# Switch models instantly
+hermes model openrouter/anthropic/claude-3.5-sonnet
+</code></pre>
+
+<h3>OpenClaw: The Viral Agent Framework</h3>
+<p><strong>OpenClaw</strong> (formerly Clawdbot) by Peter Steinberger is the open-source phenomenon that hit 214,000 GitHub stars—faster growth than Docker, Kubernetes, or React ever saw.</p>
+
+<p><strong>What makes OpenClaw different:</strong> It gives the LLM itself the ability to write, save, and execute code. The LLM becomes the developer.</p>
+
+<p><strong>The Five-Component Architecture:</strong></p>
 <ol>
-<li><strong>Monitors a task queue</strong> - Watches for new work items</li>
-<li><strong>Generates optimal prompts</strong> - Crafts context-aware prompts for specific tasks</li>
-<li><strong>Dispatches to workers</strong> - Sends prompts to specialized LLM instances</li>
-<li><strong>Aggregates results</strong> - Combines outputs into coherent deliverables</li>
-<li><strong>Learns from feedback</strong> - Improves prompt templates over time</li>
+<li><strong>Gateway</strong> - Routes messages from Slack, WhatsApp, Telegram, Discord</li>
+<li><strong>Brain</strong> - Orchestrates LLM calls using the ReAct reasoning loop</li>
+<li><strong>Memory</strong> - Stores persistent context in local Markdown files</li>
+<li><strong>Skills</strong> - Plug-in capabilities for actions (community-contributed)</li>
+<li><strong>Heartbeat</strong> - Schedules tasks and monitors inboxes</li>
 </ol>
 
-<pre><code class="language-python"># Conceptual architecture for an autonomous LLM prompter
-class AutonomousPrompter:
-    def __init__(self):
-        self.task_queue = TaskQueue()
-        self.prompt_templates = PromptLibrary()
-        self.workers = LLMWorkerPool()
+<pre><code class="language-python"># OpenClaw skill example
+from openclaw import Skill, action
 
-    async def run(self):
-        while True:
-            task = await self.task_queue.get()
-            prompt = self.generate_prompt(task)
-            result = await self.workers.execute(prompt)
-            await self.process_result(task, result)
+class GitHubSkill(Skill):
+    """Autonomous GitHub management"""
 
-    def generate_prompt(self, task):
-        template = self.prompt_templates.get_best(task.type)
-        context = self.gather_context(task)
-        return template.render(task=task, context=context)
+    @action
+    async def create_pr(self, repo: str, title: str, body: str):
+        """Create a pull request from current changes"""
+        # OpenClaw handles auth, context, and execution
+        branch = await self.git.create_branch(f"feature/{slugify(title)}")
+        await self.git.commit_all(title)
+        await self.git.push(branch)
+        return await self.github.create_pr(repo, title, body)
+
+    @action
+    async def fix_issue(self, issue_url: str):
+        """Autonomously fix a GitHub issue"""
+        issue = await self.github.get_issue(issue_url)
+        plan = await self.brain.plan(f"Fix: {issue.title}\n{issue.body}")
+
+        for step in plan.steps:
+            await self.execute(step)
+
+        await self.create_pr(
+            repo=issue.repo,
+            title=f"Fix #{issue.number}: {issue.title}",
+            body=f"Closes #{issue.number}\n\n{plan.summary}"
+        )
 </code></pre>
+
+<h3>Hermes vs OpenClaw: When to Use Each</h3>
+<p><strong>Hermes Agent</strong> excels at personal AI assistance with its self-improving skill system. <strong>OpenClaw</strong> shines in team environments with its extensive integrations and larger community ecosystem.</p>
+
+<ul>
+<li><strong>Self-improving over time</strong> - Hermes (built-in skill learning) vs OpenClaw (manual skill creation)</li>
+<li><strong>Privacy-focused</strong> - Both excellent, OpenClaw stores everything in local Markdown</li>
+<li><strong>Community skills</strong> - Hermes has Skills Hub (agentskills.io), OpenClaw has ClawHub (larger ecosystem)</li>
+<li><strong>Enterprise use</strong> - OpenClaw has more integrations out of the box</li>
+</ul>
 
 <h3>Self-Improving Development Pipelines</h3>
 <p>Claude Code can be configured to autonomously improve codebases:</p>
@@ -345,7 +395,7 @@ Verify by: Running the rate_limit_test.py suite"
 <li>Learn and adapt from feedback</li>
 </ul>
 
-<p>The key is to start small, build safety rails, and gradually expand autonomy as trust develops. Whether you're building an "LLM prompter" like Ralph Wiggum or automating your development workflow, the principles remain the same: clear goals, good context, and robust verification.</p>
+<p>The key is to start small, build safety rails, and gradually expand autonomy as trust develops. Whether you're building self-improving agents with Hermes, orchestrating autonomous workflows with OpenClaw, or using Claude Code for development automation, the principles remain the same: clear goals, persistent memory, and robust verification.</p>
 
 <p><strong>The future isn't about AI replacing developers—it's about developers orchestrating AI agents to multiply their impact.</strong></p>
 
@@ -353,10 +403,12 @@ Verify by: Running the rate_limit_test.py suite"
 
 <h2>Further Resources</h2>
 <ul>
+<li><a href="https://github.com/NousResearch/hermes-agent">Hermes Agent - Self-Improving AI by Nous Research</a></li>
+<li><a href="https://hermes-agent.nousresearch.com/docs/">Hermes Agent Documentation</a></li>
+<li><a href="https://openclaw.ai/">OpenClaw - The Viral Agent Framework</a></li>
+<li><a href="https://www.kdnuggets.com/openclaw-explained-the-free-ai-agent-tool-going-viral-already-in-2026">OpenClaw Explained - KDnuggets</a></li>
 <li><a href="https://docs.anthropic.com/en/docs/claude-code">Claude Code Documentation</a></li>
 <li><a href="https://github.com/anthropics/anthropic-cookbook">Anthropic Cookbook - Agent Examples</a></li>
-<li><a href="https://arxiv.org/abs/2308.08155">ReAct: Reasoning and Acting in Language Models</a></li>
-<li><a href="https://langchain.com">LangChain - Building LLM Applications</a></li>
 </ul>
 
 <hr>
