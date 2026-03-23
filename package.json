@@ -1,0 +1,14 @@
+{
+  "name": "portfolio-visual-tests",
+  "version": "1.0.0",
+  "description": "Visual regression tests for the Portfolio website",
+  "scripts": {
+    "test": "playwright test",
+    "test:update": "playwright test --update-snapshots",
+    "test:ui": "playwright test --ui",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.40.0"
+  }
+}
