@@ -918,6 +918,14 @@ body {
     color: var(--text-primary);
 }
 
+.skills-note {
+    max-width: 760px;
+    margin: 0.85rem auto 0;
+    color: var(--text-secondary);
+    font-size: 0.98rem;
+    line-height: 1.6;
+}
+
 .skills-grid {
     display: flex;
     flex-direction: column;
@@ -925,9 +933,24 @@ body {
 }
 
 .skill-item {
+    position: relative;
     display: flex;
     align-items: center;
     gap: 1rem;
+    padding: 0.85rem 0.9rem;
+    border-radius: var(--border-radius-small);
+    border: 1px solid transparent;
+    transition: transform var(--transition-medium), border-color var(--transition-medium), background var(--transition-medium), box-shadow var(--transition-medium);
+    cursor: help;
+}
+
+.skill-item:hover,
+.skill-item:focus-visible {
+    transform: translateY(-2px);
+    background: rgba(255, 255, 255, 0.04);
+    border-color: rgba(99, 102, 241, 0.28);
+    box-shadow: 0 12px 30px rgba(15, 23, 42, 0.2);
+    outline: none;
 }
 
 .skill-icon {
@@ -953,11 +976,32 @@ body {
     flex: 1;
 }
 
+.skill-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 0.5rem;
+}
+
 .skill-name {
-    display: block;
     font-weight: 600;
     color: var(--text-primary);
-    margin-bottom: 0.5rem;
+}
+
+.skill-level {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.6rem;
+    padding: 0.18rem 0.55rem;
+    border-radius: 999px;
+    background: rgba(99, 102, 241, 0.14);
+    border: 1px solid rgba(99, 102, 241, 0.24);
+    color: var(--primary-light);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
 }
 
 .skill-bar {
@@ -973,6 +1017,35 @@ body {
     border-radius: 3px;
     width: 0;
     transition: width 1s ease-out;
+}
+
+.skill-item::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: calc(100% + 0.75rem);
+    padding: 0.85rem 1rem;
+    border-radius: 12px;
+    background: rgba(15, 23, 42, 0.96);
+    border: 1px solid rgba(99, 102, 241, 0.22);
+    box-shadow: 0 18px 50px rgba(2, 6, 23, 0.35);
+    color: #e2e8f0;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(8px);
+    transition: opacity var(--transition-medium), transform var(--transition-medium), visibility var(--transition-medium);
+    pointer-events: none;
+    z-index: 20;
+}
+
+.skill-item:hover::after,
+.skill-item:focus-visible::after {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
 }
 
 .strengths {
