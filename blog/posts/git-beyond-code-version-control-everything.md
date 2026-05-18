@@ -393,7 +393,6 @@ Until then, choose the right tool for the job, and don't force Git where better 
 - [Git LFS Documentation](https://git-lfs.com/)
 - [Pandoc - Convert Markdown to DOCX/PDF](https://pandoc.org/)
 - [Using Git Version Control as a Writer](https://itsfoss.com/news/version-control-writers/)
-- [Office File Formats Explained](https://learn.microsoft.com/en-us/office/open-xml/understanding-the-open-xml-file-formats)
 
 ---
 
