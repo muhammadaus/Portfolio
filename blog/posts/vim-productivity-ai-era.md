@@ -229,7 +229,6 @@ Whether you're editing code, documentation, config files, or data, Vim's modal e
 - [Vim Tips Wiki](https://vim.fandom.com/wiki/Vim_Tips_Wiki)
 - [vimcasts.org](http://vimcasts.org/) - Excellent video tutorials
 - [Learn Vimscript the Hard Way](https://learnvimscriptthehardway.stevelosh.com/)
-- Your VimGame project - Interactive Vim learning!
 
 ---
 
