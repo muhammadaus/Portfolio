@@ -118,12 +118,19 @@ const skillsData = {
         icon: "fab fa-docker",
         description: "Containerization and deployment"
     },
+    "Rust": {
+        category: "Tools & Systems",
+        proficiency: 62,
+        projects: [],
+        icon: "fas fa-gears",
+        description: "Systems-oriented tooling and low-level programming"
+    },
     "Embedded Systems": {
         category: "Tools & Systems",
-        proficiency: 80,
+        proficiency: 82,
         projects: [],
         icon: "fas fa-microchip",
-        description: "Firmware development and hardware integration"
+        description: "Low-level engineering, firmware validation, and hardware integration"
     },
     "Data Visualization": {
         category: "Tools & Systems",
