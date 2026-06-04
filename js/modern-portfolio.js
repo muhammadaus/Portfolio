@@ -21,7 +21,6 @@ class ModernPortfolio {
         this.loadProjectsData();
         this.setupProjectFilters();
         this.setupProjectModal();
-        this.setupArticleModal();
         this.setupContactForm();
         this.setupScrollAnimations();
         this.setupTypingEffect();
@@ -1047,6 +1046,10 @@ class BlogManager {
         const articlesGrid = document.getElementById('articles-grid');
         if (!articlesGrid) return;
 
+        // The lightweight homepage ships static article links, including language links.
+        // Leave those untouched; dynamic cards are for the full blog section.
+        if (articlesGrid.classList.contains('blog-articles')) return;
+
         const filteredArticles = this.currentFilter === 'all'
             ? this.articles
             : this.articles.filter(a => a.tags.includes(this.currentFilter));
@@ -1058,14 +1061,7 @@ class BlogManager {
 
         articlesGrid.innerHTML = '';
         filteredArticles.forEach(article => {
-            const link = document.createElement('a');
-            link.href = '#';
-            link.textContent = article.title;
-            link.onclick = (e) => {
-                e.preventDefault();
-                this.openArticle(article.slug);
-            };
-            articlesGrid.appendChild(link);
+            articlesGrid.appendChild(this.renderArticleCard(article));
         });
     }
 
@@ -1287,9 +1283,9 @@ class BlogManager {
         document.addEventListener('click', (e) => {
             const link = e.target.closest('.blog-article-link');
             if (link) {
-                e.preventDefault();
                 const slug = link.getAttribute('data-article-slug');
                 if (slug) {
+                    e.preventDefault();
                     this.openArticle(slug);
                 }
             }
@@ -1396,19 +1392,6 @@ window.portfolioUtils = {
         window.open('/assets/Muhammad_Aus_Hijri_Resume.pdf', '_blank');
     }
 };
-
-// PWA Service Worker Registration
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        navigator.serviceWorker.register('/sw.js')
-            .then((registration) => {
-                console.log('SW registered: ', registration);
-            })
-            .catch((registrationError) => {
-                console.log('SW registration failed: ', registrationError);
-            });
-    });
-}
 
 // Performance monitoring
 if ('PerformanceObserver' in window) {

@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>最適化で見るべきもの - Muhammad Aus Hijri</title>
+    <link rel="stylesheet" href="./css/modern-portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: var(--bg-primary); min-height: 100vh; }
+        .blog-post {
+            max-width: 900px;
+            margin: 80px auto 50px;
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 2rem;
+        }
+        .back-link,
+        .lang-link {
+            display: inline-block;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover,
+        .lang-link:hover { text-decoration: underline; }
+        .blog-post h1 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 2rem; line-height: 1.3; }
+        .blog-post h2 { color: var(--text-primary); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; }
+        .blog-post h3 { color: var(--text-primary); font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+        .blog-post p { color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.2rem; }
+        .blog-post strong { color: var(--text-primary); }
+        .blog-post em { font-style: italic; }
+        .blog-post code { background: var(--bg-primary); color: var(--primary-color); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
+        .blog-post pre { background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border: 1px solid rgba(102, 126, 234, 0.16); }
+        .blog-post pre code { background: none; padding: 0; color: var(--text-secondary); display: block; }
+        .blog-post ul, .blog-post ol { margin: 1rem 0 1.5rem 2rem; }
+        .blog-post li { color: var(--text-secondary); margin: 0.75rem 0; line-height: 1.8; }
+        .blog-post blockquote { border: 1px solid rgba(102, 126, 234, 0.16); border-radius: 8px; padding: 1rem 1.25rem; margin: 1.5rem 0; color: var(--text-secondary); font-style: italic; background: var(--bg-primary); }
+        .article-diagram { display: block; width: 100%; margin: 2rem 0; border-radius: 8px; border: 1px solid rgba(102, 126, 234, 0.2); background: var(--bg-primary); }
+        @media (max-width: 768px) {
+            .blog-post { margin: 70px 1rem 30px; padding: 1.5rem; }
+            .blog-post h1 { font-size: 1.8rem; }
+            .blog-post h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <div class="post-actions">
+            <a href="index_ja.html#blog" class="back-link">ポートフォリオへ戻る</a>
+            <a href="spatial-locality-blog.html" class="lang-link">English</a>
+        </div>
+
+        <h1>最適化で見るべきもの: ツールより先に空間的局所性を見る</h1>
+
+        <p>最適化は、よく「Rust、Numba、Polars のどれを使うべきか」という問いから始まります。しかし最初に見るべき問いは別です。「CPU にどんなメモリアクセスをさせているのか」です。</p>
+
+        <p><a href="https://github.com/muhammadaus/HL-Optimizer">HL-Optimizer</a> のベンチマークは、この違いをかなり具体的に示しています。Monaco の OpenStreetMap データでは、空間インデックスをメモリに保持し続ける長時間稼働サービスでは Rust の KdTree が強く、データを頻繁に読み直して大きな連続配列を処理するバッチでは Numba の flat-grid が有効でした。決め手は言語名ではなく、適応的な枝刈りが効くのか、単純で連続したメモリアクセスが効くのかです。</p>
+
+        <p>ツールを選ぶ前に、この視点で見るのが重要です。</p>
+
+        <h2>本当のボトルネックはメモリであることが多い</h2>
+
+        <p>現代の CPU は計算そのものには非常に強い一方で、メモリアクセスには弱い面があります。次に使う値が今の値の近くにあり、キャッシュに乗っていれば処理は進みます。しかし毎回ポインタをたどって別のヒープ領域へ飛ぶと、実行はメモリ待ちになります。</p>
+
+        <p>同じ Big-O のアルゴリズムでも性能が大きく変わるのはこのためです。</p>
+
+        <ul>
+            <li>フラットな配列走査は予測しやすく、ベクトル化しやすく、キャッシュに優しい。</li>
+            <li>ポインタの多い木構造は探索範囲を大きく削れる一方で、各ステップが別のメモリ位置へ飛びやすい。</li>
+            <li>Python オブジェクトのループは、アルゴリズムが単純でもインタプリタとオブジェクト配置のコストを払う。</li>
+            <li>Polars や Numba が連続した列データを処理できる場合、多くの処理をネイティブコード側に閉じ込められる。</li>
+        </ul>
+
+        <p>大事なのは、ライブラリ名の前にデータの形を見ることです。</p>
+
+        <img src="./img/blog/data-shapes-locality.svg" alt="連続した Structure-of-Arrays とポインタの多いオブジェクト構造を比較する図" class="article-diagram">
+
+        <h2>空間的局所性</h2>
+
+        <p>空間的局所性とは、一緒に使うデータが近くに置かれていることです。道路リンクの座標、バウンディングボックス、グリッドセル情報がコンパクトな配列に入っていれば、バッチ処理は少ないキャッシュミスでメモリを流れるように読めます。</p>
+
+        <p>例えば、次の形はバッチ処理に向いています。</p>
+
+        <pre><code>x1: [ ... contiguous float64 ... ]
+y1: [ ... contiguous float64 ... ]
+x2: [ ... contiguous float64 ... ]
+y2: [ ... contiguous float64 ... ]</code></pre>
+
+        <p>一方で、次のような形は CPU には重くなりやすいです。</p>
+
+        <pre><code>Link {
+    geometry: Vec&lt;Point&gt;,
+    name: String,
+    metadata: HashMap&lt;...&gt;,
+    next: pointer
+}</code></pre>
+
+        <p>後者は表現力がありますし、正しいモデルになる場面もあります。ただしホットデータ、コールドなメタデータ、ヒープ上の構造が混ざります。ホットパスが座標だけを必要としているなら、文字列やネストしたオブジェクトまで同じ経路で持ち回るのはキャッシュを無駄にします。</p>
+
+        <h2>ポインタ追跡</h2>
+
+        <p>ポインタ追跡は、処理のたびにメモリからアドレスを読み、その先へジャンプして続けるパターンです。木、連結リスト、ハッシュマップ、boxed object、オブジェクトグラフはこのパターンを作りやすいです。</p>
+
+        <p>KdTree は分かりやすい例です。アルゴリズムとしては探索範囲を枝刈りできるので強力です。キャッシュ済みの都市タイルインデックスに対して単発の GPS ping を処理する場合、すべての候補を調べずに関連する領域へ降りていけます。HL-Optimizer では、これが 1 query の cached path で大きな差になりました。</p>
+
+        <p>ただしポインタ追跡にはコストがあります。ワークロードがより大きな地域を対象にした大規模バッチになると、flat-grid は追いつきやすくなります。賢い探索を減らし、予測しやすい走査を増やすからです。ベンチマークでもリンク数が増えるほど Rust の優位は縮まり、Numba の flat-grid 表現はリンクあたりのメモリ使用量も小さくなりました。</p>
+
+        <p>教訓は「木が悪い」でも「配列が常に正しい」でもありません。枝刈りで減らせる仕事量がポインタ移動のコストを上回るなら適応的なインデックスが勝ちます。予測可能なメモリアクセスと並列スキャンが支配的なら、フラットな配列が勝ちます。</p>
+
+        <h2>HL-Optimizer の結果から見えること</h2>
+
+        <p>ベンチマークでは、大きく次の 2 つの形を比較しています。</p>
+
+        <ul>
+            <li>長時間稼働のリアルタイムサービス向け: Rust KdTree と PBF ingestion。</li>
+            <li>リロードの多いバッチ処理向け: Numba flat-grid と GeoParquet ingestion。</li>
+        </ul>
+
+        <p>重要なのはこの境界です。</p>
+
+        <pre><code>Index cached across calls:
+    build cost が償却され、single-query latency が重要なので
+    low-level customization が効きやすい。
+
+Index rebuilt per call:
+    rebuild cost と memory footprint が支配的になるため、
+    flat arrays を使う Python-native pipeline が効きやすい。</code></pre>
+
+        <p>また、データがロードされた後は PBF と GeoParquet の違いはクエリ速度にほとんど影響しませんでした。PBF か GeoParquet かは ingestion の問題であり、matching speed の問題ではありません。ロード時の関心とホットパスの関心を分けることも、最適化では大事です。</p>
+
+        <img src="./img/blog/cached-vs-rebuilt-index.svg" alt="キャッシュされた長時間稼働インデックスと再構築されるバッチパイプラインを示す図" class="article-diagram">
+
+        <h2>Low-Level Customization が効く場面</h2>
+
+        <p>Low-level customization は、レイテンシ、メモリ配置、長寿命の状態を細かく制御したいときに価値があります。</p>
+
+        <ul>
+            <li>インデックスを一度構築し、何百万回も再利用するリアルタイムサービス。</li>
+            <li>1 query を短時間で返す必要がある低レイテンシのリクエストパス。</li>
+            <li>spatial tree、routing index、compact custom cache など、適応的なデータ構造を使うワークロード。</li>
+            <li>メモリ所有権、allocation behavior、tail latency の予測可能性が重要なシステム。</li>
+            <li>汎用的なオブジェクトモデルではなく、ホットデータの配置を意図的に設計できるケース。</li>
+        </ul>
+
+        <p>Rust は Rust だから自動的に速いわけではありません。ホットパスを小さくできるときに速くなります。少ない allocation、タイトな struct、明示的な lifetime、クエリパターンに合わせたデータ構造が効くからです。</p>
+
+        <p>map matching の場合、起動時に地域データをロードし、KdTree を warm に保ち、到着する ping を個別に処理するサービスなら Rust は自然な選択になります。木の構築コストは起動時に消え、query ごとの traversal は小さく保てます。</p>
+
+        <h2>Numba が効く場面</h2>
+
+        <p>Numba は、アルゴリズムを NumPy 風の配列に対する数値ループとして書けると強いです。</p>
+
+        <ul>
+            <li>多数の行や多数の query を処理するバッチ。</li>
+            <li>primitive numeric arrays 上で書ける geometry、simulation、scoring、matching、distance calculation。</li>
+            <li>Python object iteration がボトルネックだが、別の low-level service を作るほど複雑ではない処理。</li>
+            <li>各 record を独立して処理できる parallel loop。</li>
+        </ul>
+
+        <p>実用上のルールは単純です。ホットパスを数値配列に変えられるなら、Numba は Python のワークフローを保ったまま多くのオーバーヘッドを外せます。</p>
+
+        <p>flat-grid の空間インデックスが有効なのはまさにこの領域です。uniform grid は KdTree より適応的ではないかもしれませんが、コンパクトな配列で表現でき、安く再構築できます。道路リンクを読み込み、数十万の GPS 点を処理して終了する nightly job なら、多くの場合こちらが正しいトレードオフです。</p>
+
+        <h2>Polars が効く場面</h2>
+
+        <p>Polars は、最適化対象が主に表形式の処理であるときに効きます。filter、join、group、sort、aggregate、projection、そしてパイプラインに流すデータ量の削減です。</p>
+
+        <ul>
+            <li>数値ホットパスの前後にある ETL。</li>
+            <li>record 全体ではなく必要な列だけをロードする処理。</li>
+            <li>Parquet や GeoParquet からの predicate pushdown。</li>
+            <li>trip ごとの group 処理、time-window filtering、deduplication、feature construction。</li>
+            <li>wide dataframe や不要な intermediate copy がメモリ圧迫を作っているパイプライン。</li>
+        </ul>
+
+        <p>Polars が有効なのは、列指向で考えることを促すからです。columnar execution は局所性の勝ちです。混ざったフィールドを持つ row object を歩くのではなく、同じ型の dense buffer に対して処理できます。</p>
+
+        <p>空間ワークロードでは、Polars が最近傍計算そのものを置き換えるとは限りません。それでも、その計算に届くデータを減らし、周辺のパイプラインを列指向に保つことで、性能の大きな部分を支えられます。</p>
+
+        <h2>最適化前に確認すること</h2>
+
+        <ol>
+            <li>ホットパスは compute-bound か memory-bound か。</li>
+            <li>データは連続して置かれているか、それとも object graph を歩いているか。</li>
+            <li>キャッシュできるインデックスを毎回再構築していないか。</li>
+            <li>ホットパスが使わない列や record をロードしていないか。</li>
+            <li>必要なのは single-query latency か bulk throughput か。</li>
+            <li>アルゴリズムを array operations として表現できるか。</li>
+            <li>データ構造の枝刈りは、その複雑さに見合うだけの仕事を減らしているか。</li>
+        </ol>
+
+        <h2>実用的な分け方</h2>
+
+        <p>サービスが長時間稼働し、インデックスを再利用し、レイテンシが重要なら low-level customization を使います。Rust のような systems language は、リクエストパスに合わせてデータ構造を設計し、allocation と memory layout を制御できます。</p>
+
+        <p>高コストな部分が連続配列上の数値ループなら Numba を使います。インデックスの再構築が安く、Python-native なワークフローを保ちたいバッチ処理では特に有効です。</p>
+
+        <p>周辺のデータ移動がボトルネックなら Polars を使います。ポインタの多いコードを自動的に局所的にするわけではありませんが、そもそもその問題を作らないようにパイプラインを組めます。</p>
+
+        <p>最適化の中心は、最強のツールを選ぶことではありません。CPU から何が見えているかを理解することです。近くにあるデータ、予測可能なループ、少ない allocation、少ない pointer chasing。その理解ができると、Rust、Numba、Polars それぞれの使いどころは自然に見えてきます。</p>
+    </div>
+</body>
+</html>

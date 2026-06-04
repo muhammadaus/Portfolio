@@ -7,6 +7,14 @@
         "readTime": "8 min",
         "tags": ["Performance", "Rust", "Python", "Numba", "Polars", "Spatial Data"],
         "image": "./img/blog/spatial-locality-optimization.svg",
+        "translations": {
+            "ja": {
+                "title": "最適化で見るべきもの: ツールより先に空間的局所性を見る",
+                "description": "HL-Optimizer から見る実用的な最適化の視点。空間的局所性、ポインタ追跡、low-level customization、Numba、Polars の使いどころを整理します。",
+                "url": "./spatial-locality-blog-ja.html",
+                "markdown": "./blog/posts/spatial-locality-optimization-rust-python-ja.md"
+            }
+        },
         "featured": false,
         "author": "Muhammad Aus Hijri"
     },

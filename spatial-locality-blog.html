@@ -15,14 +15,22 @@
             background: var(--bg-secondary);
             border-radius: 12px;
         }
-        .back-link {
-            display: inline-block;
+        .post-actions {
+            display: flex;
+            justify-content: space-between;
+            gap: 1rem;
+            flex-wrap: wrap;
             margin-bottom: 2rem;
+        }
+        .back-link,
+        .lang-link {
+            display: inline-block;
             color: var(--primary-color);
             text-decoration: none;
             font-weight: 500;
         }
-        .back-link:hover { text-decoration: underline; }
+        .back-link:hover,
+        .lang-link:hover { text-decoration: underline; }
         .blog-post h1 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 2rem; }
         .blog-post h2 { color: var(--text-primary); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; }
         .blog-post h3 { color: var(--text-primary); font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; }
@@ -30,11 +38,11 @@
         .blog-post strong { color: var(--text-primary); }
         .blog-post em { font-style: italic; }
         .blog-post code { background: var(--bg-primary); color: var(--primary-color); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
-        .blog-post pre { background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
+        .blog-post pre { background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border: 1px solid rgba(102, 126, 234, 0.16); }
         .blog-post pre code { background: none; padding: 0; color: var(--text-secondary); display: block; }
         .blog-post ul, .blog-post ol { margin: 1rem 0 1.5rem 2rem; }
         .blog-post li { color: var(--text-secondary); margin: 0.75rem 0; line-height: 1.7; }
-        .blog-post blockquote { border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-secondary); font-style: italic; }
+        .blog-post blockquote { border: 1px solid rgba(102, 126, 234, 0.16); border-radius: 8px; padding: 1rem 1.25rem; margin: 1.5rem 0; color: var(--text-secondary); font-style: italic; background: var(--bg-primary); }
         .article-diagram { display: block; width: 100%; margin: 2rem 0; border-radius: 8px; border: 1px solid rgba(102, 126, 234, 0.2); background: var(--bg-primary); }
         @media (max-width: 768px) {
             .blog-post { margin: 70px 1rem 30px; padding: 1.5rem; }
@@ -45,7 +53,10 @@
 </head>
 <body>
     <div class="blog-post">
-        <a href="index.html#blog" class="back-link">Back to Portfolio</a>
+        <div class="post-actions">
+            <a href="index.html#blog" class="back-link">Back to Portfolio</a>
+            <a href="spatial-locality-blog-ja.html" class="lang-link">日本語</a>
+        </div>
         <h1>What to Look at When Optimizing: Spatial Locality Before Tools</h1>
 
         <p>Optimization work often starts with the wrong question: "Should I use Rust, Numba, Polars, or another tool?" The better first question is: "What memory access pattern am I asking the CPU to execute?"</p>

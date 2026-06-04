@@ -1776,8 +1776,26 @@ body {
     flex: 1;
 }
 
+.blog-article-copy {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    flex: 1;
+}
+
+.blog-article-lang {
+    color: var(--primary-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+}
+
 .blog-article-link:hover {
     color: var(--primary-color);
+    text-decoration: underline;
+}
+
+.blog-article-lang:hover {
     text-decoration: underline;
 }
 
@@ -1998,11 +2016,13 @@ body {
 }
 
 .article-content blockquote {
-    border-left: 4px solid var(--primary-color);
-    padding-left: 1.5rem;
+    border: 1px solid rgba(102, 126, 234, 0.16);
+    border-radius: var(--border-radius-small);
+    padding: 1rem 1.25rem;
     margin: 1.5rem 0;
     font-style: italic;
     color: var(--text-secondary);
+    background: rgba(255, 255, 255, 0.04);
 }
 
 .article-content a {
