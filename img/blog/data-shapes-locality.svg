@@ -1,0 +1,51 @@
+<svg width="1100" height="620" viewBox="0 0 1100 620" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1100" height="620" fill="#0F172A"/>
+  <text x="60" y="72" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Data shape changes the optimization</text>
+  <text x="60" y="112" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="22">The same road links can be stored as contiguous hot columns or scattered objects.</text>
+
+  <rect x="60" y="160" width="470" height="380" rx="8" fill="#111827" stroke="#22C55E" stroke-width="3"/>
+  <text x="92" y="215" fill="#E5E7EB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Structure of arrays</text>
+  <text x="92" y="250" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="19">hot fields packed together</text>
+  <g font-family="JetBrains Mono, monospace" font-size="20" fill="#E5E7EB">
+    <text x="92" y="315">x1</text>
+    <text x="92" y="385">y1</text>
+    <text x="92" y="455">x2</text>
+  </g>
+  <g>
+    <rect x="138" y="286" width="58" height="42" rx="5" fill="#22C55E"/>
+    <rect x="206" y="286" width="58" height="42" rx="5" fill="#22C55E" fill-opacity="0.9"/>
+    <rect x="274" y="286" width="58" height="42" rx="5" fill="#22C55E" fill-opacity="0.8"/>
+    <rect x="342" y="286" width="58" height="42" rx="5" fill="#22C55E" fill-opacity="0.7"/>
+    <rect x="410" y="286" width="58" height="42" rx="5" fill="#22C55E" fill-opacity="0.6"/>
+    <rect x="138" y="356" width="58" height="42" rx="5" fill="#38BDF8"/>
+    <rect x="206" y="356" width="58" height="42" rx="5" fill="#38BDF8" fill-opacity="0.9"/>
+    <rect x="274" y="356" width="58" height="42" rx="5" fill="#38BDF8" fill-opacity="0.8"/>
+    <rect x="342" y="356" width="58" height="42" rx="5" fill="#38BDF8" fill-opacity="0.7"/>
+    <rect x="410" y="356" width="58" height="42" rx="5" fill="#38BDF8" fill-opacity="0.6"/>
+    <rect x="138" y="426" width="58" height="42" rx="5" fill="#A78BFA"/>
+    <rect x="206" y="426" width="58" height="42" rx="5" fill="#A78BFA" fill-opacity="0.9"/>
+    <rect x="274" y="426" width="58" height="42" rx="5" fill="#A78BFA" fill-opacity="0.8"/>
+    <rect x="342" y="426" width="58" height="42" rx="5" fill="#A78BFA" fill-opacity="0.7"/>
+    <rect x="410" y="426" width="58" height="42" rx="5" fill="#A78BFA" fill-opacity="0.6"/>
+  </g>
+  <path d="M150 500H460" stroke="#E5E7EB" stroke-width="8" stroke-linecap="round"/>
+  <path d="M424 474L463 500L424 526" stroke="#E5E7EB" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+
+  <rect x="570" y="160" width="470" height="380" rx="8" fill="#111827" stroke="#F97316" stroke-width="3"/>
+  <text x="602" y="215" fill="#E5E7EB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Array of objects</text>
+  <text x="602" y="250" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="19">hot and cold fields mixed</text>
+  <g>
+    <rect x="618" y="302" width="118" height="76" rx="7" fill="#F97316"/>
+    <rect x="802" y="254" width="118" height="76" rx="7" fill="#F97316" fill-opacity="0.82"/>
+    <rect x="704" y="436" width="118" height="76" rx="7" fill="#F97316" fill-opacity="0.7"/>
+    <text x="638" y="332" fill="#111827" font-family="JetBrains Mono, monospace" font-size="18" font-weight="700">Link</text>
+    <text x="638" y="356" fill="#111827" font-family="JetBrains Mono, monospace" font-size="14">x,y,name</text>
+    <text x="822" y="284" fill="#111827" font-family="JetBrains Mono, monospace" font-size="18" font-weight="700">Link</text>
+    <text x="822" y="308" fill="#111827" font-family="JetBrains Mono, monospace" font-size="14">geom,str</text>
+    <text x="724" y="466" fill="#111827" font-family="JetBrains Mono, monospace" font-size="18" font-weight="700">Link</text>
+    <text x="724" y="490" fill="#111827" font-family="JetBrains Mono, monospace" font-size="14">meta,next</text>
+    <path d="M736 326C760 306 776 294 802 286" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-dasharray="16 14"/>
+    <path d="M864 330C830 380 792 418 750 436" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-dasharray="16 14"/>
+  </g>
+  <text x="60" y="585" fill="#94A3B8" font-family="Inter, Arial, sans-serif" font-size="22">Local columns favor Numba and Polars. Object graphs need careful design, where Rust works best.</text>
+</svg>

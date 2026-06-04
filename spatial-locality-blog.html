@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>What to Look at When Optimizing - Muhammad Aus Hijri</title>
+    <link rel="stylesheet" href="./css/modern-portfolio.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        body { background: var(--bg-primary); min-height: 100vh; }
+        .blog-post {
+            max-width: 900px;
+            margin: 80px auto 50px;
+            padding: 3rem;
+            background: var(--bg-secondary);
+            border-radius: 12px;
+        }
+        .back-link {
+            display: inline-block;
+            margin-bottom: 2rem;
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 500;
+        }
+        .back-link:hover { text-decoration: underline; }
+        .blog-post h1 { color: var(--primary-color); font-size: 2.5rem; margin-bottom: 2rem; }
+        .blog-post h2 { color: var(--text-primary); font-size: 1.8rem; margin-top: 3rem; margin-bottom: 1rem; border-bottom: 2px solid var(--primary-color); padding-bottom: 0.5rem; }
+        .blog-post h3 { color: var(--text-primary); font-size: 1.4rem; margin-top: 2rem; margin-bottom: 0.75rem; }
+        .blog-post p { color: var(--text-secondary); line-height: 1.8; margin-bottom: 1.2rem; }
+        .blog-post strong { color: var(--text-primary); }
+        .blog-post em { font-style: italic; }
+        .blog-post code { background: var(--bg-primary); color: var(--primary-color); padding: 0.2rem 0.5rem; border-radius: 4px; font-family: "JetBrains Mono", monospace; font-size: 0.9em; }
+        .blog-post pre { background: var(--bg-primary); padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; border-left: 4px solid var(--primary-color); }
+        .blog-post pre code { background: none; padding: 0; color: var(--text-secondary); display: block; }
+        .blog-post ul, .blog-post ol { margin: 1rem 0 1.5rem 2rem; }
+        .blog-post li { color: var(--text-secondary); margin: 0.75rem 0; line-height: 1.7; }
+        .blog-post blockquote { border-left: 4px solid var(--primary-color); padding-left: 1rem; margin: 1.5rem 0; color: var(--text-secondary); font-style: italic; }
+        .article-diagram { display: block; width: 100%; margin: 2rem 0; border-radius: 8px; border: 1px solid rgba(102, 126, 234, 0.2); background: var(--bg-primary); }
+        @media (max-width: 768px) {
+            .blog-post { margin: 70px 1rem 30px; padding: 1.5rem; }
+            .blog-post h1 { font-size: 1.8rem; }
+            .blog-post h2 { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-post">
+        <a href="index.html#blog" class="back-link">Back to Portfolio</a>
+        <h1>What to Look at When Optimizing: Spatial Locality Before Tools</h1>
+
+        <p>Optimization work often starts with the wrong question: "Should I use Rust, Numba, Polars, or another tool?" The better first question is: "What memory access pattern am I asking the CPU to execute?"</p>
+
+        <p>The <a href="https://github.com/muhammadaus/HL-Optimizer">HL-Optimizer</a> benchmark made that distinction concrete. On Monaco OpenStreetMap data, a Rust KdTree was excellent for a long-running server that keeps its spatial index in memory. A Numba flat-grid pipeline was compelling for batch jobs that reload data frequently and scan large contiguous arrays. The deciding factor was not language identity. It was whether the workload benefited more from adaptive pruning or from simple, contiguous memory access.</p>
+
+        <p>That is the lens I would use before choosing any optimization stack.</p>
+
+        <h2>The Real Bottleneck Is Often Memory</h2>
+
+        <p>Modern CPUs are extremely fast at arithmetic and surprisingly fragile around memory access. If the next value is already near the current value in cache, the CPU can keep moving. If every step follows a pointer to an unrelated heap allocation, execution waits on memory.</p>
+
+        <p>This is why two implementations with the same big-O complexity can behave very differently:</p>
+
+        <ul>
+            <li>A flat array walk can be predictable, vectorizable, and cache-friendly.</li>
+            <li>A pointer-heavy tree can skip huge parts of the search space, but each step may jump to a different memory location.</li>
+            <li>A Python loop over objects pays interpreter and object-layout overhead even if the algorithm is simple.</li>
+            <li>A Polars or Numba operation over contiguous columns can keep most of the work in native code.</li>
+        </ul>
+
+        <p>The important habit is to look past the library name and inspect the layout of the data being processed.</p>
+
+        <img src="./img/blog/data-shapes-locality.svg" alt="Diagram comparing contiguous structure-of-arrays layout with pointer-heavy object layout" class="article-diagram">
+
+        <h2>Spatial Locality</h2>
+
+        <p>Spatial locality means data that is used together is stored together. If a road segment's coordinates, bounding box, or grid-cell membership are stored in compact arrays, a batch query can stream through memory with fewer cache misses.</p>
+
+        <p>For example, this shape is usually friendly to batch processing:</p>
+
+        <pre><code>x1: [ ... contiguous float64 ... ]
+y1: [ ... contiguous float64 ... ]
+x2: [ ... contiguous float64 ... ]
+y2: [ ... contiguous float64 ... ]</code></pre>
+
+        <p>This shape can be harder on the CPU:</p>
+
+        <pre><code>Link {
+    geometry: Vec&lt;Point&gt;,
+    name: String,
+    metadata: HashMap&lt;...&gt;,
+    next: pointer
+}</code></pre>
+
+        <p>The second model may be more expressive. It may also be the right model for some systems. But it mixes hot data, cold metadata, and heap-owned structures. If the hot path only needs coordinates, carrying strings and nested objects through the same access path burns cache for no useful work.</p>
+
+        <h2>Pointer Chasing</h2>
+
+        <p>Pointer chasing happens when each operation depends on loading an address from memory, then jumping somewhere else to continue. Trees, linked lists, hash maps, boxed objects, and object graphs can all introduce this pattern.</p>
+
+        <p>A KdTree is a useful example. Algorithmically, it can be excellent because it prunes the search space. For a single GPS ping against a cached city-tile index, the tree can descend into a small relevant region instead of checking many candidates. In the HL-Optimizer benchmark, that made the cached Rust path dramatically faster for one-query batches.</p>
+
+        <p>But pointer chasing has a cost. As the workload becomes a large batch over a larger region, a flat-grid approach can catch up because it does less clever navigation and more predictable scanning. In the benchmark, the Rust advantage narrowed as the link count grew, while the Numba flat-grid representation used much less memory per link.</p>
+
+        <p>The lesson is not "trees are bad" or "arrays are always better." The lesson is that adaptive indexing wins when pruning saves more work than pointer navigation costs. Flat arrays win when predictable memory access and parallel scans dominate.</p>
+
+        <h2>What the HL-Optimizer Results Suggest</h2>
+
+        <p>The benchmark compared two broad approaches:</p>
+
+        <ul>
+            <li>Rust KdTree with PBF ingestion for a persistent real-time service.</li>
+            <li>Numba flat-grid with GeoParquet ingestion for reload-heavy batch processing.</li>
+        </ul>
+
+        <p>The key result was the decision boundary:</p>
+
+        <pre><code>Index cached across calls:
+    low-level customization can win because build cost is amortized and single-query latency matters.
+
+Index rebuilt per call:
+    Python-native pipelines with flat arrays can win because rebuild cost and memory footprint dominate.</code></pre>
+
+        <p>The same benchmark also showed that once data is loaded, the source format did not meaningfully affect query speed. PBF versus GeoParquet was an ingestion decision, not a matching-speed decision. That is another useful optimization habit: separate load-time concerns from hot-path concerns.</p>
+
+        <img src="./img/blog/cached-vs-rebuilt-index.svg" alt="Diagram showing a cached long-running index versus a rebuilt batch pipeline" class="article-diagram">
+
+        <h2>When Low-Level Customization Benefits</h2>
+
+        <p>Low-level customization is most valuable when you need tight control over latency, layout, and long-lived state.</p>
+
+        <p>Good fits include:</p>
+
+        <ul>
+            <li>Real-time services where the index is built once and reused for millions of calls.</li>
+            <li>Low-latency request paths where a single query must return quickly.</li>
+            <li>Workloads with adaptive data structures such as spatial trees, routing indexes, or compact custom caches.</li>
+            <li>Systems where memory ownership, allocation behavior, and predictable tail latency matter.</li>
+            <li>Cases where you can design the hot data layout deliberately instead of inheriting a generic object model.</li>
+        </ul>
+
+        <p>Rust is not automatically fast because it is Rust. It becomes fast when it lets you make the hot path small: fewer allocations, tighter structs, explicit lifetimes, and data structures shaped around the query pattern.</p>
+
+        <p>For the map-matching case, a Rust service makes sense when it loads a region at startup, keeps the KdTree warm, and handles individual pings as they arrive. The tree build cost disappears into startup, while the per-query traversal remains extremely small.</p>
+
+        <h2>When Numba Benefits</h2>
+
+        <p>Numba is strongest when the algorithm can be expressed as numeric loops over NumPy-style arrays.</p>
+
+        <p>Good fits include:</p>
+
+        <ul>
+            <li>Batch processing over many rows or many queries.</li>
+            <li>Geometry, simulation, scoring, matching, or distance calculations that can be written over primitive numeric arrays.</li>
+            <li>Workloads where Python object iteration is the bottleneck but the algorithm itself is not complex enough to justify a separate low-level service.</li>
+            <li>Parallel loops where each record can be processed independently.</li>
+        </ul>
+
+        <p>The practical rule is simple: if you can turn the hot path into arrays of numbers, Numba can remove much of the Python overhead while preserving a Python workflow.</p>
+
+        <p>This is exactly where a flat-grid spatial index can work well. A uniform grid may be less adaptive than a KdTree, but it can be represented as compact arrays and rebuilt cheaply. For a nightly job that reloads road links, processes hundreds of thousands of GPS points, and exits, that is often the right trade.</p>
+
+        <h2>When Polars Benefits</h2>
+
+        <p>Polars helps when the optimization problem is primarily tabular: filtering, joining, grouping, sorting, aggregating, projecting columns, and moving less data through the pipeline.</p>
+
+        <p>Good fits include:</p>
+
+        <ul>
+            <li>ETL before or after the numeric hot path.</li>
+            <li>Loading only relevant columns instead of whole records.</li>
+            <li>Predicate pushdown from Parquet or GeoParquet.</li>
+            <li>Grouped trip processing, time-window filtering, deduplication, and feature construction.</li>
+            <li>Pipelines where memory pressure comes from wide dataframes or unnecessary intermediate copies.</li>
+        </ul>
+
+        <p>Polars is useful because it encourages columnar thinking. Columnar execution is a locality win: the engine can operate on dense buffers of the same type instead of walking row objects full of mixed fields.</p>
+
+        <p>For spatial workloads, Polars may not replace the core nearest-neighbor calculation. It can still be a large part of the performance story by reducing the data that reaches that calculation and keeping the surrounding pipeline column-oriented.</p>
+
+        <h2>What to Inspect Before Optimizing</h2>
+
+        <p>Before reaching for a faster tool, I would inspect these questions:</p>
+
+        <ol>
+            <li>Is the hot path compute-bound or memory-bound?</li>
+            <li>Is data stored contiguously, or are we walking object graphs?</li>
+            <li>Are we repeatedly rebuilding an index that could be cached?</li>
+            <li>Are we loading columns or records that the hot path never uses?</li>
+            <li>Does the workload need single-query latency or bulk throughput?</li>
+            <li>Can the algorithm be expressed as array operations?</li>
+            <li>Is the data structure pruning enough work to justify its complexity?</li>
+        </ol>
+
+        <p>Those questions usually narrow the tool choice naturally.</p>
+
+        <h2>The Practical Split</h2>
+
+        <p>Use low-level customization when the service is long-lived, the index is reused, and latency matters. A systems language such as Rust lets you design the data structure around the request path and keep control over allocation and memory layout.</p>
+
+        <p>Use Numba when the expensive part is a numeric loop that can run over contiguous arrays. It is especially attractive for batch jobs where the index is cheap to rebuild and the workflow should remain Python-native.</p>
+
+        <p>Use Polars when the surrounding data movement is the bottleneck. It will not make pointer-heavy code magically local, but it can prevent the pipeline from creating that problem in the first place.</p>
+
+        <p>The deeper point is that optimization is not mainly about choosing the most powerful tool. It is about understanding what the CPU sees: nearby data, predictable loops, fewer allocations, and less pointer chasing. Once that is clear, Rust, Numba, and Polars each have an obvious place.</p>
+    </div>
+</body>
+</html>

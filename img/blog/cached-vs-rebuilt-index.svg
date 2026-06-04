@@ -1,0 +1,43 @@
+<svg width="1100" height="700" viewBox="0 0 1100 700" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1100" height="700" fill="#0F172A"/>
+  <text x="60" y="72" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="42" font-weight="700">Cached index or rebuilt pipeline?</text>
+  <text x="60" y="112" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="22">The right optimization depends on whether build cost is paid once or repeatedly.</text>
+
+  <rect x="70" y="168" width="960" height="190" rx="8" fill="#111827" stroke="#38BDF8" stroke-width="3"/>
+  <text x="102" y="215" fill="#E5E7EB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Long-running service</text>
+  <text x="102" y="250" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="18">build once -> keep warm -> answer many small requests</text>
+  <rect x="104" y="282" width="150" height="58" rx="7" fill="#38BDF8"/>
+  <text x="135" y="318" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Load</text>
+  <path d="M274 311H342" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round"/>
+  <path d="M320 291L350 311L320 331" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="370" y="282" width="150" height="58" rx="7" fill="#22C55E"/>
+  <text x="408" y="318" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Index</text>
+  <path d="M540 311H608" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round"/>
+  <path d="M586 291L616 311L586 331" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="636" y="282" width="150" height="58" rx="7" fill="#A78BFA"/>
+  <text x="669" y="318" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Pings</text>
+  <path d="M806 311H874" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round"/>
+  <path d="M852 291L882 311L852 331" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="902" y="282" width="96" height="58" rx="7" fill="#38BDF8" fill-opacity="0.18" stroke="#38BDF8" stroke-width="2"/>
+  <text x="914" y="306" fill="#38BDF8" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">Low</text>
+  <text x="912" y="327" fill="#38BDF8" font-family="Inter, Arial, sans-serif" font-size="16" font-weight="700">level</text>
+
+  <rect x="70" y="420" width="960" height="190" rx="8" fill="#111827" stroke="#F97316" stroke-width="3"/>
+  <text x="102" y="467" fill="#E5E7EB" font-family="Inter, Arial, sans-serif" font-size="28" font-weight="700">Batch pipeline</text>
+  <text x="102" y="502" fill="#94A3B8" font-family="JetBrains Mono, monospace" font-size="18">reload -> rebuild flat arrays -> process a large sweep</text>
+  <rect x="104" y="534" width="150" height="58" rx="7" fill="#F97316"/>
+  <text x="137" y="570" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Read</text>
+  <path d="M274 563H342" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round"/>
+  <path d="M320 543L350 563L320 583" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="370" y="534" width="150" height="58" rx="7" fill="#22C55E"/>
+  <text x="403" y="570" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Arrays</text>
+  <path d="M540 563H608" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round"/>
+  <path d="M586 543L616 563L586 583" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="636" y="534" width="150" height="58" rx="7" fill="#A78BFA"/>
+  <text x="670" y="570" fill="#0F172A" font-family="Inter, Arial, sans-serif" font-size="20" font-weight="700">Sweep</text>
+  <path d="M806 563H874" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round"/>
+  <path d="M852 543L882 563L852 583" stroke="#E5E7EB" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="902" y="534" width="96" height="58" rx="7" fill="#F97316" fill-opacity="0.18" stroke="#F97316" stroke-width="2"/>
+  <text x="929" y="558" fill="#F97316" font-family="Inter, Arial, sans-serif" font-size="18" font-weight="700">Py</text>
+  <text x="914" y="582" fill="#F97316" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="700">Numba</text>
+</svg>

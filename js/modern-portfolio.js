@@ -1242,6 +1242,7 @@ class BlogManager {
 
     async openArticle(slug) {
         const blogUrls = {
+            'spatial-locality-optimization-rust-python': './blog/posts/spatial-locality-optimization-rust-python.md',
             'vim-productivity-ai-era': './blog/posts/vim-productivity-ai-era.md',
             'git-beyond-code-version-control-everything': './blog/posts/git-beyond-code-version-control-everything.md'
         };
