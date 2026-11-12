@@ -678,8 +678,14 @@ body {
     transition: opacity var(--transition-medium);
 }
 
-.project-card:hover .project-overlay {
+.project-card:hover .project-overlay,
+.project-card:focus-within .project-overlay {
     opacity: 1;
+}
+
+.project-link:focus-visible {
+    outline: 3px solid white;
+    outline-offset: 4px;
 }
 
 .project-links {
