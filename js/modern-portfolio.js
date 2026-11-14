@@ -70,9 +70,9 @@ class ModernPortfolio {
         // Smooth scrolling for navigation links
         navLinks.forEach(link => {
             link.addEventListener('click', (e) => {
-                e.preventDefault();
                 const targetId = link.getAttribute('href');
-                if (targetId.startsWith('#')) {
+                if (targetId?.startsWith('#')) {
+                    e.preventDefault();
                     this.smoothScrollTo(targetId);
                 }
             });
