@@ -520,7 +520,9 @@ ${email}`;
         
         // Parallax effect for hero
         const hero = document.querySelector('.hero');
-        if (hero && scrollTop < window.innerHeight) {
+        if (hero && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            hero.style.transform = '';
+        } else if (hero && scrollTop < window.innerHeight) {
             const parallaxSpeed = 0.5;
             hero.style.transform = `translateY(${scrollTop * parallaxSpeed}px)`;
         }
@@ -588,7 +590,7 @@ ${email}`;
             const offsetTop = element.offsetTop - 70; // Account for navbar height
             window.scrollTo({
                 top: offsetTop,
-                behavior: 'smooth'
+                behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
             });
         }
     }
