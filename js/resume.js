@@ -91,7 +91,7 @@ class LanguageManager {
 // Smooth scroll handling
 class SmoothScroll {
     static init() {
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        document.querySelectorAll('a[href^="#"]:not(.skip-link)').forEach(anchor => {
             anchor.addEventListener('click', (e) => {
                 e.preventDefault();
                 const targetElement = document.querySelector(anchor.getAttribute('href'));
